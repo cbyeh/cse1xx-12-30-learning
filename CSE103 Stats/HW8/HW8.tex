@@ -1,0 +1,122 @@
+\documentclass[12pt, oneside]{article}
+\usepackage[letterpaper,scale=0.85, centering]{geometry}
+\usepackage{amssymb,amsmath}
+\usepackage{currfile,xstring,hyperref}
+\usepackage[labelformat=empty]{caption}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{multicol}
+\usepackage{listings}
+
+% NOTE(joe): This environment is credit @pnpo (https://tex.stackexchange.com/a/218450)
+\lstnewenvironment{algorithm}[1][] %defines the algorithm listing environment
+{   
+    \lstset{ %this is the stype
+        mathescape=true,
+        frame=tB,
+        numbers=left, 
+        numberstyle=\tiny,
+        basicstyle=\rmfamily\scriptsize, 
+        keywordstyle=\color{black}\bfseries,
+        keywords={,procedure, div, for, to, input, output, return, datatype, function, in, if, else, foreach, while, begin, end, }
+        numbers=left,
+        xleftmargin=.04\textwidth,
+        #1
+    }
+}
+{}
+
+\lstnewenvironment{java}[1][]
+{   
+    \lstset{
+        language=java,
+        mathescape=true,
+        frame=tB,
+        numbers=left, 
+        numberstyle=\tiny,
+        basicstyle=\ttfamily\scriptsize, 
+        keywordstyle=\color{black}\bfseries,
+        keywords={, int, double, for, return, if, else, while, }
+        numbers=left,
+        xleftmargin=.04\textwidth,
+        #1
+    }
+}
+{}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+
+\title{\bf CSE 103 \\[2ex]
+       \Large Homework \#8\\ Fall 2019}
+\begin{document}
+\date{\textbf{Due}: Monday, November 25, 2019 at 11:00PM on Gradescope}
+\maketitle
+%$\\[-50pt]$
+
+\section{Directions}
+You may work with one other student. If working with a partner,
+\textbf{submit only one submission per pair} : one partner uploads the submission and adds the other partner to the Gradescope submission. You can post public questions about the assignment to Piazza, discuss the questions and their answers with at most one other student, and ask questions in office hours
+
+Your answers have to be typeset, not handwritten. This is for two
+reasons: (a) to reduce ambiguity of the answers, and (b) to be kind to
+the TA's eyesight. We recommend you use latex, but you can also use
+word-processors that support mathematical formulas. More directions
+are available here: {\tt https://tinyurl.com/y2gv9bn9}.
+
+You will submit this assignment via Gradescope
+(\url{https://www.gradescope.com}) in the assignment called ``Homework
+8''. You can submit each question as many times as you like. You should solve the problems and ask questions about them offline first, then try submitting once you are confident in your answers. 
+
+\textbf{No late submissions are accepted.}
+
+\newpage
+ Read the hypothetical example below followed by arguments. \textbf{Problems 1 to 3} of this homework are based on this.
+ \par
+ Suppose two investigators are arguing about a large box of numbered tickets. Dr. Nullsheimer says the average is 50. Dr. Altshuler says the average is different from 50. Eventually, they get tired of arguing and decide to look at some data. There are many, many tickets in the box, so they agree to take a sample - they'll draw 500 tickets at random.(The box is large so it doesn't make a difference whether the draws are made with or without replacement). The average of the draws turn out to be 48 and the SD is 15.3. And now they argue again.\\
+ 
+ \par
+ \textit{Dr.Null : }The average of the draw is nearly 50, just like I thought it would be.\\\\
+ \textit{Dr.Alt : }The average is really below 50.\\\\
+ \textit{Dr.Null : }Oh, come on, the difference is only 2, and the SD(Standard Deviation) is 15.3. The difference is tiny relative to the SD. It's just chance. \\\\
+ \textit{Dr.Alt : }Hmm, I think we need to look at the SE and not SD. \\\\
+ \textit{Dr.Null : }Why? \\\\
+ \textit{Dr.Alt : }Because the SE(Standard Error) tells us how far the average of the sample is likely to be from its expected value - the average of the box\\\\
+ \textit{Dr.Null : }So what's the SE?\\\\
+ \textit{Dr.Alt : }Can we agree to estimate the SD of the box as 15.3, the SD of the data?\\\\
+ \textit{Dr.Null : }I'll go along with you there.\\\\
+ \textit{Dr.Alt : }OK, then the SE for the sum of the draws is about $\sqrt{500}*15.3 \approx 342$ Remember the square root law.\\\\
+ \textit{Dr.Null : }But we're looking at the average of the draws.\\\\
+ \textit{Dr.Alt : }Fine, the SE for the average is $342/500 \approx 0.7$\\\\ \textit{Dr.Null : }So?\\\\
+ \textit{Dr.Alt : }The average of the draws is 48. You say it ought to be 50. If your theory is right, the average is about 3SE's below its expected value.\\\\
+ \textit{Dr.Null : }Where did you get the 3?\\\\
+ \textit{Dr.Alt : }Well. $\frac{48-50}{0.7} \approx -3$\\\\
+ \textit{Dr.Null : }You're going to tell me that 3 SEs is too many SEs to explain by chance\\\\
+ \textit{Dr.Alt : }That's my point. You can't explain difference by chance. The difference is real. In other words, the average of tickets in the box isn't 50, it's some other number.\\\\
+ \textit{Dr.Null : }I thought the SE was about the difference between the sample average and its expected value.\\\\
+ \textit{Dr.Alt : }Yes, yes. But the expected value of the sample average is the average of the tickets in the box.\\\\
+ 
+ \par
+ The issue in the dialog comes up over and over again: one side thinks a difference is real but the other side might say it's only a chance. The "it's only chance" attack can be fended off by a calculation, as in the dialog. This calculation is called a \textit{test of significance}. The key idea : if an observed value is too many SEs away from its expected value, that is hard to explain by chance.
+ 
+ 
+ 
+ 
+ 
+\newpage 
+\section{Problems}
+\begin{enumerate}
+\item In the dialog, suppose the 500 tickets in the sample average 48 but the SD is 55. Who wins now? Dr.Null or Dr.Alt?[12 points]
+\newpage
+\item In the dialog, suppose 60 tickets are drawn, not 500. The sample average is 48 and the SD is 15.3. Who wins now, Dr.Null or Dr.Alt?[12 points]
+\newpage
+\item In the dialog, suppose the investigators had only taken a sample of 10 tickets. Should the normal curve be used to compute P-value(observed significance level)? Answer yes or no, and explain briefly.[25 points]
+\newpage
+\item A die is rolled 100 times. The total number of spots(as indicated by the number on a face) is 375 instead of the expected 350. Can this be explained as a chance variation, or is the die biased?[13 points]
+\newpage
+\item A die is rolled 1000 times. The total number of spots(as indicated by the number on a face) is 3450 instead of the expected 3500. Can this be explained as a chance variation, or is the die biased?[13 points]
+\newpage
+\item 10,000 draws are made at random with replacement from a box. The average of the draws is 22.7 and the SD is 1. Someone claims that the average of the box equals 20. Is this plausible? Show your work.[25 points]
+
+
+\end{enumerate}
+\end{document}

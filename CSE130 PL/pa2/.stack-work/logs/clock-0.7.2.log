@@ -1,0 +1,11 @@
+Configuring clock-0.7.2...
+Preprocessing library for clock-0.7.2..
+Clock.hsc:44:0: warning: "hsc_alignment" redefined
+In file included from .stack-work\\dist\\e626a42b\\build\\System\\Clock_hsc_make.c:1:0:
+C:\Users\C.000\AppData\Local\Programs\stack\x86_64-windows\ghc-8.6.5/lib/template-hsc.h:91:0: note: this is the location of the previous definition
+ #define hsc_alignment(x...)                                           \
+ 
+Building library for clock-0.7.2..
+[1 of 1] Compiling System.Clock     ( .stack-work\dist\e626a42b\build\System\Clock.hs, .stack-work\dist\e626a42b\build\System\Clock.o )
+Installing library in C:\sr\snapshots\b7cb0a9e\lib\x86_64-windows-ghc-8.6.5\clock-0.7.2-6GYCAXixqb8FuS0ooeoDbD
+Registering library for clock-0.7.2..

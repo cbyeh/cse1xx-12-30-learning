@@ -1,0 +1,97 @@
+\documentclass[12pt, oneside]{article}
+\usepackage[letterpaper,scale=0.85, centering]{geometry}
+\usepackage{amssymb,amsmath}
+\usepackage{currfile,xstring,hyperref}
+\usepackage[labelformat=empty]{caption}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{multicol}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+
+\title{\bf CSE 103 \\[2ex]
+       \Large Homework \#2\\ Fall 2019}
+\begin{document}
+\newcommand{\SubItem}[1]{
+    {\setlength\itemindent{15pt} \item[] #1}
+}
+
+\date{\textbf{Due}: Monday, October 14, 2019 at 11:00PM on Gradescope}
+%$\\[-50pt]$
+
+\section{Directions}
+
+You may work with one other student. If working with a partner,
+\textbf{submit only one submission per pair} : one partner uploads the submission and adds the other partner to the Gradescope submission. You can post public questions about the assignment to Piazza, discuss the questions and their answers with at most one other student, and ask questions in office hours
+
+Your answers have to be typeset, not handwritten. This is for two
+reasons: (a) to reduce ambiguity of the answers, and (b) to be kind to
+the TA's eyesight. We recommend you use latex, but you can also use
+word-processors that support mathematical formulas. More directions
+are available here: {\tt https://tinyurl.com/y2gv9bn9}.
+
+You will submit this assignment via Gradescope
+(\url{https://www.gradescope.com}) in the assignment called ``Homework
+2''. You can submit each question as many times as you like. You should solve the problems and ask questions about them offline first, then try submitting once you are confident in your answers. 
+
+\textbf{No late submissions are accepted.}
+
+\noindent {\large{\textbf{Note:} Please enter the solution for
+    each problem after the question and use {\bf Gradescope} to mark
+    a rectangle around your answer.}}
+
+For each of the questions, explain your methodology as well so that it's clear to the grader. Also, write the complete expression and the computed probability as integer percentages wherever applicable. Use clear figures wherever required to explain your methodology.
+
+Special Latex Notation useful in this assignment: 
+\begin{enumerate}
+\item m choose k: ${m \choose k}$
+\item a cup b: ${a \cup b}$
+\item a cap b: ${a \cap b}$
+\end{enumerate}
+
+Further, you may find \href{https://www.authorea.com/users/77723/articles/110898-how-to-write-mathematical-equations-expressions-and-symbols-with-latex-a-cheatsheet}{this} link helpful for latex submissions.
+
+
+\section{Problems}
+\begin{enumerate}
+
+\item We are given that $P(A)$ = 0.4. $P(B^c)$ = 0.3 and ${P(A \cup B)} = 0.75$. Determine $P(B)$ and $P(A \cap B)$.
+
+\newpage
+\item Let $A$ and $B$ be two sets. Under what conditions is the set $A \cap (A \cup B)^c$ empty? Explain your answer.
+
+\newpage
+\item We roll a four sided die once and then we roll it as many times as is necessary to obtain a different face than the one obtained in the first roll. Let the outcome of the experiment be $(r_{1},r_{2})$ where $r_{1}$ and $r_{2}$ are the results of the last rolls, respectively. Assume that all possible outcomes have equal probability. Find the probability that:
+\begin{enumerate}
+    \item $r_{1}$ is odd
+    \item $r_{1}$ is even and $r_{2}$ is odd
+    \item $r_{1} + r_{2} > 3$
+\end{enumerate}
+
+\newpage
+\item Alice and Bob each choose at random a real number between zero and two. We assume a uniform probability law under which the probability of an event is proportional to its area. Consider the following events:
+\SubItem A: The magnitude of the difference of the two numbers is greater than $1/2$
+\SubItem B: At least one of the numbers is greater than $1/2$
+\SubItem C: The two numbers are equal
+\SubItem D: Alice's number is greater than $1/4$
+\smallbreak
+Find the probabilities $P(A), P(B), P(A \cup B), P(C), P(D), P(A \cup D)$.
+
+\newpage
+\item We roll two fair 6-sided dice. Each one of the 36 possible outcomes is assumed to be equally likely.
+\begin{enumerate}
+    \item Find the probability that doubles were rolled. (i.e. the two outcomes are equal)
+    \item Given that the roll resulted in a sum of 6 or less, find the conditional probability that doubles were rolled.
+    \item Find the probability that at least one die is a 1
+    \item Given that the two dice land on different numbers, find the conditional probability that at least one die is a 1
+\end{enumerate}
+
+\newpage
+\item A magnetic tape storing information in binary form has been corrupted, so it can only be read with bit errors. The probability that you correctly detect a 0 is 0.9, while the probability that you correctly detect a 1 is 0.85. Each digit is a 1 or a 0 with equal probability. Given that you read a 0, what is the probability that this is a correct reading?
+
+\newpage
+\item A particular jury consists of 7 jurors. Each juror has a 0.2 chance of making the wrong decision, independently of the others. If the jury reaches a decision by majority rule, what is the probability that it will reach a wrong decision?
+
+\end{enumerate}
+\end{document}

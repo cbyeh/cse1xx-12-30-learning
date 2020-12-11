@@ -1,0 +1,237 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+public class Explorer {
+
+    // The exploreList to hold the search as it proceeds.
+    private ExploreList exploreList;
+    // The Sea to solve.
+    private Sea sea = new Sea();
+    // The path to the Nemo, if any
+    private String path = "Found Nemo!";
+
+    private boolean gameOver = false; // game over, exit has(n't) been found
+    private boolean foundNemo = false; // exit has been found
+
+    public int getTotalVisited() {
+        return this.getSea().countVisited();
+    }
+
+
+    public void setGameOver() {
+        gameOver = true;
+    }
+
+    public void setFoundNemo() {
+        foundNemo = true;
+    }
+
+    public boolean gameOver() {
+        return gameOver || foundNemo;
+    }
+
+    public boolean isFoundNemo() {
+        return foundNemo;
+    }
+
+    public void makeEmpty() {
+        // remove Squares until empty
+        while (!exploreList.isEmpty()) {
+            exploreList.getNext();
+        }
+    }
+
+    public ExploreList getExploreList() {
+        return this.exploreList;
+    }
+
+    /**
+     * isEmpty
+     *
+     * @return true if the exploreList is empty, false otherwise
+     */
+    public boolean isEmpty() {
+        return this.exploreList.isEmpty();
+    }
+
+    /**
+     * size of the exploreList
+     *
+     * @return The number of elements in the exploreList
+     */
+    public int size() {
+        return this.exploreList.size();
+    }
+
+    /**
+     * Make a new Solver with a given Sea and Worklist
+     *
+     * @param theSea         The Sea to solve
+     * @param theExploreList The exploreList to use
+     */
+    Explorer(Sea theSea, ExploreList theExploreList) {
+        this.sea = theSea;
+        this.exploreList = theExploreList;
+    }
+
+    /**
+     * Get the Sea object
+     *
+     * @return the sea
+     */
+    public Sea getSea() {
+        return this.sea;
+    }
+
+    /**
+     * Solve the sea, if possible.
+     * If a solution is found, set the path variable and the
+     * foundNemo variable appropriately.
+     */
+    public void solve() {
+        // TODO
+        // This function should use next.  You should also create and use any
+        // other helper fuctions you find helpful here.
+        Square startingSquare = this.getSea().getStart();
+        startingSquare.setVisited();
+        exploreList.add(startingSquare);
+        ArrayList<Square> neighbors = this.getSea().getAdjacentArea(startingSquare);
+        for (Square sq : neighbors) {
+            if (sq.getType() != Square.getRockType())
+                sq.setPrevious(startingSquare);
+            exploreList.add(sq);
+        }
+        while (!gameOver() && !isEmpty()) {
+            step();
+        }
+        if (foundNemo) {
+            Square currentSquare = this.getSea().getNemo();
+            while (currentSquare.getType() != Square.getStartType()) {
+                currentSquare = currentSquare.getPrevious();
+                currentSquare.setFinalPath();
+            }
+            setPath(this.getSea().getNemo());
+        }
+    }
+
+    /**
+     * Take the next step toward the goal
+     * PRECONDITION: The exploreList is not empty
+     *
+     * @return The next Square that has just been visited.
+     */
+    public Square step() {
+        // Removes current square, explores next and marks visited
+        Square currentSquare = exploreList.getNext();
+        if (currentSquare.getType() == Square.getNemoType()) {
+            setFoundNemo();
+            setGameOver();
+        } else if (isEmpty()) {
+            setGameOver();
+        }
+        ArrayList<Square> neighbors = this.getSea().getAdjacentArea(currentSquare);
+        if (exploreList instanceof StackExploreList) {
+            for (int i = 0; i < neighbors.size(); i++) {
+                if (neighbors.get(i).getType() != Square.getRockType() && !neighbors.get(i).isVisited()) {
+                    neighbors.get(i).setPrevious(currentSquare);
+                    exploreList.add(neighbors.get(i));
+                }
+            }
+        } else {
+            for (int i = neighbors.size() - 1; i >= 0; i--) {
+                if (neighbors.get(i).getType() != Square.getRockType() && !neighbors.get(i).isVisited()) {
+                    neighbors.get(i).setPrevious(currentSquare);
+                    exploreList.add(neighbors.get(i));
+                }
+            }
+        }
+        currentSquare.setVisited();
+        return (currentSquare);
+    }
+
+    // Set the squares in the path appropriately and set the path
+// from start to finish.
+    public void setPath(Square finish) {
+        path += "\nPath from start to finish: ";
+        // onFinalPath
+        LinkedList<Square> myList = new LinkedList<>();
+        Square currentSquare = finish;
+        myList.add(currentSquare);
+        while (currentSquare.getType() != Square.getStartType()) {
+            currentSquare = currentSquare.getPrevious();
+            myList.addFirst(currentSquare);
+        }
+        for (Square sq : myList)
+            path += squareLocation(sq.getRow(), sq.getCol());
+
+    }
+
+    public String squareLocation(int row, int col) {
+        return "[" + row + "," + col + "] ";
+    }
+
+    /**
+     * Get the number of elements that are left on the exploreList
+     *
+     * @return The size of the exploreList
+     */
+    public int getExploreListSize() {
+        return exploreList.size();
+    }
+
+    /**
+     * Get the path from start to exit, if any.
+     *
+     * @return Path from S to E as a list of coordinates [row,col]
+     * If not solvable, the path is a message
+     */
+    public String getPath() {
+        if (foundNemo) {
+            return path;
+        } else {
+            path = "Uh Oh!! Could not find Nemo!!";
+            return path;
+        }
+    }
+
+
+    /**
+     * A program to solve a sea using either BFS or DFS
+     */
+    public static void main(String[] args) {
+        Sea sea;
+        Explorer dory, marlin;
+        int doryBetter = 0, marlinBetter = 0;
+        for (int j = 0; j < 10; j++) {
+            for (int i = 5; i < 105; i += 5) {
+                sea = new Sea(i, i);
+                dory = new Explorer(sea, new StackExploreList());
+                dory.solve();
+                int d, m;
+                d = dory.getTotalVisited();
+                sea.clearMaze();
+                marlin = new Explorer(sea, new QueueExploreList());
+                marlin.solve();
+                m = marlin.getTotalVisited();
+                if (d < m) doryBetter++;
+                else marlinBetter++;
+            }
+        }
+        System.out.println("Number of times Dory found Nemo faster: " + doryBetter + "\nNumber of times Marlin found Nemo Faster: " + marlinBetter);
+
+        /* Sea sea = new Sea(5, 5);
+        sea.loadSea("seas/sea-4.txt");
+        System.out.println(sea);
+        Explorer dory = new Explorer(sea, new QueueExploreList());
+        dory.solve();
+        System.out.println(sea);
+        System.out.println(dory.getPath());
+        int d = dory.getTotalVisited();
+        System.out.println(d);
+        System.out.println(sea); */
+
+
+    }
+}
+
+

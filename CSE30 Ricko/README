@@ -1,0 +1,77 @@
+DESCRIPTION
+-------------------------------------------------------------------------------
+    PA2  is acrypto program to encipher and decipher data. It reads the
+data to be enciphered from stdin (either from keyboard input or redirected 
+input). The enciphered data should is written to stdout which could be 
+redirected to a file.
+
+
+HOW TO COMPILE
+-------------------------------------------------------------------------------
+    Use the command: `make pa2`
+
+
+HOW TO RUN
+-------------------------------------------------------------------------------
+    Use the command: `./pa2 passphrase key0 key1 rotateValue`
+
+
+
+NORMAL OUTPUT
+-------------------------------------------------------------------------------
+    Normal output is printed to screen.
+    Example of normal output:
+
+$ ./pa2 cse30 0xABCD 0x1234 8
+this is a passphrase
+^DS??@%CA??@QCUqWy^D
+
+
+ABNORMAL OUTPUT
+-------------------------------------------------------------------------------
+    Abnormal output is printed stderr.
+    Example of abnormal output:
+
+$ ./pa2
+
+Usage: ./pa2 passphrase key0 key1 rotateValue
+    passphrase   (must have length within the range [4, 8])
+    key0         (must be numeric; decimal, octal, or hexadecimal)
+    key1         (must be numeric; decimal, octal, or hexadecimal)
+    rotateValue  (must be a decimal value within the range [+0, +63])
+
+
+HOW I TESTED
+-------------------------------------------------------------------------------
+I used mostly vdb, looking at code line by line to debug.
+Usually, I did not find any bugs in most files created.
+
+
+QUESTIONS
+-------------------------------------------------------------------------------
+1.  ldr r2, [r3, 8]
+
+2.  grep -rnw '.' -e 'mask'
+
+3.  :split fubar.txt
+    :vsplit fubar.txt
+    ctrl-w ctrl-w (shifting)
+
+4.  :%s/cypher/cipher/g
+    :%s/cypher/cipher/gc
+    'y' to confirm current, 'a' to replace all
+
+5.  :q!
+
+6.  :set list
+    :set nolist
+
+7.  vim +x file.txt
+
+8.  grep int processKey.c
+    grep -B 5 -A 5 int processKey.c
+
+9.  chmod 000 baz.sh
+    ls -l baz.sh
+
+10. Because in a professional environment, honesty is the best policy.

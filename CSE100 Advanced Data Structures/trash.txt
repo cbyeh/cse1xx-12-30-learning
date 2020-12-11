@@ -1,0 +1,45 @@
+        /*
+        // Find where we would have inserted a node with queryPoint from curr.
+        while (curr != nullptr) {
+            if (queryPoint.features[dimension] < 
+                curr->point.features[dimension])
+            {
+                curr = curr->left;
+            } else {
+                curr = curr->right;
+            }
+            dimension = (dimension + 1) % numDim;
+        }
+        // Go to parent of the nullptr.
+        curr = curr->parent;
+        if (dimension == 0) {
+            dimension = numDim - 1;
+        } else {
+            dimension = (dimension - 1) % numDim;
+        } 
+        updateKNN(curr->point);
+        // Traverse upwards. Ignore insignificant parents.
+        while (curr->point.squareDistToQuery < threshold) {
+            curr->point.setSquareDistToQuery(queryPoint);
+            threshold = curr->point.squareDistToQuery;
+            curr = curr->parent;
+            if (dimension == 0) {
+                dimension = numDim - 1;
+            } else {
+                dimension = (dimension - 1) % numDim;
+            }
+        }
+        // Check our subtrees.
+
+        /*if (queryPoint.features[dimension] <
+            curr->point.features[dimension])
+        {
+            if (curr->left != nullptr) {
+                findKNNHelper(curr->left, queryPoint, dimension + 1);
+            }
+        } 
+        if (curr->right != nullptr) {
+            findKNNHelper(curr->right, queryPoint, dimension + 1);
+        } else if (curr->left != nullptr) {
+            findKNNHelper(curr->left, queryPoint, dimension + 1);
+        }*/

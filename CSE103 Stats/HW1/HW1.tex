@@ -1,0 +1,115 @@
+\documentclass[12pt, oneside]{article}
+\usepackage[letterpaper,scale=0.85, centering]{geometry}
+\usepackage{amssymb,amsmath}
+\usepackage{currfile,xstring,hyperref}
+\usepackage[labelformat=empty]{caption}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{multicol}
+\usepackage{listings}
+
+% NOTE(joe): This environment is credit @pnpo (https://tex.stackexchange.com/a/218450)
+\lstnewenvironment{algorithm}[1][] %defines the algorithm listing environment
+{   
+    \lstset{ %this is the stype
+        mathescape=true,
+        frame=tB,
+        numbers=left, 
+        numberstyle=\tiny,
+        basicstyle=\rmfamily\scriptsize, 
+        keywordstyle=\color{black}\bfseries,
+        keywords={,procedure, div, for, to, input, output, return, datatype, function, in, if, else, foreach, while, begin, end, }
+        numbers=left,
+        xleftmargin=.04\textwidth,
+        #1
+    }
+}
+{}
+
+\lstnewenvironment{java}[1][]
+{   
+    \lstset{
+        language=java,
+        mathescape=true,
+        frame=tB,
+        numbers=left, 
+        numberstyle=\tiny,
+        basicstyle=\ttfamily\scriptsize, 
+        keywordstyle=\color{black}\bfseries,
+        keywords={, int, double, for, return, if, else, while, }
+        numbers=left,
+        xleftmargin=.04\textwidth,
+        #1
+    }
+}
+{}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+
+\title{\bf CSE 103 \\[2ex]
+       \Large Homework \#1\\ Fall 2019}
+\begin{document}
+\date{\textbf{Due}: Tue, October 8, 2019 at 11:00PM on Gradescope}
+\maketitle
+%$\\[-50pt]$
+
+\section{Directions}
+There are two goals to this first assignment: (1) To practice
+typesetting your answers and submitting the HW through gradescope. (2)
+To do a quick review of basic concepts of combinatorics and probability
+that were covered in CSE21.
+
+This assignment will be submitted individually and is \textbf{open to
+collaboration with other students}.  You can post public questions about the
+assignment to Piazza, discuss the questions and their answers with other
+students, and ask questions in office hours. 
+
+Your answers have to be typeset, not handwritten. This is for two
+reasons: (a) to reduce ambiguity of the answers, and (b) to be kind to
+the TA's eyesight. We recommend you use latex, but you can also use
+word-processors that support mathematical formulas. More directions
+are available here: {\tt https://tinyurl.com/y2gv9bn9}. A latex
+version of the HW is available from the class plan here: {\tt https://sites.google.com/eng.ucsd.edu/cse103/class-plan}.
+
+You will submit this assignment via Gradescope
+(\url{https://www.gradescope.com}) in the assignment called ``Homework
+1''. You can submit each question as many times as you like. You should solve the problems and ask
+questions about them offline first, then try submitting once you are confident
+in your answers. \textbf{No late submissions are accepted.}
+
+\noindent {\large{\textbf{Note:} Please enter the solution for
+    each problem after the question and use {\bf Gradescope} to mark
+    a rectangle around your answer.}}
+
+Special Latex Notation useful in this assignment: m choose k: ${m
+  \choose k}$
+\section{Problems}
+\begin{enumerate}
+
+\item Find the number of different ways of arranging two {\tt R}'s and
+  one {\tt G}'s in a row. Write out all the patterns.
+\item Find the number of different ways of arranging two {\tt R}'s and
+  three {\tt G}'s in a row. Write out all the patterns.
+\item A box contains two red balls and three green ones. Four draws
+  are made at random with replacement from the box. Find the chance
+  that:\\
+  (write the exact expression and the computed probability as
+  integer percetages)
+\begin{enumerate}
+    \item a red ball is never drawn
+    \item a red ball appears exactly once
+    \item a red ball appears exactly twice
+    \item a red ball appears exactly three times
+    \item a red ball appears on all the draws
+    \item a red ball appears at least twice
+\end{enumerate}
+\item A die is rolled five times. Find the chance that:
+\begin{enumerate}
+    \item an ace (one dot) never appears
+    \item an ace appears exactly twice
+    \item an ace appears exactly five times
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
+

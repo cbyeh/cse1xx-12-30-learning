@@ -1,0 +1,8 @@
+Configuring tasty-hunit-0.10.0.1...
+Preprocessing library for tasty-hunit-0.10.0.1..
+Building library for tasty-hunit-0.10.0.1..
+[1 of 3] Compiling Test.Tasty.HUnit.Orig ( Test\Tasty\HUnit\Orig.hs, .stack-work\dist\e626a42b\build\Test\Tasty\HUnit\Orig.o )
+[2 of 3] Compiling Test.Tasty.HUnit.Steps ( Test\Tasty\HUnit\Steps.hs, .stack-work\dist\e626a42b\build\Test\Tasty\HUnit\Steps.o )
+[3 of 3] Compiling Test.Tasty.HUnit ( Test\Tasty\HUnit.hs, .stack-work\dist\e626a42b\build\Test\Tasty\HUnit.o )
+Installing library in C:\sr\snapshots\b7cb0a9e\lib\x86_64-windows-ghc-8.6.5\tasty-hunit-0.10.0.1-BwDHU95PIQFHGhEWmsi4Ef
+Registering library for tasty-hunit-0.10.0.1..

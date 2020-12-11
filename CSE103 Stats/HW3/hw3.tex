@@ -1,0 +1,89 @@
+\documentclass[12pt, oneside]{article}
+\usepackage[letterpaper,scale=0.85, centering]{geometry}
+\usepackage{amssymb,amsmath}
+\usepackage{currfile,xstring,hyperref}
+\usepackage[labelformat=empty]{caption}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{multicol}
+\usepackage{listings}
+
+% NOTE(joe): This environment is credit @pnpo (https://tex.stackexchange.com/a/218450)
+\lstnewenvironment{algorithm}[1][] %defines the algorithm listing environment
+{   
+    \lstset{ %this is the stype
+        mathescape=true,
+        frame=tB,
+        numbers=left, 
+        numberstyle=\tiny,
+        basicstyle=\rmfamily\scriptsize, 
+        keywordstyle=\color{black}\bfseries,
+        keywords={,procedure, div, for, to, input, output, return, datatype, function, in, if, else, foreach, while, begin, end, }
+        numbers=left,
+        xleftmargin=.04\textwidth,
+        #1
+    }
+}
+{}
+
+\lstnewenvironment{java}[1][]
+{   
+    \lstset{
+        language=java,
+        mathescape=true,
+        frame=tB,
+        numbers=left, 
+        numberstyle=\tiny,
+        basicstyle=\ttfamily\scriptsize, 
+        keywordstyle=\color{black}\bfseries,
+        keywords={, int, double, for, return, if, else, while, }
+        numbers=left,
+        xleftmargin=.04\textwidth,
+        #1
+    }
+}
+{}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+
+\title{\bf CSE 103 \\[2ex]
+       \Large Homework \#3\\ Fall 2019}
+\begin{document}
+\date{\textbf{Due}: Monday, October 21, 2019 at 11:00PM on Gradescope}
+\maketitle
+%$\\[-50pt]$
+
+\section{Directions}
+You may work with one other student. If working with a partner,
+\textbf{submit only one submission per pair} : one partner uploads the submission and adds the other partner to the Gradescope submission. You can post public questions about the assignment to Piazza, discuss the questions and their answers with at most one other student, and ask questions in office hours
+
+Your answers have to be typeset, not handwritten. This is for two
+reasons: (a) to reduce ambiguity of the answers, and (b) to be kind to
+the TA's eyesight. We recommend you use latex, but you can also use
+word-processors that support mathematical formulas. More directions
+are available here: {\tt https://tinyurl.com/y2gv9bn9}.
+
+You will submit this assignment via Gradescope
+(\url{https://www.gradescope.com}) in the assignment called ``Homework
+3''. You can submit each question as many times as you like. You should solve the problems and ask questions about them offline first, then try submitting once you are confident in your answers. 
+
+\textbf{No late submissions are accepted.}
+
+Special Latex Notation useful in this assignment: m choose k: ${m
+  \choose k}$
+  \newpage
+\section{Problems}
+\begin{enumerate}
+
+\item (25 points) You have 4 identical USB flash drives. You saved an important document on one of them. You accidentally spill some water on them. After that accident, it is equally likely that any of the four discs holds the corrupted remains of your file.
+
+Your computer expert friend offers to have a look, and you know from past experience that the probability of finding the file from any thumb drive is 0.6 (assuming the file is there). Given that your friend searches on USB drive 1 but cannot find that file, what is the probability that your file is on disc i, for $i=1,2,3,4$?
+
+\newpage
+\item (25 points) You can't remember the last digit of your friend's phone number, so you dial the number with the last digit randomly chosen. Not counting repetition, If you want the the probability of getting the correct number to be greater than $40\%$, how many phone calls do you have to make?
+\newpage
+\item (25 points) A new test has been developed to determine whether a given student is overstressed. This test is $90\%$ accurate if the student is not overstressed, but only $80\%$accurate if the student is in fact overstressed. It is known that $99\%$ of all students are overstressed. Given that a particular student tests negative for stress, what is the probability that the test results are correct, and that this student is not overstressed?
+\newpage
+\item (25 points) A parking lot consists of a single row containing $n$ parking spaces $(n\geq2)$. David arrives when all spaces are free. Eve is the next person to arrive. Each person makes an equally likely choice among all available spaces at the time of arrival. Describe the sample space. Obtain $P(A)$, the probability the parking spaces selected by David and Eve are at most one space apart, as a function of $n$.
+\end{enumerate}
+\end{document}

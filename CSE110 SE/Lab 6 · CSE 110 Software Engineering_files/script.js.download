@@ -1,0 +1,85 @@
+/*
+ * author: Sayed Asad Ali
+ * email : sayedasadali@gmail.com
+ */
+
+ var sidebar_toggle = function(document) {
+ 	var toggle = document.querySelector('.sidebar-toggle');
+ 	var sidebar = document.querySelector('#sidebar');
+ 	var checkbox = document.querySelector('#sidebar-checkbox');
+
+ 	document.addEventListener('click', function(e) {
+ 		var target = e.target;
+
+ 		if(!checkbox.checked ||
+ 			sidebar.contains(target) ||
+ 			(target === checkbox || target === toggle)) return;
+
+ 			checkbox.checked = false;
+ 	}, false);
+
+ 	var content = document.querySelector('#content');
+ };
+
+// function to remove contents of lab if it is not within range
+// of availability
+var check_available = function(document){
+
+    //pass for overrule labs
+	var passes = ['', 'pilot', 'tabularasa', 'puffyshirt', 'walkabout', 'nonfatyogurt', 'whiterabbit', 'confidenceman', 'solitary', 'finale'];
+	  
+	  
+	var url_param = window.location.search.substring(1);
+	var content       = document.getElementById('instructions');
+	var week          = parseInt(document.title.split(' ')[1]) - 1;
+	var na = '<h1> This lab is currently not available </h1><p>It will be made public after Tuesday of<em> Week ' + (week + 1) + '</em></p><p align ="center"><strong>If you are in Monday lab, you can access it within lab hours using the lab access pass available with the tutor.</strong></p>';
+
+	var today        = new Date(); //today
+	// var today        = new Date('April 13, 2015 10:00:00');
+	var course_start = new Date('March 30, 2015 09:00:00');  // start date
+	var lab_mon    = new Date(course_start); 	// date for lab to be first available
+	var lab_tue    = new Date(course_start); 	// date when lab is taken offline
+	lab_mon.setDate(course_start.getDate() + 7 * week);
+	lab_tue.setDate(course_start.getDate() + 7 * week + 1);
+
+	if (url_param != ''){
+		key = url_param.split('=')[0];
+		value = url_param.split('=')[1];
+
+		if (key == 'tutor'){
+			console.log('accessed by ' + value);
+		} else if (key == 'pass' && value == passes[week]) {
+			if (today.getDate() != lab_mon.getDate() || (today.getHours() < 9 || today.getHours() > 14)){
+	      		console.log('Denied with pass');
+	      		content.innerHTML = na;
+	      	} else {
+	      		console.log('Monday overrule with pass ' + passes[week]);
+	      	}
+		} else {
+			console.log('invalid access');
+			content.innerHTML = na;
+		}
+	} else {
+	  
+	  // console.log('Today     : ' + today.toLocaleString());
+	  // console.log('Available : ' + lab_mon.toLocaleString());
+	  // console.log('Tuesday   : ' + lab_tue.toLocaleString());
+	  
+	  if (+today <= +lab_tue){
+	  	if (today.getDate() == lab_tue.getDate()){
+	      	// check for Tuesday lab hours
+	      	if (today.getHours() >= 9){
+	      		console.log('Accessible');
+	      	}
+      	} else {
+      		console.log('Not Public yet');
+  		    content.innerHTML = na;
+      	}
+  	  } else {
+  	  	console.log("access check ok");
+  	  }
+	}
+}
+
+sidebar_toggle(document);
+check_available(document);

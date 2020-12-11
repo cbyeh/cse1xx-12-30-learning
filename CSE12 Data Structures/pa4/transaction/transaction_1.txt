@@ -1,0 +1,4 @@
+mary bob 10$
+mary bob 12$
+simon tian 3$
+tian ming 3$

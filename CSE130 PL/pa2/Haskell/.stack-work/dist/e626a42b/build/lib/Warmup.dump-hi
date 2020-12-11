@@ -1,0 +1,444 @@
+
+==================== FINAL INTERFACE ====================
+2019-07-14 23:32:07.9242973 UTC
+
+interface warmup-pa2-0.1.0.0-gSMwukmUylFuAIRKCxZN7:Warmup 8065
+  interface hash: c2136d30eabbcfed97cbadea6704cfe0
+  ABI hash: cad0166b86ddb7d18fb11bb9857bd728
+  export-list hash: 9b63b76ca173179d5d66cc47e722cc75
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: ff7edde63bc8e2082c4a749bad834539
+  opt_hash: 6faf2de08de32d19db9870899d88e59a
+  hpc_hash: 93b885adfe0da089cdf634904fd59f71
+  plugin_hash: ad164012d6b1e14942349d58b1132007
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Warmup.additivePersistence
+  Warmup.bigAdd
+  Warmup.bigMul
+  Warmup.clone
+  Warmup.digitalRoot
+  Warmup.digitalSum
+  Warmup.digits
+  Warmup.digitsOfInt
+  Warmup.foldLeft
+  Warmup.foldRight
+  Warmup.intString
+  Warmup.listReverse
+  Warmup.mulByDigit
+  Warmup.padZero
+  Warmup.palindrome
+  Warmup.pipe
+  Warmup.removeZero
+  Warmup.sepConcat
+  Warmup.sqSum
+  Warmup.stringOfList
+  Warmup.sumList
+  Warmup.BigInt
+module dependencies:
+package dependencies: base-4.12.0.0* ghc-prim-0.5.3
+                      integer-gmp-1.0.2.0
+orphans: base-4.12.0.0:GHC.Float base-4.12.0.0:GHC.Base
+family instance modules: base-4.12.0.0:Control.Applicative
+                         base-4.12.0.0:Data.Functor.Const
+                         base-4.12.0.0:Data.Functor.Identity base-4.12.0.0:Data.Monoid
+                         base-4.12.0.0:Data.Semigroup.Internal base-4.12.0.0:GHC.Generics
+                         base-4.12.0.0:GHC.IO.Exception
+import  -/  base-4.12.0.0:Data.Foldable bdeac546b12282c8986759606b9295a5
+import  -/  base-4.12.0.0:Data.List 6c60559263db7cf0f22549b9673785b9
+import  -/  base-4.12.0.0:GHC.Base fbe365a916ebeeeb4bc1f895dbe83e42
+import  -/  base-4.12.0.0:GHC.List bb56c56a8dc21963b5824914872db158
+import  -/  base-4.12.0.0:GHC.Num 8203d3fee487126cffd5e55ba5d0e8c3
+import  -/  base-4.12.0.0:GHC.Real 3b42f3125c1d17d4e4b4437a3c97310f
+import  -/  base-4.12.0.0:GHC.Show fa6032f3f820e8e8ec87b97bdca4e160
+import  -/  base-4.12.0.0:Prelude 80c668cb99fbafebd524c5e897f8c982
+import  -/  ghc-prim-0.5.3:GHC.Classes 6002495dc43e58d28c87e5e5e058752a
+aeee7d9f5a68ea4aac0032037edc5803
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   Warmup.$trModule3
+                   Warmup.$trModule1) -}
+c038a36afc718a2deeb39e99f0f2b45e
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Warmup.$trModule2) -}
+4004baa1057d92471110938c1670a5d5
+  $trModule2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Warmup"#) -}
+2001c038cd59f57f239979cf362f3957
+  $trModule3 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Warmup.$trModule4) -}
+02cb707870eac4609bb8c86203374c06
+  $trModule4 :: GHC.Prim.Addr#
+  {- HasNoCafRefs,
+     Unfolding: ("warmup-pa2-0.1.0.0-gSMwukmUylFuAIRKCxZN7"#) -}
+d9648c53b51ef3368b4e94749ec8a644
+  $wadditivePersistence :: GHC.Prim.Int# -> GHC.Prim.Int#
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,U>, Inline: [2] -}
+eb41a343b729ffc1524d8fa3a1a94b1c
+  $wclone :: a -> GHC.Prim.Int# -> [a]
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,U><S,1*U>, Inline: [2] -}
+80c8e8db767abdc5de68105c3e37c3e6
+  $wdigitalRoot :: GHC.Prim.Int# -> GHC.Prim.Int#
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,U>, Inline: [2] -}
+e12d4ddc175f5c6c207d59962cb463a1
+  $wdigitalSum :: GHC.Prim.Int# -> GHC.Prim.Int#
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>, Inline: [2] -}
+125a7b8e155df84081ec970f21c36914
+  $wdigitsOfInt :: GHC.Prim.Int# -> [GHC.Types.Int]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>, Inline: [2] -}
+1c99bb787b6c875bad7ba6a62aa6b3bb
+  $wpadZero ::
+    Warmup.BigInt
+    -> Warmup.BigInt -> (# Warmup.BigInt, Warmup.BigInt #)
+  {- Arity: 2, Strictness: <S,U><S,U>, Inline: [2] -}
+de094475fca7116d94da3e1cb7d31325
+  type BigInt = [GHC.Types.Int]
+a54dcb39d210458149cdae8cc367782d
+  additivePersistence :: GHC.Types.Int -> GHC.Types.Int
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(S),1*U(U)>m, Inline: [2],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: GHC.Types.Int) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 case Warmup.$wadditivePersistence ww1 of ww2 { DEFAULT ->
+                 GHC.Types.I# ww2 } }) -}
+4450ca83bf0d99ac7b0e83b077e3f8c2
+  bigAdd :: Warmup.BigInt -> Warmup.BigInt -> Warmup.BigInt
+  {- Arity: 2, Strictness: <S,U><S,U>,
+     Unfolding: (\ (l1 :: Warmup.BigInt) (l2 :: Warmup.BigInt) ->
+                 case Warmup.$wpadZero l1 l2 of ww { (#,#) ww1 ww2 ->
+                 let {
+                   lvl2 :: GHC.Types.Int
+                   = case GHC.List.$wlenAcc @ GHC.Types.Int ww1 0# of ww3 { DEFAULT ->
+                     GHC.Types.I# ww3 }
+                 } in
+                 letrec {
+                   $wgo2 :: [GHC.Types.Int]
+                            -> [GHC.Types.Int] -> (# GHC.Types.Int, [GHC.Types.Int] #)
+                     {- Arity: 2, Strictness: <S,1*U><L,1*U>, Inline: [2] -}
+                   = \ (w :: [GHC.Types.Int]) (w1 :: [GHC.Types.Int]) ->
+                     case w of wild {
+                       [] -> (# Warmup.bigAdd1, GHC.Types.[] @ GHC.Types.Int #)
+                       : ipv ipv1
+                       -> case w1 of wild1 {
+                            [] -> (# Warmup.bigAdd1, GHC.Types.[] @ GHC.Types.Int #)
+                            : ipv2 ipv3
+                            -> case $wgo2 ipv1 ipv3 of ww3 { (#,#) ww4 ww5 ->
+                               let {
+                                 ad :: GHC.Types.Int
+                                 = case ipv of wild2 { GHC.Types.I# x ->
+                                   case ipv2 of wild3 { GHC.Types.I# y ->
+                                   case ww4 of wild4 { GHC.Types.I# y1 ->
+                                   GHC.Types.I# (GHC.Prim.+# (GHC.Prim.+# x y) y1) } } }
+                               } in
+                               (# case ad of ww6 { GHC.Types.I# ww7 ->
+                                  case GHC.Classes.divInt# ww7 10# of ww8 { DEFAULT ->
+                                  GHC.Types.I# ww8 } },
+                                  case lvl2 of wild2 { GHC.Types.I# x ->
+                                  case GHC.List.$wlenAcc @ GHC.Types.Int ww5 0# of ww6 { DEFAULT ->
+                                  case GHC.Prim.==# ww6 (GHC.Prim.-# x 1#) of lwild {
+                                    DEFAULT
+                                    -> GHC.Types.:
+                                         @ GHC.Types.Int
+                                         (case ad of wild3 { GHC.Types.I# x1 ->
+                                          case GHC.Classes.modInt# x1 10# of ww7 { DEFAULT ->
+                                          GHC.Types.I# ww7 } })
+                                         ww5
+                                    1#
+                                    -> GHC.Types.:
+                                         @ GHC.Types.Int
+                                         (case ad of ww7 { GHC.Types.I# ww8 ->
+                                          case GHC.Classes.divInt# ww8 10# of ww9 { DEFAULT ->
+                                          GHC.Types.I# ww9 } })
+                                         (GHC.Types.:
+                                            @ GHC.Types.Int
+                                            (case ad of wild3 { GHC.Types.I# x1 ->
+                                             case GHC.Classes.modInt# x1 10# of ww7 { DEFAULT ->
+                                             GHC.Types.I# ww7 } })
+                                            ww5) } } } #) } } }
+                 } in
+                 case $wgo2 ww1 ww2 of ww3 { (#,#) ww4 ww5 ->
+                 Warmup.bigAdd_go ww5 (GHC.Types.[] @ GHC.Types.Int) } }) -}
+3fd216677781845f95a308617976ba3e
+  bigAdd1 :: GHC.Types.Int
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 0#) -}
+ba3df7a3080f6d674dc218898241f9a1
+  bigAdd_go :: [GHC.Types.Int] -> [GHC.Types.Int] -> [GHC.Types.Int]
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U> -}
+9185826240e267fcbcad448f8ebabe3e
+  bigMul :: Warmup.BigInt -> Warmup.BigInt -> Warmup.BigInt
+  {- Arity: 2, Strictness: <L,U><S,1*U>,
+     Unfolding: (\ (l1 :: Warmup.BigInt) (l2 :: Warmup.BigInt) ->
+                 letrec {
+                   $wgo2 :: [GHC.Types.Int] -> (# [GHC.Types.Int], Warmup.BigInt #)
+                     {- Arity: 1, Strictness: <S,1*U>, Inline: [2] -}
+                   = \ (w :: [GHC.Types.Int]) ->
+                     case w of wild {
+                       []
+                       -> (# GHC.Types.[] @ GHC.Types.Int, GHC.Types.[] @ GHC.Types.Int #)
+                       : y ys
+                       -> case $wgo2 ys of ww { (#,#) ww1 ww2 ->
+                          (# GHC.Base.++ @ GHC.Types.Int ww1 Warmup.bigMul1,
+                             Warmup.bigAdd
+                               ww2
+                               (GHC.Base.++ @ GHC.Types.Int (Warmup.mulByDigit y l1) ww1) #) } }
+                 } in
+                 case $wgo2 l2 of ww { (#,#) ww1 ww2 -> ww2 }) -}
+42bb8dff9a1b53337043f42dfe349902
+  bigMul1 :: [GHC.Types.Int]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ GHC.Types.Int
+                   Warmup.bigAdd1
+                   (GHC.Types.[] @ GHC.Types.Int)) -}
+0e06dee4e51b85e85f55bd003efecb0a
+  clone :: a -> GHC.Types.Int -> [a]
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,U><S(S),1*U(1*U)>,
+     Inline: [2],
+     Unfolding: InlineRule (2, True, False)
+                (\ @ a (w :: a) (w1 :: GHC.Types.Int) ->
+                 case w1 of ww { GHC.Types.I# ww1 -> Warmup.$wclone @ a w ww1 }) -}
+ff6c9d757101600c57209052fa4f02c0
+  digitalRoot :: GHC.Types.Int -> GHC.Types.Int
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(S),1*U(U)>m, Inline: [2],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: GHC.Types.Int) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 case Warmup.$wdigitalRoot ww1 of ww2 { DEFAULT ->
+                 GHC.Types.I# ww2 } }) -}
+5236589f5daf3e507d76999568588d5b
+  digitalSum :: GHC.Types.Int -> GHC.Types.Int
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(S),1*U(1*U)>m,
+     Inline: [2],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: GHC.Types.Int) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 case Warmup.$wdigitalSum ww1 of ww2 { DEFAULT ->
+                 GHC.Types.I# ww2 } }) -}
+ee2f4c4e99e632eff9cbc40616b29ede
+  digits :: GHC.Types.Int -> [GHC.Types.Int]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(S),1*U(U)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (n :: GHC.Types.Int) ->
+                 case n of wild { GHC.Types.I# x ->
+                 case GHC.Prim.>=# x 0# of lwild {
+                   DEFAULT
+                   -> Warmup.digitsOfInt (GHC.Types.I# (GHC.Prim.negateInt# x))
+                   1# -> Warmup.digitsOfInt wild } }) -}
+cc089f170380386d96da322799d578a1
+  digitsOfInt :: GHC.Types.Int -> [GHC.Types.Int]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(S),1*U(1*U)>,
+     Inline: [2],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: GHC.Types.Int) ->
+                 case w of ww { GHC.Types.I# ww1 -> Warmup.$wdigitsOfInt ww1 }) -}
+74bf071717cd1fba60c4552e8be00373
+  foldLeft :: (a -> b -> a) -> a -> [b] -> a
+  {- Arity: 3, HasNoCafRefs, Strictness: <L,C(C1(U))><S,1*U><S,1*U>,
+     Unfolding: InlineRule (0, True, True)
+                (\ @ a @ b -> GHC.List.foldl' @ b @ a) -}
+994b758fd256a083874f34161f1beeca
+  foldRight :: (b -> a -> a) -> a -> [b] -> a
+  {- Arity: 3, HasNoCafRefs, Strictness: <L,C(C1(U))><L,U><S,1*U>,
+     Unfolding: InlineRule (0, True, True) GHC.Base.foldr -}
+e23157a022c28aea0eec0779f37ab541
+  intString :: GHC.Types.Int -> GHC.Base.String
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(S),1*U(U)>m2,
+     Unfolding: InlineRule (0, True, True) GHC.Show.$fShowInt_$cshow -}
+aca8a37fdb9e0b4309281141e6a05e83
+  listReverse :: [a] -> [a]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U> -}
+ae8e26140b051a3681bfaacec0f75310
+  mulByDigit :: GHC.Types.Int -> Warmup.BigInt -> Warmup.BigInt
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,U(U)><S,U>,
+     Unfolding: (\ (i :: GHC.Types.Int) (l :: Warmup.BigInt) ->
+                 let {
+                   lvl2 :: GHC.Types.Int
+                   = case GHC.List.$wlenAcc @ GHC.Types.Int l 0# of ww2 { DEFAULT ->
+                     GHC.Types.I# ww2 }
+                 } in
+                 letrec {
+                   $wgo2 :: [GHC.Types.Int] -> (# GHC.Types.Int, [GHC.Types.Int] #)
+                     {- Arity: 1, Strictness: <S,1*U>, Inline: [2] -}
+                   = \ (w :: [GHC.Types.Int]) ->
+                     case w of wild {
+                       [] -> (# Warmup.bigAdd1, GHC.Types.[] @ GHC.Types.Int #)
+                       : y ys
+                       -> case $wgo2 ys of ww { (#,#) ww1 ww2 ->
+                          let {
+                            pr :: GHC.Types.Int
+                            = case i of wild1 { GHC.Types.I# x ->
+                              case y of wild2 { GHC.Types.I# y1 ->
+                              case ww1 of wild3 { GHC.Types.I# y2 ->
+                              GHC.Types.I# (GHC.Prim.+# (GHC.Prim.*# x y1) y2) } } }
+                          } in
+                          (# case pr of ww3 { GHC.Types.I# ww4 ->
+                             case GHC.Classes.divInt# ww4 10# of ww5 { DEFAULT ->
+                             GHC.Types.I# ww5 } },
+                             case lvl2 of wild1 { GHC.Types.I# x ->
+                             case GHC.List.$wlenAcc @ GHC.Types.Int ww2 0# of ww3 { DEFAULT ->
+                             case GHC.Prim.==# ww3 (GHC.Prim.-# x 1#) of lwild {
+                               DEFAULT
+                               -> GHC.Types.:
+                                    @ GHC.Types.Int
+                                    (case pr of wild2 { GHC.Types.I# x1 ->
+                                     case GHC.Classes.modInt# x1 10# of ww4 { DEFAULT ->
+                                     GHC.Types.I# ww4 } })
+                                    ww2
+                               1#
+                               -> case pr of ww4 { GHC.Types.I# ww5 ->
+                                  case GHC.Classes.divInt# ww5 10# of ww6 {
+                                    DEFAULT
+                                    -> GHC.Types.:
+                                         @ GHC.Types.Int
+                                         (GHC.Types.I# ww6)
+                                         (GHC.Types.:
+                                            @ GHC.Types.Int
+                                            (case GHC.Classes.modInt# ww5 10# of ww7 { DEFAULT ->
+                                             GHC.Types.I# ww7 })
+                                            ww2)
+                                    0#
+                                    -> GHC.Types.:
+                                         @ GHC.Types.Int
+                                         (case GHC.Classes.modInt# ww5 10# of ww7 { DEFAULT ->
+                                          GHC.Types.I# ww7 })
+                                         ww2 } } } } } #) } }
+                 } in
+                 case $wgo2 l of ww { (#,#) ww1 ww2 ->
+                 Warmup.bigAdd_go ww2 (GHC.Types.[] @ GHC.Types.Int) }) -}
+adce6017dd78b42b273a9c3c63bdaae7
+  padZero ::
+    Warmup.BigInt -> Warmup.BigInt -> (Warmup.BigInt, Warmup.BigInt)
+  {- Arity: 2, Strictness: <S,U><S,U>m, Inline: [2],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: Warmup.BigInt) (w1 :: Warmup.BigInt) ->
+                 case Warmup.$wpadZero w w1 of ww { (#,#) ww1 ww2 ->
+                 (ww1, ww2) }) -}
+c512f8ac975b299043f4a852dfadfd73
+  palindrome :: GHC.Base.String -> GHC.Types.Bool
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: GHC.Base.String) ->
+                 GHC.Base.eqString w (Warmup.listReverse @ GHC.Types.Char w)) -}
+b3ea591917697353b0e137a8a98645c8
+  pipe :: [a -> a] -> a -> a
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,U><S,U>,
+     Unfolding: (\ @ a (fs :: [a -> a]) (st :: a) ->
+                 let {
+                   lvl2 :: a
+                   = letrec {
+                       go :: [a -> a] -> a {- Arity: 1, Strictness: <S,1*U> -}
+                       = \ (ds :: [a -> a]) ->
+                         case ds of wild { [] -> st : y ys -> y (go ys) }
+                     } in
+                     go fs
+                 } in
+                 letrec {
+                   go :: [a -> a] -> a -> a
+                     <join 2> {- Arity: 2, Strictness: <S,1*U><S,1*U> -}
+                   = \ (ds :: [a -> a]) (eta :: a) ->
+                     case ds of wild {
+                       [] -> eta : y ys -> case eta of z { DEFAULT -> go ys lvl2 } }
+                 } in
+                 go fs st) -}
+7c9bb7ed0f6a951969734449a34da07c
+  removeZero :: Warmup.BigInt -> Warmup.BigInt
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: (\ (ds :: Warmup.BigInt) ->
+                 Warmup.bigAdd_go ds (GHC.Types.[] @ GHC.Types.Int)) -}
+d8bdba7de22e29224739510e617c7a0e
+  sepConcat ::
+    GHC.Base.String -> [GHC.Base.String] -> GHC.Base.String
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,U><S,1*U> -}
+a7d5bbcd90ea85d62156ad688542e10d
+  sqSum :: [GHC.Types.Int] -> GHC.Types.Int
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (xs :: [GHC.Types.Int]) ->
+                 letrec {
+                   go :: [GHC.Types.Int] -> GHC.Types.Int -> GHC.Types.Int
+                     <join 2> {- Arity: 2 -}
+                   = \ (ds :: [GHC.Types.Int]) (eta :: GHC.Types.Int) ->
+                     case ds of wild {
+                       [] -> eta
+                       : y ys
+                       -> case eta of z { GHC.Types.I# ipv ->
+                          go
+                            ys
+                            (case y of wild1 { GHC.Types.I# x ->
+                             GHC.Types.I# (GHC.Prim.+# ipv (GHC.Prim.*# x x)) }) } }
+                 } in
+                 go xs Warmup.bigAdd1) -}
+3d290d14846a01d181f6ac5fbb4c4738
+  stringOfList :: (a -> GHC.Base.String) -> [a] -> GHC.Base.String
+  {- Arity: 2, Strictness: <L,C(U)><L,1*U>,
+     Unfolding: (\ @ a (f :: a -> GHC.Base.String) (xs :: [a]) ->
+                 GHC.CString.unpackAppendCString#
+                   Warmup.stringOfList5
+                   (letrec {
+                      go :: [a] -> [GHC.Base.String] -> [GHC.Types.Char]
+                        <join 2> {- Arity: 2, Strictness: <S,1*U><S,1*U> -}
+                      = \ (ds :: [a]) (eta :: [GHC.Base.String]) ->
+                        case ds of wild {
+                          []
+                          -> GHC.Base.++
+                               @ GHC.Types.Char
+                               (Warmup.sepConcat Warmup.stringOfList3 eta)
+                               Warmup.stringOfList1
+                          : y ys
+                          -> go
+                               ys
+                               (GHC.Base.++
+                                  @ [GHC.Types.Char]
+                                  eta
+                                  (GHC.Types.:
+                                     @ [GHC.Types.Char]
+                                     (f y)
+                                     (GHC.Types.[] @ [GHC.Types.Char]))) }
+                    } in
+                    go xs (GHC.Types.[] @ GHC.Base.String))) -}
+86d4c745d1e19b40e825a08f7652cace
+  stringOfList1 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# Warmup.stringOfList2) -}
+49252f3b930dc3a6e360ff26374a966f
+  stringOfList2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("]"#) -}
+e73d36d0ab334681c3b1eeeb033d785b
+  stringOfList3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# Warmup.stringOfList4) -}
+ddbcbff95c86f6500603b367381f0035
+  stringOfList4 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: (", "#) -}
+79a81f8462857f9ad71bf161f7b1e5c5
+  stringOfList5 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("["#) -}
+0c109823639fc5c8e8941d9c6e59824c
+  sumList :: [GHC.Types.Int] -> GHC.Types.Int
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (xs :: [GHC.Types.Int]) ->
+                 letrec {
+                   go :: [GHC.Types.Int] -> GHC.Types.Int -> GHC.Types.Int
+                     <join 2> {- Arity: 2 -}
+                   = \ (ds :: [GHC.Types.Int]) (eta :: GHC.Types.Int) ->
+                     case ds of wild {
+                       [] -> eta
+                       : y ys
+                       -> case eta of z { GHC.Types.I# ipv ->
+                          go
+                            ys
+                            (case y of wild1 { GHC.Types.I# y1 ->
+                             GHC.Types.I# (GHC.Prim.+# ipv y1) }) } }
+                 } in
+                 go xs Warmup.bigAdd1) -}
+trusted: safe
+require own pkg trusted: False
+module header:
+  Nothing
+declaration docs:
+arg docs:
+

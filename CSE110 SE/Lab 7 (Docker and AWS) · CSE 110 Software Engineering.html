@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://ieng6.ucsd.edu/~cs110x/static/labs/lab7/index.html -->
+<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+
+      Lab 7 (Docker and AWS) · CSE 110 Software Engineering
+
+  </title>
+  
+  <!-- CSS -->
+  <!-- <link rel="stylesheet" href="/~cs110x/public/css/poole.css">
+  <link rel="stylesheet" href="/~cs110x/public/css/syntax.css">
+  <link rel="stylesheet" href="/~cs110x/public/css/lanyon.css"> -->
+  <link rel="stylesheet" href="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/poole.css">
+  <link rel="stylesheet" href="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/syntax.css">
+  <link rel="stylesheet" href="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/lanyon.css">
+  <link rel="stylesheet" href="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/css">
+  
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://ieng6.ucsd.edu/~cs110x/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="http://ieng6.ucsd.edu/~cs110x/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://ieng6.ucsd.edu/atom.xml">
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>Course Website for CSE110, Fall Quarter 2019</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/">Home</a>
+    <a class="sidebar-nav-item active" href="http://ieng6.ucsd.edu/~cs110x/static/labs/">Labs</a>
+    <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/lectures_a00/">Lecture Notes</a>
+    <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/logistics_a00/">Logistics</a>
+    <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/resources/">Resources</a>
+    <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/artifacts/">Artifacts</a>
+    <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/syllabus/">Syllabus</a>
+    <!-- <a class="sidebar-nav-item" href="">Weekly TODO</a> -->
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      © 2019. All rights reserved.
+    </p>
+  </div>
+</div>
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="http://ieng6.ucsd.edu/~cs110x/" title="Home">CSE 110 Software Engineering</a>
+            <small>Inc.</small>
+          </h3>
+        </div>
+      </div>
+
+
+      <div class="container content" id="instructions">
+        <h1 id="title">Docker and AWS</h1>
+
+<hr>
+
+
+<h2 id="learning-goals">Learning Goals</h2>
+<ul>
+  <li>The goal of this lab is to show how numerous applications are managed,
+ developed, and deployed in industry - practices which you may want to 
+consider implementing in your own projects. At the end of this lab, you 
+should: 
+    <ul>
+      <li>Understand what Docker is and how to use it</li>
+      <li>Understand the use-cases for Docker</li>
+      <li>Be able to configure a Docker image to build a simple Python Flask webapp</li>
+      <li>Understand the basics about Amazon and EC2</li>
+      <li>Be able to view your Flask Server from the web by hosting your Docker container on an Amazon EC2 instance</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="prelab">Prelab</h2>
+Make sure you've completed the <a href="http://ieng6.ucsd.edu/~cs110x/static/labs/lab7/prelab.html">Prelab</a> before starting this lab.
+Also if you or your partner has a Mac we recommend to do the lab on the Mac machine. However
+the lab could be completed on a Windows machine if you choose so.
+
+<h2 id="overview">Overview</h2>
+<h3>What is Docker?</h3>
+<p>Docker is a platform that allows one to package an application with 
+all of its dependencies and surrounding environment in an isolated 
+container. This is useful because the next time you want to deploy your 
+application somewhere else, for development or production, you can 
+simply pull down that container rather than setting up your environment 
+again. Gone are the days of repeatedly downloading and installing 
+dependencies!</p>
+
+<h3>What are Docker containers?</h3>
+<p><b>Containers are composed of an application and anything it may need to run.</b>
+ You can run the application within the container, as well as upload the
+ container’s data so that the exact same environment can be replicated 
+somewhere else.
+<br> Containers are:</p>
+
+<ul>
+  <li><b>Flexible:</b> Even the most complex applications can be containerized.</li>
+  <li><b>Lightweight:</b> Containers leverage and share the host kernel.</li>
+  <li><b>Interchangeable:</b> You can deploy updates and upgrades on-the-fly.</li>
+  <li><b>Portable:</b> You can build locally, deploy to the cloud, and run anywhere.</li>
+  <li><b>Scalable:</b> You can increase and automatically distribute container replicas.</li>
+  <small><i>Source: docs.docker.com</i></small>
+</ul>
+
+<h3>Containers vs VMs</h3>
+<p>Many of you may be familiar with Virtual Machines. VMs are 
+essentially software emulations of a given operating system, running on a
+ hypervisor which maps the host hardware to the hardware that the 
+virtualized OS expects. An examples running a Ubuntu VM from within 
+Windows. This virtualization is very expensive, and running multiple VMs
+ is gets even more resource intensive. Containers, on the other hand, 
+are an abstraction at the app layer rather than the hardware layer, 
+making them <b>take up less space and run faster</b>, which is ideal for production use.</p>
+<img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/0-1.png" alt="Containers vs VMs">
+
+<h3>DockerHub</h3>
+<p>DockerHub is a repository for storing images. Once you have an 
+account in DockerHub you can upload your own images to download later on
+ different machines. You can also access popular containers the 
+community has uploaded.</p>
+
+<h2 id="unit1"> Unit 1: Creating a Docker Image of a simple Python app </h2>
+<p>
+In this section, we’ll create a Docker image of a Python app with a few 
+dependencies. Once we create the image, we can instantiate it as a 
+Docker container to execute it.
+</p>
+<h3>Test Docker Installation</h3>
+
+<ol start="1">
+  <li>Let’s test that Docker is installed properly by running the sample command:</li>
+
+  <pre><code>$ docker run hello-world</code></pre>
+
+  <p>Ensure output looks something like:</p>
+  <img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/image9.png" alt="screenshot">
+  
+  <p>
+  If you are running Docker Toolbox (Windows Users), use 
+the Docker Quickstart Terminal provided with the installation - this 
+sets up a bash terminal environment correctly. </p>
+  <p>You can view the container created by the hello-world image by running</p>
+
+  <pre><code>$ docker container ls --all</code></pre>
+  <img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/image5.png" alt="screenshot">
+
+  <p>If you were to write a Python app, you’d likely first install a version of Python onto your computer. <b>However,
+ this introduces a dependency -- what if the next place you want to run 
+your app doesn’t have the same version of Python? </b></p>
+  <p>Building with Docker allows us to use a portable version of Python 
+as an image and our build can include this image alongside the app, <b>ensuring that the app, its dependencies, and the runtime all interact smoothly, no mattter where they are being run.</b></p>
+  <p>These images are defined by something called a Dockerfile, similar in spirit to a Makefile.</p>
+  
+</ol>
+<h3> Dockerfiles </h3>
+<p> The Dockerfile defines the environment for your application. Inside a
+ container, network access and disk access is virtualized. With the 
+Dockerfile, we can specify which files we want to include in our 
+environment, what ports we want exposed to the outside world, what 
+commands to run to set up our dependencies, and more. The commands in a 
+Dockerfile are run sequentially.</p>
+<ol start="2">
+  <li>
+    <p>Lets create a directory to work in. </p>
+    <pre><code>$ mkdir dockerlab<br>$ cd dockerlab</code></pre>
+  </li>
+  <li>
+    <p>Create a file named 'Dockerfile'. Here is the Dockerfile we are going to use: </p>
+    <pre><code># Use an official Python runtime as a parent image
+FROM python:2.7-slim
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+ADD . /app
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+# Make port 80 available to the world outside this container
+EXPOSE 80
+
+# Run app.py when the container launches
+CMD ["python", "app.py"] </code></pre>
+
+    <p><strong>Important:</strong> Take the time to read over the comments and understand what each line is doing. 
+The commands after the <code>RUN</code> Docker instructions are executed when the image is built.
+The command after the CMD docker instruction is executed when <code>docker run</code> is run from the command line. This is how you launch your Dockerized app. </p>
+
+  </li>
+  <li>
+    <p>Copy the above contents to your Dockerfile.</p>
+    <p> <b>Notice the reference to “parent image” in the first line</b> -
+ this is just the original, “base” Docker image that your image will be 
+based on. The python:2.7-slim image contains the official Python 2.7 
+runtime, which we shall now have access to in our image. A Dockerfile 
+must start with a <code>FROM</code> instruction.</p>
+
+
+    <p><b>Let’s examine the <code>RUN</code> instruction in our Dockerfile.</b></p>
+    You can have multiple <code>RUN</code> instructions in a Dockerfile, and their commands will be sequentially executed when the image is being built. <b>Here is where we place the commands to install whatever dependencies we need. </b>
+    Our command will use <code>pip</code> (inherited from the python2.7-slim base image) to install the Python modules we need. <code>pip</code> is a simple tool used to install and manage python modules. The <code>requirements.txt</code> file tells <code>pip</code> which modules to install.
+    In this case, we will be using just the Flask module, <strong>so create the file <code>requirements.txt</code> containing the following:</strong><p></p>
+
+    <pre><code>Flask<br></code></pre>
+
+	<p> Flask is a python web framework that will allow us to get a web app created and deployed quickly and easily</p>
+
+    <p> See the <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile documentation</a> for other supported instructions to further customize your container environment.</p>
+
+    <p>Now, let’s work on creating the actual app itself. We will be creating an app that displays a very simple HTML website. </p>
+  </li>
+  <li>
+    <p>Create <code>app.py</code> as (make sure to use tabs): </p>
+    <pre><code>from flask import Flask
+import os
+import socket
+
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+	return "&lt;body&gt;Simple Flask Application&lt;/body&gt;"
+
+if __name__ == "__main__":
+	app.run(host='0.0.0.0', port=80)</code></pre>
+  </li>
+</ol>
+
+<h3> Containerize our Python webapp </h3>
+<ol start="6">
+  <li>
+    <p>Use <code>ls</code> to ensure that our working directory contains <code>Dockerfile</code>, <code>requirements.txt</code>, and <code>app.py</code></p>
+    <p>Now we can use the docker build command to construct the environment using the Dockerfile.</p>
+    <pre><code>$ docker build -t lab7 .</code></pre>
+    <p>We can locate the image we just built with the following command.</p>
+    <pre><code>$ docker image ls</code></pre>
+
+    <img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/image17.png" alt="screenshot">
+
+  </li>
+  <li><p>Let’s finally run our containerized application! We map the container’s port
+    80, where we are hosting our Flask webapp (recall the <code>app.run(host='0.0.0.0', 
+    port=80)</code> line), to our container’s port 4000. </p>
+
+    <pre><code>$ docker run -p 4000:80 lab7</code></pre>
+
+    <p>Visit <code>http://localhost:4000</code> to visit your site!</p>
+    <img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/image26.png" alt="screenshot">
+    <p>If you are running Docker-Toolbox, type <code>docker-machine ip</code> and use that 
+      instead of localhost, e.g. visit <code>http://xxx.xxx.xx.xx:4000/</code> on your browser. 
+      You should see something similar to:</p>
+    <img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/image3.png" alt="screenshot">
+  </li>
+  <li><p>Once we are finished, we can terminate our application in another terminal window using the command:<code>docker container stop</code> along with the container id, which we can find by using the command <code>docker container ls</code>, as described in the screenshot below.</p>
+   <br>
+  <img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/image25.png" alt="screenshot">
+  <br>
+  <p> You may have to Ctrl-C your Python app.</p></li>
+</ol>
+<h3> Sharing our new Docker Image </h3>
+<p> A major part of what makes Docker images so useful are their 
+portability. We will demonstrate this by uploading our recently created 
+image and running it somwhere else. In this case, we will upload our 
+images to DockerHub, the public Docker registry.</p>
+<ol start="9">
+  <li><p>Login using the docker login command using the account created in the pre-lab.</p>
+    <pre><code>$ docker login</code></pre>
+    <p><b>Note: </b>If you're on Windows and you installed Docker Toolbox, you might run into issues running the above command from git bash. If so, open the Docker Quickstart Terminal and run <code>$ docker login</code> from there and input your login credentials for DockerHub.</p>
+    <p>We tag our images in the format <code>[username/repository:tag]</code>
+ to associate a local image with a repository. Try to use meaningful 
+names for the repository and tag. Use your Dockerhub username. </p>
+    <p>The syntax for the command is <code>docker tag [image] [username/repository:tag]</code>
+    <br>
+    </p><p> For example: </p>
+    <pre><code>$ docker tag lab7 srivardhan/cse110:lab7</code></pre>
+    <p> Run this command with your own tag. </p>
+    <br>
+  </li>
+  <li><p>We can then upload our image to the repository with the command <code> docker push username/repository:tag</code>, replaced with the names you chose in the previous step.</p>
+    <pre><code>$ docker push [username/repository:tag]</code></pre>
+    <br>
+    <p> Now you can run your image from any machine with the command 
+below, replacing with the usernames you chose in the previous step. </p>
+
+    <pre><code>$ docker run -p 4000:80 [username/repository:tag]</code></pre>
+    <p> Run this command with your own tag. </p>
+    <br>
+    <img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/image23.png" alt="screenshot">
+<br>
+    <p>Docker will first check for the image locally and download it from the public repository if it isn’t present. Just remember to <code>docker login</code> first.</p>
+
+    <p>Confirm that your newly created repository and image appears on hub.docker.com.</p>
+      <img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/image24.png" alt="screenshot">
+
+  </li>
+  </ol>
+  
+  <hr>
+  <h1 id="check-point--">— <strong>In Progress Checkoff</strong> —</h1>
+
+  <p> We're halfway through the lab! Get an In Progress checkoff by 
+submitting a ticket on Autograder and showing the tutor your repository 
+on Dockerhub. </p>
+  <hr>
+
+  <h2>Unit 2: Creating an EC2 Instance on AWS</h2>
+  <h2>Overview</h2>
+  <h3>Goal</h3>
+  <p>In this unit, we will create and configure an AWS EC2 instance, 
+pull our newly created Docker image, broadcast our containerized webapp 
+to the world, and access it from a browser.</p>
+  <h3>What is EC2 and AWS?</h3>
+  <p>Amazon Web Services (AWS) is a cloud platform that offers many 
+powerful internet services. Their most popular service is Elastic 
+Compute (EC2), a platform which allows you to create virtual machines in
+ the cloud to run applications on. The hardware behind the VMs (network,
+ storage, CPU, RAM) is all handled by AWS. You can simply create an 
+instance of a virtual machine on EC2 at any time and do anything you 
+want, like host a website.</p>
+  <p>You would normally have to pay to launch an EC2 instance, but fortunately you are all students in this CSE course at UCSD, <b>which means you’re entitled to free AWS credits!</b></p>
+  <p><b>Each student gets $50 of free credit, expiring at the end of this course.</b>
+ However, if you wish to host your project on EC2 (and potentially 
+exceed your personal free credit), we can pool the team members’ credits
+ into a single account for the entire team, giving your project many 
+more resources. Credits are consumed by CPU cycles. More CPU intensive 
+apps will consume more credits.</p>
+  <h3>Access your UCSD AWS account</h3>
+  <p>You already have an AWS account as a student in this course. Access it by using your cs110fa19xxx account if you have one (use your normal Active Directory login if you don't) at <a href="https://awsed.ucsd.edu/">awsed.ucsd.edu</a>.</p>
+  <ul>
+    <li>
+      If you don't know if you have a cs110fa19xxx account, try the <a href="https://sdacs.ucsd.edu/~icc/index.php">Account Lookup Tool</a>. If you do not see one listed, you should use your Active Directory ieng6 account.
+    </li>
+  </ul>
+  <ol start="11">
+    <li>
+      In the Classes section, click the CSE110_SP19_A00 link
+      <p><img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/U2_1.png" alt="screenshot"></p>
+    </li>
+    <li>
+      Click the CSE110_SP19_A00_student link. You should be taken to the following portal:
+      <p><img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/U2_2.png" alt="screenshot"></p>
+    </li>
+  </ol>
+  <h3>Create your EC2 Instance</h3>
+  <ol start="13">
+    <li>
+      Ensure your region is set to US West (Oregon) in the top right dropdown menu.
+      <p><img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/U2_3.png" alt="screenshot"></p>
+    </li>
+    <li>
+      Click the blue Launch Instance button.
+      <p><img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/U2_4.png" alt="screenshot"></p>
+    </li>
+  </ol>
+  <h3>Amazon Machine Image (AMI)</h3>
+  <p>To make spinning up a VM instance easy, AWS offers pre-built and 
+pre-configured images of popular operating systems with commonly used 
+programs installed. The Amazon Linux AMI is a good place to get started,
+ as it includes Python, Ruby, Java, and more.</p>
+  <ol start="15">
+    <li>Choose the <code>Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type - ami-a1b2c3d4e5f6g7h8i9j0 (or something similar)</code> AMI</li>
+  </ol>
+  <p><img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/U2_5.png" alt="screenshot"></p>
+  <ol start="16">
+    <li>Now we can choose how much CPU, storage, and RAM we want in our 
+VM. We don’t need much to host a web server, so we can select a cheaper 
+option. When prompted to choose an Instance Type, <strong>select t2.micro</strong>, then 
+select Review and Launch.
+      <img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/U2_6.png" alt="screenshot">
+    </li>
+  </ol>
+  <p>You should be at the following screen. We must now assign a 
+Security Group to our instance. A Security Group is a set of rules that 
+dictate what inbound and outbound network traffic is allowed. You can 
+choose to whitelist or blacklist certain ports for certain IPs.</p>
+  <ol start="17">
+    <li>
+      Click the “Edit security groups” link
+      <p><img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/U2_7.png" alt="screenshot"></p>
+    </li>
+    <li>
+      <p>Choose “Select an existing security group” and choose <strong>sg-21f2c75b “HTTPS Global, all else UCSD Campus Hosts Only”</strong>. Click the Review and Launch button.</p>
+    </li>
+  </ol>
+  <p>This security group allows all HTTPS connections (port 443), but 
+restricts all other ports (SSH, FTP, etc) to only be accepted from UCSD 
+hosts.</p>
+  <p><img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/U2_8.png" alt="screenshot"></p>
+  <ol start="19">
+    <li>
+      Ensure that you have selected the correct instance type and 
+applied the current Security Group settings at the Review Instance 
+Launch page, then click the Launch button at the bottom right-hand 
+corner of the page.
+      <p><img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/U2_9.png" alt="screenshot"></p>
+    </li>
+    <li>
+      <p>When prompted to <strong>Select an existing key pair or create a new key pair</strong> in the following dialogue box, choose the option to <strong>Create a new key pair</strong> and name it. Then click the <strong>Download Key Pair</strong> button to download your unique PEM key file, and then click <strong>Launch Instances</strong>.</p>
+      <p>Make sure you rename your PEM file's extension from <strong>.pem.txt</strong> to just <strong>.pem</strong></p>
+    </li>
+  </ol>
+  <strong>Important</strong>: This file is extremely important and is 
+used to SSH into your newly created EC2 instance. You will not be able 
+to redownload this file so it is very important you place this somewhere
+ safe, as it contains one and only “password” (private-key) to your 
+instance. Anyone who has access to this file has access to your 
+instance. A safe option may be to store it in your personal Google 
+Drive.
+  <p><img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/U2_10.png" alt="screenshot"></p>
+  <ol start="21">
+    <li>Your instance is launching! Click the <strong>View Instances</strong> button. This will send you to a portal contaning all instances in the AWS UCSD ED domain, so you will have to filter by <strong>owner</strong> to view your own instance.
+      Click the search bar. Choose “owner” (lowercase) under Tag Keys.
+      <img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/U2_11.png" alt="screenshot">
+      Type in your username and select it once it appears.
+      <img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/U2_12.png" alt="screenshot">
+    </li>
+  </ol>
+  <h2>Access your instance via SSH</h2>
+  <ol start="22">
+    <li>Select the instance that you just created. You can name it for 
+future convenience with the little pencil icon under the Name column. 
+Press the <b>Connect</b> button (Right next to Launch Instance).
+      <img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/U2_13.png" alt="screenshot">
+    </li>
+  </ol>
+  <p>A window explaining how to SSH to your instance will appear. Do not follow those instructions! Follow this lab instead.</p>
+  <p><strong><em>IMPORTANT!</em></strong> In upcoming steps, we will need to SSH into a UCSD host. 
+    </p><ul>
+      <li>
+      If you are a Jacobs Engineering student, you have an Active Directory account for use on ieng6, with the same username as your school email (<code>username@ieng6.ucsd.edu</code>). </li> 
+      <li>If you are not, you have a cs110fa19xxx course account on ieng6 (<code>cs110fa19xxx@ieng6.ucsd.edu</code>).</li>
+    </ul>
+    If you aren't sure which account you have, use the <a href="https://sdacs.ucsd.edu/~icc/index.php">Account Lookup Tool</a>. If you don't see a cs110fa19xxx account listed, you can use your Active Directory login. Use whichever account you have when asked to use your ieng6 account in future steps.
+  <p></p>  
+  <ol start="23">
+    <li>
+      <p>In a terminal, navigate to where you downloaded your PEM key file.</p>
+    </li>
+    <li>
+      SCP the PEM key file to your ieng6 account.
+      <pre><code>$ scp ./example_key.pem &lt;your_account&gt;@ieng6-201.ucsd.edu:~</code></pre>
+    </li>
+    <li>
+      SSH to your ieng6 account.
+      <pre><code>$ ssh &lt;your_account&gt;@ieng6.ucsd.edu</code></pre>
+    </li>
+  </ol>
+  <p>Now that we are in a UCSD host, we can connect to our EC2 instance using SSH (using our PEM key).</p>
+  <ol start="26">
+    <li>
+      SSH won’t allow you to use PEM files if their permissions are too 
+broad. Run the following command to restrict permissions on your PEM 
+file:
+      <pre><code>$ chmod 400 example_key.pem</code></pre>
+    </li>
+    <li>
+      <p>Back on the browser, AWS has provided a command to use SSH to 
+connect to your instance using your PEM key file in the window shown below. If you clicked away or closed the window, you can return to this screen by selecting your instance in the AWS Console and clicking the Connect button. It should look like 
+this example: <code>ssh -i "example_key.pem" ec2-user@ec2-xx-xxx-xxx-xxx.us-west-2.compute.amazonaws.com</code>. Run the command in your ieng6 account in the same directory as your PEM file. Be sure to use the name of <i>your</i> PEM file in the command.</p>
+    <img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/lab7_connect.png" alt="screenshot">
+    </li>
+  </ol>
+  <p>You should now be logged in to your instance!</p>
+  <p><img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/U2_14.png" alt="screenshot"></p>
+  <h3>Pulling your Docker Image on your EC2 Instance</h3>
+  <ol start="28">
+    <li>
+      Run the following commands to update the pre-installed packages and install Docker.
+      <pre><code>$ sudo yum update -y
+$ sudo yum install -y docker</code></pre>
+    </li>
+    <li>
+      Start Docker
+      <pre><code>$ sudo service docker start</code></pre>
+    </li>
+    <li>
+      The next command allows us to execute Docker command without using sudo.<br>
+      <small><i>Background: sudo allows us to run commands with root (superuser) privileges.</i></small>
+      <pre><code>$ sudo usermod -a -G docker ec2-user</code></pre>
+    </li>
+    <li>
+      Since we updated these permissions, we need to logout and log back into the account.
+      <pre><code>$ exit</code></pre>
+    </li>
+  </ol>
+  <p>We’re logged out of our instance. Rerun the ssh command which we used earlier in step 27 to log in again.</p>
+  <ol start="32">
+    <li>Run this command to verify that the above permission has been 
+applied succesfully. Information about your Docker installation should 
+be printed.
+      <pre><code>$ docker info</code></pre>
+    </li>
+  </ol>
+  <h3>A common Docker use case</h3>
+  Let’s pretend this is the production server where we want to host our 
+team project webapp, and that our webapp depends on NodeJS, React, and 
+Firebase.
+  At this point, if we weren’t using Docker, we’d have to manually 
+install those dependencies, configure the project directories with the 
+appropriate files, match Python and dependency versions, etc, which can 
+be a lot of work to keep in sync with your development environment.
+  <b>However, because we’re using Docker, we can simply import our image
+ from Dockerhub to obtain a containerized copy of our development 
+environment and app!</b> We can update this image any time during 
+development by pushing the image to Dockerhub and pulling on EC2, a 
+workflow similar to git and Github.
+  <p>For now, let’s pull the Python image we created earlier and deploy it into production.</p>
+  <ol start="33">
+    <li>
+      To pull the Python image we created earlier, run the following command and supply your Dockerhub login credentials.
+      <pre><code>$ docker login</code></pre>
+      <p>“Login Succeeded” should appear.</p>
+    </li>
+    <li>
+      <p>We can now run the Docker command to start our Python app! Docker won’t find the image locally, but since we used <code>docker login</code>
+ to log in to Dockerhub, it will search online for the specified image 
+reference. It should find the image, download it, configure the 
+environment, and run the app.</p>
+    </li>
+  </ol>
+  <p>Use the same <code>username/repository:tag</code> format you used to push the image to Dockerhub.</p>
+  <pre><code>$ docker run -p 443:80 example_username/repository:tag</code></pre>
+  <p><strong>Important</strong>: The -p 443:80 flag in the command 
+specifies that we are mapping our EC2 instance’s port 443 (the HTTPS 
+port) to the Docker container’s port where Flask is broadcasting. 
+(Recall, in our Dockerfile we expose the container’s port 80 and in the 
+Python app we broadcast our Flask webserver on the container’s port 80.)</p>
+  <p>This is important because in our instance’s Security Group 
+settings, we have opened our EC2 instance’s HTTPS port (443) to the 
+world. Thus, by mapping Flask to our instance’s port 443 with <code>-p 443:80</code>, <strong>we can access our website from anywhere</strong>! We just need our instance’s public IP address.</p>
+  <ol start="35">
+    <li>Back in the browser, in the Instances section of the AWS portal, copy the IPv4 Public IP address for your instance.</li>
+  </ol>
+  <p><img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/U2_15.png" alt="screenshot"></p>
+  <p>Access that IP at port 443 via web browser by browsing to it, e.g.: <code>35.164.88.17:443</code></p>
+  Replace the IP above with the IP that corresponds with your EC2 instance.
+  Your simple web app should appear!
+  <p><img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/U2_16.png" alt="screenshot"></p>
+  <p>Great Job! You succesfully deployed your simple web server to 
+production. If your team members want to view your hard work, they can 
+also go to the same URL!</p>
+  <h3>Concluding Steps</h3>
+  <p>Shut down the container by quitting the Python app with Ctrl-C and run <code>exit</code> to close the SSH connection with your instance. Run <code>exit</code> once again to chose the SSH connection with your ieng6 account.</p>
+  <ol start="36">
+    <li>Back in your browser, in the Instances section of your AWS 
+Console, select your instance and click the Actions dropdown menu. Click
+ on Instance State and click Stop. Confirm by pressing Yes, Stop. This 
+will shut down (stop) your instance and prevent any of your free credits
+ from being used.
+      <img src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/U2_17.png" alt="screenshot">
+    </li>
+  </ol>
+  <p>To use your instance again, <b>simply return here (using <a href="https://awsed.ucsd.edu/">awsed.ucsd.edu</a>)</b> and click Start on your instance. Then <b>SSH into your ieng6 account, and from there run the SSH command to log in to your EC2 instance.</b> Don't forget to perform the intermediary SSH to ieng6, as our EC2 security group won't allow non-UCSD SSH connections!</p>
+  <h3>Using AWS EC2 in your team projects</h3>
+  <ul>
+    <li>The free EC2 credits associated with this course are a great 
+resource to get your team project running and deployed. A very common 
+use case for EC2 is to host a webapp.</li>
+    <li>Credits are consumed by CPU cycles. Higher CPU usage will consume more credits.</li>
+    <li>As mentioned above, if you think you might need more than $50 of
+ credit for your app, we can reallocate credit from the team members’ 
+accounts into one team account, which will have more free credit.</li>
+    <li>Your credit balance can be seen at <a href="https://awsed.ucsd.edu/">awsed.ucsd.edu</a>. The free EC2 credits will expire after this course.</li>
+    <li>Keep in mind simple websites barely use CPU cycles, and will 
+likely not exhaust your free $50! A t2.micro instance also qualifies for
+ AWS’s Free Tier pricing, which allows you to run a t2.micro instance 
+for free for a year (other terms also apply.) This deal is separate from
+ the course credits, more information here: <a href="https://aws.amazon.com/free/">https://aws.amazon.com/free/</a> </li>
+  </ul>
+  
+
+
+  <hr>
+  <h1 id="check-point--">— <strong>Completion Checkoff</strong> —</h1>
+
+  <p> Congrats, you're done! Get a Completion checkoff by submitting a 
+ticket on Autograder and showing the tutor your running public website 
+hosted on EC2. </p>
+
+  <p>Please fill out this Google form to let us know how we can improve this lab in the future! <a href="https://goo.gl/forms/7ksF3mQOvj7Gs1Up2">https://goo.gl/forms/7ksF3mQOvj7Gs1Up2</a>
+  </p>
+  <hr>
+
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script type="text/javascript" src="./Lab 7 (Docker and AWS) · CSE 110 Software Engineering_files/script.js.download"></script>
+  
+
+
+</body></html>

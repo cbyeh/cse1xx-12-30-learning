@@ -1,0 +1,105 @@
+# CSE 15L - Fall 2018
+# Homework 1 (Due: 10/9/2018, 23:59)
+#
+# Name:  Christopher Yeh
+# PID:   A15720503
+# Login: cs15xii
+
+0.  Don't forget to change the file header! (0 points)
+
+1.  `vimtutor` is a helpful tool available with every installation of Vim for
+    getting started on the arts of Vim.
+
+    Knowing that `vimtutor` is a program that shows you how to use Vim, what is
+    the full command that tells you about the details on how you can use `vimtutor`?
+    (1 point)
+
+    [$ man vimtutor]
+
+2.  The command from Question 1 should come with an interesting fact that you
+    can launch `vimtutor` in different languages, if you specify that language by
+    passing in its two-letter name.
+
+    Knowing that `/usr/share/vim/vim74/tutor` contains all files used by
+    `vimtutor`, including the text files of the entire content in all languages
+    supported by vimtutor, what is a command that shows you the content of that
+    directory, so you can see what languages `vimtutor` supports?  (1 point)
+
+    [$ ls]
+
+3.  For some unknown reason, you feel the urge to translate `vimtutor` into pig
+    Latin.  Since you won't have the permission to modify the files inside
+    `/usr/share/vim/vim74/tutor`, you will need to create a copy of the English
+    tutor file within your own directory.
+
+    What is one single command that will copy the English tutor file
+    (`/usr/share/vim/vim74/tutor/tutor`) under your home directory with a new
+    file name `tutor.piglatin`?
+
+    Note: /usr/share/vim/vim74/tutor/tutor may not be in the home directory.
+    (1 point)
+
+    [$ cp tutor ~///tutor.piglatin]
+
+4.  Even though you barely started to translate the tutorial you will be using
+    to teach yourself to use Vim, you still decided to use Vim to conduct the
+    translation. In the midst of your work, you accidentally managed to
+    delete an entire line under your cursor.
+
+    a) What is a command that could have caused this accident? (1 point)
+
+    [dd]
+
+
+    b) Give a single command to undo this mistake. (1 point)
+
+    [u]
+
+5.  Give a single command to undo this mistake. (1 point)
+
+    [u]
+
+6.  Assume that you have successfully finished your pig-Latin translation of
+    `vimtutor`. Now it's time to teach yourself to use Vim! And the first thing
+    you want to learn is how to perform searches in Vim so you can jump to the
+    section where it teaches you how to perform searches in Vim.
+
+    What is the Vim command to use to search for the word earchsay ?
+    Note: Do not include the quesiton mark in the seach. (1 point)
+
+    [/earchsay]
+
+7.  You suddenly noticed that the `vimtutor` files in all other languages
+    follow the same naming convention that ends with the language's two-letter
+    name, and you want to follow that same convention.
+
+    What is the command to rename `tutor.piglatin` to `tutor.pg`
+    in the current directory? (1 point)
+
+    [mv tutor.piglatin tutor.pg]
+
+8.  List a Vim command that you learned from `vimtutor` which follows each
+    requirement below, and in one sentence, describe what the command does:
+
+    a. A single-letter command (1 point)
+    b. A CTRL-prefix command (1 point)
+    c. A colon command (commands that follow a :) (1 point)
+
+    a. [i : inserts text]
+    b. [CTRL-G : shows your location in the file and the file status]
+    c. [:wq <ENTER> : saves the file and exits Vim ]
+
+
+TURNIN PROCEDURE:
+
+    Inside your `hw1` directory, type in `turnin` and follow the instructions.
+    Make sure that you get the confirmation email from Autograder.
+
+
+FEEDBACK TIME:
+
+    Feel free to leave any comments regarding this week's lectures, lab, and
+    this homework assignment. What did you find most interesting? Which
+    homework questions were hard to understand? What can we do better?
+
+    [No complaints so far, thank you]

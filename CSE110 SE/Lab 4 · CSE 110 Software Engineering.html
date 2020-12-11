@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://ieng6.ucsd.edu/~cs110x/static/labs/lab4/index.html -->
+<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+
+      Lab 4 · CSE 110 Software Engineering
+
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./Lab 4 · CSE 110 Software Engineering_files/poole.css">
+  <link rel="stylesheet" href="./Lab 4 · CSE 110 Software Engineering_files/syntax.css">
+  <link rel="stylesheet" href="./Lab 4 · CSE 110 Software Engineering_files/lanyon.css">
+  <link rel="stylesheet" href="./Lab 4 · CSE 110 Software Engineering_files/css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://ieng6.ucsd.edu/~cs110x/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="http://ieng6.ucsd.edu/~cs110x/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://ieng6.ucsd.edu/atom.xml">
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+	  <div class="sidebar-item">
+	    <p>Course Website for CSE110, Fall Quarter 2019</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/">Home</a>
+    <a class="sidebar-nav-item active" href="http://ieng6.ucsd.edu/~cs110x/static/labs/">Labs</a>
+    <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/lectures_a00/">Lecture Notes</a>
+    <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/logistics_a00/">Logistics</a>
+    <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/resources/">Resources</a>
+    <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/artifacts/">Artifacts</a>
+    <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/syllabus/">Syllabus</a>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      © 2019. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="http://ieng6.ucsd.edu/~cs110x/" title="Home">CSE 110 Software Engineering</a>
+            <small>Inc.</small>
+          </h3>
+        </div>
+      </div>
+
+<div class="container content" id="instructions">
+
+  <h1 id="the-parse-database">Lab4: Firebase and React</h1>
+  <br>
+  <h2 id="ReactJS">Why do you need a database?</h2>
+  <p>
+    Databases are an essential part of any application that handles data. Databases
+    are not merely containers for your objects allowing you to store and retrieve them.
+    They give you extra power over your data allowing you to query (ask the database
+    questions) and perform various operations such as join which allows you to relate
+    data from two different tables together. Most importantly they provide you the
+    infrastructure and reliability to scale your application as it grows.
+  </p>
+
+  <h2 id="ReactJS">Why Firebase?</h2>
+  <p>
+    Firebase is a great tool because it has
+    so many features like analytics, push notification, full document storage and much
+    more. It is also great because it is backed by a real time connection to the
+    backend. It is also very fast to set up and hit the ground running in a matter
+    of minutes and so it works great for the purpose of this lab and for many of your
+    applications.
+  </p>
+  <p>
+    There will be few questions asked by the course staff before giving you In-progress
+    or completion checkoff from the lab material.
+  </p>
+  <h2 id="ReactJS">Unit 1. Install and Setup React:</h2>
+  <ul>Installing npm and nodeJS
+    <li>
+      Type in your terminal <code>node -v</code> and press enter if you see a version
+      number displayed that means you have node installed on your machine. Do the
+      same thing for npm which is a package manager enabling you to install and manage
+      node packages that will be used for your application by typing <code>
+      npm -v</code> if you are missing any of them then please click on the
+      link below to download and install the node and npm for your version of the
+      OS. Note that when you download and install nodeJS which contains the npm
+      as well.<br>
+      <a href="https://nodejs.org/en/download/" target="_blank">Node download link
+      (make sure to download the stable verison aka "LTS")</a><br>
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image1.png">
+    </li>
+    <li>
+      Once you download and install node type the following commands one after the
+      other in your terminal to ensure that node and npm are installed properly.
+      You should see a behavior like the following image. (The same commands can
+      be entered into the Windows command prompt.)<br>
+      <pre><code>node -v
+npm -v</code></pre>
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image2.png">
+    </li>
+  </ul>
+  <ul>
+    Installing Packages:
+    <li>
+      We will be using the create-react-app package to create react apps which
+      takes away the burden of setting up the webpack and lets the user to create
+      a react app on the fly.
+    </li>
+    <li>
+      Type the following command in your terminal to install and save the create-react-app
+      through npm globally on your machine so you can access it from any directory.<br>
+      <code>sudo npm install -g create-react-app</code>
+    </li>
+  </ul>
+  <h2 id="ReactJS">Unit 2. Creating React App:</h2>
+  <ol>
+    Creating a React app:
+    <li>
+      Create a directory and name it CSE110_Firebase.
+    </li>
+    <li>
+      Navigate to the directory you created from your terminal using <code>
+        cd ./CSE110_Firebase</code>.
+    </li>
+    <li>
+      Type <code>create-react-app react-firebase</code> in your terminal (please ensure
+      that you type this command only when you are inside the CSE110_Firebase directory).
+      This will initialize the basic configuration/build files (package.json, webpack, babel, etc) that we need to build our react app, essentially reducing the number of dependencies we have to manage. We call this skeleton code or boilerplate.
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image4.png">
+    </li>
+    <li>
+      Navigate to the directory that create-react-app populated by typing the following
+      command in your terminal <code>cd react-firebase</code>.
+      If for any reason you receive a command not found error then please add the following
+      <code>NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules</code> to your .bash_profile
+      file. You can access that file by typing <code>vim ~/.bash_profile</code> into your
+      terminal.  If you are using a Windows machine and this still doesn’t work,
+      you have to add the <code>/bin</code> subdirectory of your node installation to the PATH environmental variable,
+      found in the control panel.
+    </li>
+    <li>
+      Type <code>npm start</code> when you are inside your "react-firebase" directory.
+      This will run the react app  and should open a new window on your default
+      browser running the newly created react app. Congratulations! You have now
+      launched you first react app. However, there is still some work left to do.
+      If you have done everything successfully so far you should have the following
+      behavior in your terminal and browser.
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image5.png">
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image32.png">
+    </li>
+    <li>
+      Now it is time to open our IntelliJ IDE that we installed and setup in
+      <a href="http://ieng6.ucsd.edu/~cs110x/static/labs/lab2/index2.html" target="_blank">pre-lab 2</a>
+      <ul>
+        <li>
+          Once you open your IDE you should see the following screen.
+          <img src="./Lab 4 · CSE 110 Software Engineering_files/image33.png">
+          Click on the "import project" and then choose the app path that we just created
+          by choosing the directory path of your app, as can be seen in the image below and
+          then click OK.
+          <img src="./Lab 4 · CSE 110 Software Engineering_files/image8.png">
+        </li>
+        <li>
+          In the next several screens please click on Next button until you see
+          the following screen.
+          <img src="./Lab 4 · CSE 110 Software Engineering_files/image9.png">
+        </li>
+      </ul>
+    </li>
+    <li>
+      Lets clean up the App.js file. Delete all the default boilerplate code inside inside the render function
+      as highlighted in the image below.
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image34.png">
+      Now you should only have a div tag in your render function as shown in the
+      image.
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image35.png">
+      <ul>
+        <li>
+          App.js by default will be provided by React Application which is our main
+          and first component.
+        </li>
+      </ul>
+    </li>
+    <li>
+      Now, we need to create two components. Let's first create a new directory inside
+      src directory and name it “components“.
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image10.png">
+      <ul>
+        <li>
+          Create the first compenent "TeamMembers" by creating a new file under
+          the components directory and call it "TeamMembers.js".
+          <img src="./Lab 4 · CSE 110 Software Engineering_files/image12.1.png">
+        </li>
+        <li>
+          Add the following code to your new file. This code will set up the react code for an empty TeamMembers component.
+          <pre>import React, {Component} from 'react';
+
+class TeamMembers extends Component {
+    render(){
+        return(
+            &lt;div&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+
+export default TeamMembers;</pre>
+        </li>
+        <li>
+          Render your TeamMembers component within your App component (in the App.js file).
+          To do this, add a <teammembers> component to your App.js file’s render method.
+          If you don't how to do this, Google it, or check Lab 3! Note that you should also include <code>
+          import TeamMembers from './components/TeamMembers.js';</code> in the header
+          of your file.
+        </teammembers></li>
+        <li>
+          Now lets add some input containers in our TeamMember component. Open your
+          TeamMember.js file and add the following part to the div element. <pre><code>&lt;label&gt;Friend's Name&lt;/label&gt;
+&lt;input /&gt;
+&lt;br /&gt;
+&lt;label&gt;Friend's Age&lt;/label&gt;
+&lt;input /&gt;</code></pre>
+            Now your file should look like as shown in the image and the display of your
+            browser shoule be like below.
+            <img src="./Lab 4 · CSE 110 Software Engineering_files/image15.png">
+            <img src="./Lab 4 · CSE 110 Software Engineering_files/image16.png">
+        </li>
+        <li>
+          Now add a save button to your page so you can save the input values.
+          In TeamMember.js add this right after the last <code>&lt;input/&gt;</code> element.
+          <pre><code>&lt;br /&gt;
+&lt;button&gt;Submit&lt;/button&gt;</code></pre>
+        </li>
+        <li>
+          Now we need to make sure that the values you input are captured by the app.
+          Add a constructor to the TeamMember component by adding the following code right beneath the class definition.
+          <pre><code>constructor(props) {
+  super(props);
+
+  this.state = {
+      name: '',
+      age: ''
+  };
+}</code></pre>
+          <img src="./Lab 4 · CSE 110 Software Engineering_files/image17.png">
+        </li>
+        <li>
+          Now we can update our text input fields to capture the values that the user will type in. We can define a function that will run whenever the input’s contents change (e.g. whenever the user types something) with the onChange attribute.
+          Here is an example snippet of storing the value of a text input on change.
+          <pre>&lt;input onChange= {e =&gt; ____} /&gt;</pre>
+          For the “Friend’s Name” input field, use the above example and fill in the blank space such that the key ‘name’ is updated in the React state with the user’s typed input.
+          (Hints: You can access the input with `e.target.value`. You can use `this.setState` to set React state. Check Google if you forgot how to use this method.)
+          Do the same for the Friend’s Age input, but saving the input to the React state’s ‘age’ key.
+          In the end, your name input should look something like:
+          <code>onChange= {e =&gt; this.setState({name: e.target.value})} /&gt;</code>
+        </li>
+      </ul>
+    </li>
+  </ol>
+
+
+  <h2 id="ReactJS">Unit 3. Create and Setup Firebase Account:</h2>
+  <ol>
+    <li>
+      Visit <a href="https://firebase.google.com/"> Firebase</a> and sign in with your
+      google account(ucsd email account will work as well).
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image18.png">
+    </li>
+    <li>
+      Once you logged in click on the "GO TO CONSOLE" on the top right corner
+      to open the dashboard. Click on the "add project" button to create a project.
+      Name is CSE110Firebase and take a note of the project id.
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image19.png">
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image20.png">
+    </li>
+    <li>
+      Firebase will navigate you to the dashboard page and from there select
+      "Add an app to get started".
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image21.png">
+    </li>
+    <li>
+      Register the app under the CSE110Firebase nickname when prompted. Copy the keys from the highlighted area seen in the image below into an .env file.
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image22.png">
+      Create a <code>base.js</code> file in the src directory to initialize the firebase app. Include the <code>import * as firebase from "firebase"</code> in your header.
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image23.png">
+      The <code>initializeApp</code> call will instanitate a communication route in between the app and the DB. We will store this in a <code>const db</code> that we will export.  </li>
+      <li>
+            If you get error in your browser that firebase is not defined then please
+      open a new terminal window and navigate to your react-firebase directory and type
+      <code>npm install firebase</code> and hit enter. This will fix the error.
+    </li>
+    <li>
+      Once this completed go back to the firebase dashboard and click on the "Develop" option on the sidebar, then select the "Database"
+      option. You will be given two databases to choose from: Cloud Firestore and Realtime Database.
+      Scroll down to the "Realtime Database" and click on "Create database" to start using it. Do NOT use Cloud Firestore.
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image36.png">
+    </li>
+    <li>
+      When prompted, select the "Start in Test Mode" option and hit "Enable".
+      This is not a proper way of handling the rules but since we are not storing
+      in private or sensitive information we will be temporarily move forward with
+      these rules. Just remember that in a real app you should always provide
+      authentication credentials for your databases.
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image25.png">
+    </li>
+    <li>
+      Now firebase is ready to be used by your application!
+    </li>
+  </ol>
+  <h2 id="ReactJS">Unit 4. Connecting Firebase to Your React App:</h2>
+  <p>
+   The TeamMember component used to only capture the inputs but wouldn't store
+   it anywhere. Now you will be setting up the TeamMember to store the information
+   to database.
+  </p>
+  <ol>
+
+    <li>
+      In your TeamMember component <code>import db from '../base'</code> and add the following line to your constructor.
+      <pre>this.firebaseRef = db.database().ref("teamMates");</pre>
+      This is a reference to your database, and it is always listening to our Firebase instance in the cloud so we can get realtime updates. All of our database operations will be done on this object.
+    </li>
+    <li>
+      Before our React Component closes, we need to make sure the firebaseRef we instantiated above is closed. Thus, we need to figure out when the TeamMember Component will be unmounted, or removed from the DOM, right before which we can call this.firebaseRef.off() to end the connection to the database. It’s important to perform this cleanup, as the firebaseRef is pretty resource intensive.
+      React calls a particular function inside the Component right before the Component is closed. Try Googling it, or looking it up at https://reactjs.org/docs/react-component.html, and place the this.firebaseRef.off() code inside.
+      Please make sure this function is not inside the render().
+      <pre>componentWillUnmount() {
+    this.firebaseRef.off();
+}
+
+pushToFirebase(event) {
+    const {name, age} = this.state;
+    event.preventDefault();
+    this.firebaseRef.child(name).set({name, age});
+    this.setState({name: '', age: ''});
+}</pre>
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image26.png">
+    </li>
+    <li>
+      Now you need to change the behavior of the submit button to push the data to
+      firebase. Change the button element in your TeamMember to the following
+      <pre>&lt;button onClick={this.pushToFirebase.bind(this)}&gt;Submit&lt;/button&gt;</pre>
+      We want to send the user’s inputted data to Firebase. Recall that we
+      captured this data to our React state earlier. We can use the firebaseRef
+      to set a key-value pair at a certain path (“child”) in our database:
+      <pre>this.firebaseRef.child(name).set({name: this.state.name, age: this.state.age});
+      </pre>
+      This line creates a child in the database with the given name that contains a key-value
+      pairs with keys ‘name’ and ‘age’.
+    </li>
+    <li>
+      Your application is now storing the data to your database. Try to see if it works.
+      Input a friend's name and age into the corresponding boxes in your browser
+      and click on the submit button. To see if it worked, check your firebase dashboard
+      (they should appear under the DATA tab).
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image37.png">
+    </li>
+    <li>
+      If you see the data as seen in the image above then congratulations! You have
+      successfuly created a react app that stores data into a firebase database. That's
+      all good but how can you display the data on your browser?
+    </li>
+  </ol>
+  <h2 id="ReactJS">Unit 5. Retrieving Data from Firbase:</h2>
+  <p>
+    You are going to create a new component that will retrieve the data and display
+    that.
+  </p>
+  <ol>
+    <li>
+      Under the "Components" directory create a file named DisplayData.js and add the following
+      code to your new file.
+      <pre>import React, {Component} from 'react';
+import db from '../
+
+class DisplayData extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            items: []
+        };
+    }
+
+    render() {
+        return (
+            &lt;div&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+
+export default DisplayData;</pre>
+    </li>
+    <li>
+      <code>import DisplayData from './components/DisplayData.js'</code>
+      at the header of App.js and add <code>&lt;DisplayData/&gt;</code> to your App component.
+      You will be implementing these components later on.
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image28.png">
+    </li>
+    <li>
+      Now you need to retrieve data and display it. You will use some data structure
+      to store the data and display it dynamically. Add the following lines
+      to your DisplayData constructor.
+      <pre>this.firebaseRef = db.database().ref("teamMates");</pre>
+      This line accesses the database object we passed in from the parent
+      (its a member of DisplayData’s props) and tells it we are looking for the
+      “teamMates” ref.
+      <pre>this.firebaseRef.on('value', dataSnapshot =&gt; {
+  let items = [];
+}</pre>
+      The above segment is a “value-changed” listener for firebase. That is,
+      when our database is updated, this method will be called with a new data
+      encoded in a data Snapshot.
+      <pre>        dataSnapshot.forEach(childSnapshot =&gt; {
+            let item = childSnapshot.val();
+            item['.key'] = childSnapshot.key;
+            items.push(item);
+        });
+        this.setState({items});
+    });</pre>
+      <p>Put the above code right underneath the let items = [] line.
+      This code iterates through the data snapshot and adds those values into the items dict (a local variable), which is eventually displayed via React as a table.</p>
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image29.png">
+    </li>
+    <li>
+      Also add the following function below your constructor in DisplayData.
+<pre>componentWillUnmount() {
+    this.firebaseRef.off();
+}</pre>
+    </li>
+    <li>
+      Now, to display the data, replace the code inside the render in the
+      DisplayData component with the following code.
+<pre>const records = this.state.items.map(items =&gt;
+    &lt;tr key={items.name}&gt;
+        &lt;td style={{width: '200px', textAlign: 'center'}}&gt;{items.name}&lt;/td&gt;
+        &lt;td style={{width: '200px', textAlign: 'center'}}&gt;{items.age}&lt;/td&gt;
+    &lt;/tr&gt;
+);
+
+return (
+    &lt;div style={{paddingTop: '20px'}}&gt;
+        &lt;table style={{border: '1px solid black'}}&gt;
+            &lt;thead&gt;
+                &lt;tr&gt;
+                    &lt;th&gt;Friend's Name&lt;/th&gt;
+                    &lt;th&gt;Friend's Age&lt;/th&gt;
+                &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+                {records}
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+);</pre>
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image30.png">
+    </li>
+    <li>
+      Now test it and make sure that everything works perfectly as show in the image below.
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image31.png">
+    </li>
+  </ol>
+
+  <h1 id="check-point----">— <strong>In Progress Check</strong> —</h1>
+
+  <li>When you are able to run the <strong>Web Application</strong> and able to store and laod information
+     from Firebase data without errors, add a ticket to the Autograder.
+      queue with one tag for the priority of your ticket and another with in progress
+      check status. Bring up your lab reservation time in cse110.com for the staff
+      member to verify.A member of the staff will verify that you have completed the tasks along
+      with your lab reservation time.
+
+      Note: Check your database to make sure the data has been successfully pushed.
+  </li>
+  <hr>
+
+  <p>
+    In the second part of this lab we will learn how to use Firease to implement the Authentication process and how to use React Router and React Hooks to implement rounting in between our pages.
+  </p>
+
+  <h2 id="ReactJS">Unit 6. React Router </h2>
+  <p>
+    React-router is a routing library containing a collection of navigational components that compose declaratively with your application. React-router is used to create the routing in React apps.
+  </p>
+  <ol>
+    <li>
+      Install <a href="https://www.npmjs.com/package/react-router-dom">react-router-dom</a> which includes DOM-aware components and all the react-router components .
+      <pre> $(sudo) npm install react-router-dom</pre>
+    </li>
+    <li>
+    Create a <code>routes</code> directory in the <code>src</code> directory.
+    This directory will contain all the pages we will be routing in between.
+    Create three empty .js files: <code> Home.js, LogIn.js and SignUp.js </code>.
+    </li>
+    <li>
+     Since our website will enclose multiple pages we will change the <code>App.js</code> and <code>Home.js</code>as bellow.
+    <img src="./Lab 4 · CSE 110 Software Engineering_files/image38.png">
+    The code that was previously returned in App.js will be returned in Home.js.
+    App.js will define all the React Routes we will use.
+    <img src="./Lab 4 · CSE 110 Software Engineering_files/image39.png">
+    </li>
+    <li>
+      As the main page should be availible to registered users only, we create another directory <code>auth</code> in the src directory.
+      We will create two .js file in auth : <code>PrivateRoute.js</code> which will decide what page should be displayed in the view and
+      <code>Auth.js</code> in which we will create a <a href="https://reactjs.org/docs/context.html"> Context</a> so we can observe if the end-user is authenticated or not.
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image40.png">
+      We use the <a href="https://reactjs.org/docs/hooks-effect.html">Effect Hook</a> to make calls to the db to change the Authentication state when the current user state changes. We keep track of the current user state changes using the <a href="https://reactjs.org/docs/hooks-state.html">State Hook</a>
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image41.png">
+      In PrivateRoute.js we redirect to the LogIn page if the current user is not authenticated or we route to the accessed page.
+    </li>
+    <li>
+      In the LogIn page we will use the context that we import from <code>"../auth/Auth"</code> this will allow the system to redirect to the home page if the user is logged in and we will .
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image42.png">
+      We will call a <code>redirectSignUp</code> method when the sign up button is pressed.
+      <pre> &lt;button onClick={redirectSignUp}&gt;Sign UP&lt;/button&gt; </pre>
+      This function will push the SignUp page on the history stack. Most of the switches in between pages can be done by using <code>history.push()</code> directly.
+      Include the following method declaration in LogIn to redirect when the button is pressed.
+      <pre>      const redirectSignUp = () =&gt; {
+        history.push("/signup")
+      }
+      </pre>
+    </li>
+    <li>
+      The implemenation of the SignUp page is similar to the one of the LogIn page.
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image43.png">
+    </li>
+  </ol>
+
+  <h2 id="ReactJS">Unit 7. Firbase Authentication</h2>
+  <p>
+  Now we connect the Sign Up and Log In forms to the Firebase Authentication system.
+  Firebase Auth will let us store users credentials as it provides various easy-to-use
+  authentication SDKs and libraries.
+  </p>
+  <ol>
+  <li>
+   In the Firebase Console go to the Dashbord &gt; Develop &gt; Authentication. <code>Set up a sign-in method</code> and enable Email/Password authentication.
+  <img src="./Lab 4 · CSE 110 Software Engineering_files/image44.png">
+  <img src="./Lab 4 · CSE 110 Software Engineering_files/image45.png">
+  </li>
+  <li>
+    Add <code>handleSignUp</code> as bellow to your SignUp body in SignUp.js.
+    Use the <code>try ... catch </code> block to prevent SignUp errors.
+    Push the Home page to the history stack if the SignUp is successfull.
+  <pre>      const handleSignUp = (event) =&gt; {
+
+        event.preventDefault();
+        const { email, password } = event.target.elements;
+
+        try{
+            db
+            .auth()
+            .createUserWithEmailAndPassword(email.value,
+                                            password.value);
+            history.push("/");
+        } catch(error){
+            alert(error);
+        }
+      }
+  </pre>
+  Connect the Sign Up form to handleSignUp.
+  <pre>      &lt;form onSubmit={handleSignUp} &gt;
+  </pre>
+  Also recall that you should <code>import db from "../base"</code> in order to use it.
+  IMPORTANT: Firebase will only register an account in the database if the password is at least 6 characters long.
+  You will not receive an error message if the password is fewer than 6 characters so you should make sure your password meets the requirements when testing sign up.
+  </li>
+  <li>
+    Now we want to redirect to the home page if the current user is authenticated.
+    Import <code>useContext</code> on the top of the LogIn.js file. Your first line should now
+    look like <code>import React, {useContext} from "react";</code>.
+    You also need to <code>import { Redirect } from "react-router-dom";</code>.
+    Copy the code below and place it inside of the Login component's body.
+    <pre>      const { currentUser } = useContext(AuthContext);
+      if (currentUser) {
+        return &lt;Redirect to="/" /&gt;;
+      }
+    </pre>
+    This will redirect you to the home screen if the end-user is authenticated.
+  </li>
+  <li>
+    This is a very important step so please make sure you follow the directions closely!
+    You will now need to edit <code>App.js</code> to connect your routing and authentication system.
+    Remember, PrivateRoute is used to decide which page to display based on the authentication state of the end-user.
+    If the end-user is not authenticated, then it will redirect you to the login screen.
+    Right now your application should allow you to stay on the home screen even if you are not authenticated because we are not yet using PrivateRoute.
+    We will now edit App.js to use PrivateRoute and the rest of the routing and authentication system.
+    First <code>import PrivateRoute from "./auth/PrivateRoute";</code> and <code>import { AuthProvider } from "./auth/Auth";</code>.
+    Replace the body of return with the following code.
+    <pre>      &lt;AuthProvider&gt;
+        &lt;Router&gt;
+            &lt;div&gt;
+                &lt;PrivateRoute exact path="/" component={Home} /&gt;
+                &lt;Route exact path="/login" component={Login} /&gt;
+                &lt;Route exact path="/signup" component={SignUp} /&gt;
+            &lt;/div&gt;
+        &lt;/Router&gt;
+      &lt;/AuthProvider&gt;
+    </pre>
+    Your <code>App.js</code> should now look like this. Make sure it matches otherwise you can run into routing issues.
+    <img src="./Lab 4 · CSE 110 Software Engineering_files/image63.png">
+  </li>
+  <li>
+    At this point the user should be able to Sign Up and at that point it should be redirected to the Home Page.
+    Try testing inputing an email and a password in the Sign Up form and submitting it.
+    The submitted form should appear in Firebase Console &gt; Dashbord &gt; Develop &gt; Authentication &gt; Users  as bellow.
+    <img src="./Lab 4 · CSE 110 Software Engineering_files/image46.png">
+  </li>
+  <li>
+    To allow the user to Sign Out after getting to the Home page. We implement a sign out button in Home.js.
+    <pre>    &lt;button onClick={() =&gt; db.auth().signOut()}&gt;Sign Out&lt;/button&gt;
+    </pre>
+    Try pressing the Sign Out button. The PrivateRoute logic should redirect the user to the log in page automatically
+    the user is not authenticated anymore.
+  </li>
+  <li>
+    The <code>handleLogin</code> implemenation is similar to the handleSignUp implemenation.
+    <img src="./Lab 4 · CSE 110 Software Engineering_files/image47.png">
+    Connect the Log In form to handleLogin.
+    <pre>      &lt;form onSubmit={handleLogin} &gt;
+    </pre>
+    At this point you should be able to LogIn the account with the previously registered credentials, Sign Out and Register New accounts.
+  </li>
+  <li>
+    To center our pages we add the following selecor to the App.css stylesheet.
+    <pre>        .centered {
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          vertical-align: middle;
+        }
+    </pre>
+    To use the selector. We <code> import "../App.css" </code> in both your LogIn.js and SignUp.js files. And select the centered selector in the top &lt;div&gt;
+    <pre>        &lt;div className="centered"&gt;
+    </pre>
+   </li>
+   <li>
+      At this point, the LogIn.js, SignUp.js and Home.js should contain the code bellow.
+    <img src="./Lab 4 · CSE 110 Software Engineering_files/image48.png">
+    <img src="./Lab 4 · CSE 110 Software Engineering_files/image49.png">
+    <img src="./Lab 4 · CSE 110 Software Engineering_files/image50.png">
+    These pages should be rendered as following.
+    The home page should be acessible only if the user Logs In with valid credentials or if a new account is registered.
+    <img src="./Lab 4 · CSE 110 Software Engineering_files/image51.png">
+    <img src="./Lab 4 · CSE 110 Software Engineering_files/image52.png">
+    <img src="./Lab 4 · CSE 110 Software Engineering_files/image53.png">
+
+   </li>
+
+  </ol>
+
+  <h2 id="ReactJS">Unit 8. Firebase Providers</h2>
+  <p>
+  The last step is to connect Facebook as a Auth provider to our Fireabase console.
+  </p>
+  <ol>
+    <li>
+      Let's start by adding Google as an authentication provider. Go to the Firebase Console and enable Google as an provider. Fill an email when prompted.
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image62.png">
+    </li>
+    <li>
+      In the base.js file add the following line at the bottom of the file.
+      <pre>export const provider2 = new firebase.auth.GoogleAuthProvider()
+      </pre>
+    </li>
+    <li>
+       Remember to  <code>import db , { provider2 } from "../base"</code>  in the base.js file.
+      </li>
+      <li>
+        Add the following method in your Login.js component to handle the login with Google.
+        <pre>        const handleLoginWithGoogle = () =&gt; {
+          try{
+                  db
+                    .auth()
+                    .signInWithPopup(provider2);
+                    history.push("/");
+            } catch (error){
+                alert(error);
+            }
+        }
+        </pre>
+    </li>
+      Go to the login page and add the Login button.
+      <pre>&lt;button onClick={handleLoginWithGoogle}&gt;Log In with Google&lt;/button&gt;
+      </pre>
+
+    <li>
+      Now let's add Facebook as a auth provider.
+      Go to the the Firebase Console &gt; Dashboard &gt; Authentication &gt; Sign-in method. And enable the Facebook sign-in provider.
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image55.png">
+      To use Facebook as a provider a Facebook App needs to be created and the App ID and App secret key need to be passed in the Firebase console.
+      We will also need to copy the <code> OAuth redirect URI </code> in our Facebook App.
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image56.png">
+    </li>
+    <li>
+      To get started visit <a href="https://developers.facebook.com/" target="_blank">developers.facebook.com</a>
+    </li>
+    <li>
+        Click My Apps in the top-right corner and then Create A New App.
+    </li>
+    <li>
+       Name your app CSE110Firebase and add your contact email.
+    </li>
+    <li>
+      Go to Products &gt; Add Product &gt; Set Up Facebook Login. Facebook Login should appear in your product bar.
+    </li>
+    <li>
+      Go to Facebook Login &gt; Settings and copy the Firebase OAauth redirect URI in the <code> Valid OAuth Redirect URIs </code> field.
+   <img src="./Lab 4 · CSE 110 Software Engineering_files/image57.png">
+    </li>
+    <li>
+      In the Application Dashboard go to Settings &gt; Basic and get the App ID and App Secret key.
+   <img src="./Lab 4 · CSE 110 Software Engineering_files/image58.png">
+    </li>
+    <li>
+      Copy the App ID and the App Secret in the Firebase Facebook provider field and Save.
+    <img src="./Lab 4 · CSE 110 Software Engineering_files/image59.png">
+    </li>
+    <li>
+      To use Facebook as a provider in your App. Add the following line to your Base.js file.
+      <pre>export const provider = new firebase.auth.FacebookAuthProvider();</pre>
+      We will import provider every time we want to use the Facebook Auth service.
+
+    </li>
+    <li>
+      Import provider in LogIn.js.
+      <pre>import db , { provider, provider2 } from "../base"</pre>
+    </li>
+    <li>
+      Create a Log In with Facebook button and connect it to a <code>handleLoginWithFb</code> method.
+      <pre> &lt;button onClick={handleLoginWithFb}&gt;Log In with Facebook&lt;/button&gt;
+      </pre>
+    </li>
+    <li>
+      The handleLoginWithFb implemenation will be similar to handleLogin.
+      <pre>          const handleLoginWithFb = ( ) =&gt; {
+            try{
+                 db
+                    .auth()
+                    .signInWithPopup(provider);
+                    history.push("/");
+            } catch (error){
+                alert(error);
+            }
+           }
+      </pre>
+    </li>
+    <li>
+      At this point you should be able to use the log in with Facebook service.
+      The page should be rendered as bellow.
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image60.png">
+    </li>
+    <li>
+      The users that Loged In with Facebook will appear in the Firebase Auth Users Page as bellow.
+      <img src="./Lab 4 · CSE 110 Software Engineering_files/image61.png">
+    </li>
+
+  </ol>
+
+  <h2>Completion Checkoff:</h2>
+       Complete all the tasks above in order to be able to route in between three : Login, Signup and Home pages.
+       Alos your app should support both Email And Facebook Firebase data base to receive full credit. Present the page shown in the image above to a
+       tutor. When you complete add a ticket to the Autograder queue with one
+       tag for the priority of your ticket and another with lab completion check
+       tag so a member of the staff will help you. However bear in mind that you
+       will only get checkoff prioirty during your own lab reservation time. During
+       any other CSE 110 lab hour your checkoff request will be considered only
+       if there are staff members who are not helping students from that lab hour.
+
+  <h5>Feedback</h5>
+  <p>Please feel free to give us feedback via this <a href="https://forms.gle/XkpaqzD9YNk2hRjx7" target="_blank">google form</a>.</p>
+</div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script type="text/javascript" src="./Lab 4 · CSE 110 Software Engineering_files/script.js.download"></script>
+
+
+</body></html>

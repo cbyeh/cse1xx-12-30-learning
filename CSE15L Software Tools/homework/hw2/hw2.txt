@@ -1,0 +1,118 @@
+# CSE 15L - Fail 2018
+# Homework 2 (Due: 10/16/2018, 23:59)
+#
+# Name:  Christopher Yeh
+# PID:   A15720503	
+# Login: cs15xii
+
+0.  Don't forget to change the file header! (0 point)
+
+1.  You're taking CSE 12 and the PA is due in 25 minutes, but when you run your
+    executable with command: `./cse15`, but you get an error message.
+
+    Which file descriptor should the message be printed with?
+
+    [stderr]
+
+
+2.  What is the command that shows you the full path of your current working
+    directory? (1 point)
+
+    [pwd]
+
+
+3.  cse15.c
+
+     ```
+     1 #include <stdio.h>
+     2
+     3 int my_abs(int  a) {
+     4     if (-a < 0) {
+     5         a = -a;
+     6     }
+     7
+     8     return a;
+     9 }
+    10
+    11 int main() {
+    12     int input = 0;
+    13     int output = 0;
+    14
+    15     input = -17;
+    16     output = my_abs(input);
+    17
+    18     printf("expected: %d\n", 17);
+    19     printf("output: %d\n", output);
+    20 }
+    ```
+
+    What is the command to debug `cse15.c` using GDB, assuming that the
+    corresponding executable is named `cse15`? (1 point)
+
+    [gdb cse15]
+
+
+4.  How do you place a breakpoint at function `main`? (1 point)
+
+    [break main]
+
+
+5.  At some point during debugging, you see the following being printed after
+    you typed in "next":
+
+    15     input = -17;
+
+    What will be printed if you enter "print input?" (1 point)
+
+    [$1 = -17]
+
+
+6.  What line will be executed when you type "next"? (1 point)
+
+    [16	    output = my_abs(input);]
+
+
+7.  Say you are on this line:
+
+    16     output = my_abs(input);
+
+    What is a command in GDB that brings your debugging INTO 'my_abs()' and
+    executes the first line? (1 point)
+
+    [step]
+
+
+8.  Now quit GDB.
+    After you have fixed the bug in your code, you want to save the output
+    printed by your program in order to compare with a reference solution.
+
+    What would you enter in your bash terminal to redirect the output of
+    `./cse15` to a file named "my_solution.txt"? (1 point)
+
+    [gcc cse15 > my_solution.txt]
+
+
+9.  Assume that you have a reference solution file named "ref_solution" that
+    containis the expected output of this PA.
+
+    What is the command to help you check whether the `my_solution` and
+    `ref_solution` are the same or not? (1 point)
+
+    [vimdiff my_solution ref_solution]
+
+
+10. Your solution looks perfect. Good job! Now, you are worried your program may
+    have memory violations, so there are still more things to check.
+
+    What is a complete command that can help you check for memory issues such
+    as memory leaks and invalid memory accesses in your `cse15` executable?
+    HINT: The command is not simply `make valgrind`! (1 point)
+
+    [valgrind --leak-check=yes ./cse15]
+
+
+TURNIN PROCEDURE:
+
+    Inside your `hw2` directory, type in `turnin` and follow the instructions.
+    Make sure that you get the confirmation email from Autograder.
+

@@ -1,0 +1,353 @@
+/**
+ * @author Christopher Yeh
+ * @PID A15720503
+ */
+
+//TODO: ask if dummy should be null, list starts at 0 or 1, dummy for getNth();
+
+import java.util.*;
+
+public class MyLinkedList<E> extends AbstractList<E> {
+
+    private int nelems;
+    private Node dummy; // aka me
+
+    public static void main(String[] args) {
+        MyLinkedList<Integer> mL = new MyLinkedList<>();
+        MyLinkedList<Integer> mL2 = new MyLinkedList<>();
+        for (int i = 5; i > 0; i--)
+            mL2.add(0, i);
+        mL.add(1);
+        mL.add(3);
+        mL.add(4);
+        mL.add(5);
+        mL.add(0, 2);
+
+        // System.out.println(mL);
+        // System.out.println(mL.get(-9));
+        // mL.set(-4, 6);
+        // System.out.println(mL2);
+        // System.out.println(mL2.get(-9));
+        for (int i = 0; i > -mL.size() * 3; i--)
+            System.out.println(mL.get(i) + "         " + mL2.get(i));
+        // for (int i = 0; i < mL.size() * 3; i++)
+        // System.out.println(mL.get(i) + "         " + mL2.get(i));
+    }
+
+    protected class Node {
+        E data;
+        Node prev;
+        Node next;
+
+        /**
+         * Constructor to create singleton Node
+         */
+        public Node(E element) {
+            this(element, null, null);
+        }
+
+        /**
+         * Constructor to create singleton link it between previous and next
+         *
+         * @param element  Element to add, can be null
+         * @param prevNode predecessor Node, can be null
+         * @param nextNode successor Node, can be null
+         */
+        public Node(E element, Node prevNode, Node nextNode) {
+            data = element;
+            prev = prevNode;
+            next = nextNode;
+        }
+
+        /**
+         * Remove this node from the list. Update previous and next nodes
+         */
+        public void remove() {
+            this.getPrev().setNext(getNext());
+            this.getNext().setPrev(getPrev());
+        }
+
+        /**
+         * Set the previous node in the list
+         *
+         * @param p new previous node
+         */
+        public void setPrev(Node p) {
+            prev = p;
+        }
+
+        /**
+         * Set the next node in the list
+         *
+         * @param n new next node
+         */
+        public void setNext(Node n) {
+            next = n;
+        }
+
+        /**
+         * Set the element
+         *
+         * @param e new element
+         */
+        public void setElement(E e) {
+            data = e;
+        }
+
+        /**
+         * Accessor to get the next Node in the list
+         */
+        public Node getNext() {
+            return next;
+        }
+
+        /**
+         * Accessor to get the prev Node in the list
+         */
+        public Node getPrev() {
+            return prev;
+        }
+
+        /**
+         * Accessor to get the Nodes Element
+         */
+        public E getElement() {
+            return data;
+        }
+    }
+
+    /**
+     * ListIterator implementation
+     */
+    protected class MyListIterator implements ListIterator<E> {
+
+        private boolean forward;
+        private boolean canRemove;
+        private Node left, right; // Cursor sits between these two nodes
+        private int idx;        // Tracks current position, what next would return
+
+        public MyListIterator() {
+            forward = false;
+            canRemove = false;
+            left = dummy;
+            right = dummy.getNext();
+            idx = 0;
+        }
+
+        @Override
+        public void add(E e) throws NullPointerException {
+            if (e == null)
+                throw new NullPointerException("Cannot put null Object in list");
+            Node newNode = new Node(e, left, right);
+            left.setNext(newNode);
+            right.setPrev(newNode);
+            canRemove = true;
+            nelems++;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return idx < nelems;
+        }
+
+        @Override
+        public boolean hasPrevious() {
+            return idx > nelems;
+        }
+
+        @Override
+        public E next() throws NoSuchElementException {
+            if (!hasNext()) {
+                forward = false;
+                throw new NoSuchElementException("No such element exists");
+            }
+            left = left.getNext();
+            right = right.getNext();
+            idx++;
+            canRemove = true;
+            forward = true;
+            return right.getElement();
+        }
+
+        @Override
+        public int nextIndex() {
+            return idx++;
+        }
+
+        @Override
+        public E previous() throws NoSuchElementException {
+            if (!hasPrevious())
+                throw new NoSuchElementException("No such element exists");
+            left = left.getPrev();
+            right = right.getPrev();
+            idx--;
+            return right.getElement();
+        }
+
+        @Override
+        public int previousIndex() {
+            if (left == dummy)
+                return -1;
+            return idx--;
+        }
+
+        @Override
+        public void remove() throws IllegalStateException {
+            if (!canRemove)
+                throw new IllegalStateException();
+        }
+
+        @Override
+        public void set(E e)
+                throws NullPointerException, IllegalStateException {
+            if (e == null)
+                throw new NullPointerException("Cannot put null Object in list");
+        }
+    }
+
+    //  Implementation of the MyLinkedList Class
+
+    /**
+     * Only 0-argument constructor is defined
+     */
+    public MyLinkedList() {
+        // Initialize a new list with just the dummy node
+        dummy = new Node(null);
+        dummy.setPrev(dummy);
+        dummy.setNext(dummy);
+        nelems = 0;
+    }
+
+    @Override
+    public int size() {
+        return nelems;
+    }
+
+    @Override
+    public E get(int index) throws IndexOutOfBoundsException {
+        if ((isEmpty())) {
+            throw new IndexOutOfBoundsException("Invalid input, list is empty");
+        }
+        Node currentNode = getNth(index);
+        return currentNode.getElement();
+    }
+
+    @Override
+    public void add(int index, E data) throws NullPointerException {
+        if (data == null)
+            throw new NullPointerException("Cannot put null Object in list");
+        Node currentNode = getNth(index);
+        if (index >= 0) {
+            Node newNode = new Node(data, currentNode.getPrev(), currentNode);
+            currentNode.getPrev().setNext(newNode);
+            currentNode.setPrev(newNode);
+        } else { // index < 0
+            Node newNode = new Node(data, currentNode, currentNode.getNext());
+            currentNode.setNext(newNode);
+            currentNode.getNext().setPrev(newNode);
+        }
+        nelems++;
+    }
+
+    @Override
+    // Add an element into this list at the end
+    public boolean add(E data) throws NullPointerException {
+        if (data == null)
+            throw new NullPointerException("Cannot put null Object in list");
+        Node newNode = new Node(data, dummy.getPrev(), dummy);
+        dummy.getPrev().setNext(newNode);
+        dummy.setPrev(newNode);
+        nelems++;
+        return true;
+    }
+
+    /**
+     * set the value at index i to data. The input index can
+     * be any integer in interval [Integer.MIN_VALUE,
+     * Integer.MAX_VALUE] due to our LinkedList's circular nature.
+     */
+    @Override
+    public E set(int index, E data)
+            throws IndexOutOfBoundsException, NullPointerException {
+        if (data == null)
+            throw new NullPointerException("Cannot put null Object in list");
+        if ((isEmpty()))
+            throw new IndexOutOfBoundsException("Invalid input, list is empty");
+        Node currentNode = getNth(index);
+        currentNode.setElement(data);
+        return currentNode.getElement();
+    }
+
+    @Override
+    public E remove(int index) throws IndexOutOfBoundsException {
+        if ((isEmpty()))
+            throw new IndexOutOfBoundsException("Invalid input, list is empty");
+        Node currentNode = getNth(index);
+        currentNode.remove();
+        nelems--;
+        return currentNode.getElement();
+    }
+
+    @Override
+    public void clear() {
+        dummy.setPrev(dummy);
+        dummy.setNext(dummy);
+        nelems = 0;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return (nelems == 0);
+    }
+
+    // Helper method to get the Node at the Nth index
+    private Node getNth(int index) {
+        // int mid = nelems / 2;
+        if (isEmpty())
+            return dummy;
+        Node currentNode = dummy.getNext();
+        // int trueIndex = index - (index % nelems); // Accounting for dummy
+        if (index > 0) {
+            for (int i = 0; i < index; i++) {
+                if (currentNode.getNext() == dummy)
+                    // Skipping dummy
+                    currentNode = currentNode.getNext().getNext();
+                else
+                    currentNode = currentNode.getNext();
+            }
+        } else if (index < 0) {
+            for (int i = 0; i > index; i--)
+                if (currentNode.getPrev() == dummy)
+                    // Skipping dummy
+                    currentNode = currentNode.getPrev().getPrev();
+                else
+                    currentNode = currentNode.getPrev();
+        }
+        return currentNode; // Returns dummy.getNext() if not looped
+    }
+
+    public Iterator<E> iterator() {
+        return new MyListIterator();
+    }
+
+    public ListIterator<E> listIterator() {
+        return new MyListIterator();
+    }
+
+    @Override
+    public String toString() {
+        String result = "[  ";
+        Node currentNode = dummy.getNext();
+        while (currentNode != dummy) {
+            result = result + currentNode.getElement() + ",  ";
+            currentNode = currentNode.getNext();
+        }
+        return result + "]";
+    }
+
+}
+
+
+// VIM: set the tabstop and shiftwidth to 4 
+// vim:tw=78:ts=4:et:sw=4
+

@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://ieng6.ucsd.edu/~cs110x/static/labs/lab6/index.html -->
+<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+
+      Lab 6 · CSE 110 Software Engineering
+
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./Lab 6 · CSE 110 Software Engineering_files/poole.css">
+  <link rel="stylesheet" href="./Lab 6 · CSE 110 Software Engineering_files/syntax.css">
+  <link rel="stylesheet" href="./Lab 6 · CSE 110 Software Engineering_files/lanyon.css">
+  <link rel="stylesheet" href="./Lab 6 · CSE 110 Software Engineering_files/css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://ieng6.ucsd.edu/~cs110x/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="http://ieng6.ucsd.edu/~cs110x/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://ieng6.ucsd.edu/atom.xml">
+</head>
+
+
+<body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+     <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+     <!-- Toggleable sidebar -->
+     <div class="sidebar" id="sidebar">
+        <div class="sidebar-item">
+          <p>Course Website for CSE110, Fall Quarter 2019</p>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/">Home</a>
+        <a class="sidebar-nav-item active" href="http://ieng6.ucsd.edu/~cs110x/static/labs/">Labs</a>
+        <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/lectures_a00/">Lecture Notes</a>
+        <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/logistics_a00/">Logistics</a>
+        <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/resources/">Resources</a>
+        <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/artifacts/">Artifacts</a>
+        <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/syllabus/">Syllabus</a>
+    </nav>
+
+    <div class="sidebar-item">
+        <p>
+          © 2019. All rights reserved.
+      </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+     content to avoid any CSS collisions with our real content. -->
+     <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="http://ieng6.ucsd.edu/~cs110x/" title="Home">CSE 110 Software Engineering</a>
+            <small>Inc.</small>
+        </h3>
+    </div>
+</div>
+
+<div class="container content" id="instructions">
+
+  <h1 id="the-parse-database">Lab 6: NodeJS</h1>
+  <br>
+  <h2 id="ReactJS">Learning Goals</h2>
+  <p>
+      In this lab, you will be learning about Node.js, the JavaScript runtime system that allows
+      us to build server-side applications using JavaScript! <strong>Please read the information below
+      carefully</strong> before diving into the exercises to learn what Node.js is and why it became so
+      popular over the last few years. Through this lab, we hope you will learn what Node.js is
+      and why one might want to use Node.js for their application. We will also learn to perform
+      basic server-side tasks using Node.js and build a Client-Server Chat Application!
+  </p>
+
+  <h3 id="ReactJS">A Runtime System</h3>
+      <p>
+          A runtime system provides an application with all the necessary libraries, tools and resources
+          it requires to run properly. It helps with tasks such as allocating and initializing memory,
+          setting environment variables and handling device I/O. In a nutshell, it interacts with the
+          operating system and puts everything in place to ensure smooth execution of the program.
+      </p>
+
+      <h3 id="ReactJS">NodeJS</h3>
+          <p>
+              JavaScript has traditionally been a client-side language used to write front-end logic defining user interactions with web pages.
+              Node.js is a platform built on <a href="https://en.wikipedia.org/wiki/Chrome_V8">Chrome's JavaScript runtime</a> for building fast and scalable networked applications.
+              Using Node.js, we can now write backend server-side code in JavaScript and have the option to use JavaScript throughout our web stack.
+              It implements a ‘non-blocking I/O’ model (which we will learn about soon) that enables us to write lightweight and efficient applications.
+              Node.js also provides us with a rich library of JavaScript modules which we can import into our applications to make our life easier.
+          </p>
+
+          <h3 id="ReactJS">Why Node?</h3>
+          <p>
+            </p><ul>
+                <li>
+                    <strong>Asynchronous and Event Driven</strong> − All APIs of Node.js library are asynchronous (non-blocking). A Node.js based server never waits for an API call to return data, it simply moves to the next API call. Node.js implements an internal event tracking mechanism which will help the server respond to the previous API call after it finishes.
+                </li>
+
+                <li>
+                    <strong>Fast</strong> − Node.js is built on Google Chrome's highly efficient V8 JavaScript Engine.
+                </li>
+
+                <li>
+                    <strong>Single Threaded but Highly Scalable</strong> − Node.js uses a single threaded model with an event loop which keeps track of events and callbacks. The event mechanism implemented by Node.js helps the server to respond to requests in a non-blocking way. This makes the server highly scalable as opposed to traditional servers which create a limited number threads to handle requests. Although a Node.js server is a single threaded program, it can handle a much larger number of requests than traditional servers like Apache.
+                </li>
+
+                <li>
+                    <strong>Reading streams in chunks</strong> − When an API call is made, Node.js allows you to read the data in chunks, as they arrive, instead of waiting all the data to arrive.
+                </li>
+            </ul>
+        <p></p>
+
+        <strong><h3 style="color:crimson;">Check your understanding...</h3></strong>
+        <p>At this point you should be able to answer the following questions:</p>
+        <ol>
+            <li>What is NodeJS?</li>
+            <li>Is NodeJS a programming language?</li>
+            <li>What is a runtime environment?</li>
+            <li>Why might you want to use NodeJS in your project?</li>
+            <li>Is NodeJS required for all web apps? What could be some alternatives?</li>
+        </ol>
+
+        <h3 id="ReactJS">Prerequisites for the lab</h3>
+        <ol>
+            <li>Have the latest version of NodeJS installed on your machine.</li>
+            <li>Have some basic JavaScript knowledge. <i>(Not necessary, but recommended.)</i></li>
+        </ol>
+
+        <hr>
+        <h1 id="ReactJS">Unit 1. NodeJS Basics</h1>
+        <p>Let’s dive right in! We will begin by learning to do some basic tasks using Node.js.</p>
+
+        <hr>
+
+        <h3>Hello World!</h3>
+        <p>To make a Node.js program, create a new file with a .js extension and start writing JavaScript! The only difference is that this code will run on the "server-side" (on your computer) rather than "client-side" (through the user's browser, which would typically be on someone else's computer.)
+        <br>
+        </p><p>You can print something on your terminal, in the same way that you would print something to the browser’s console using JavaScript: <code>console.log("This will be printed on the terminal");</code>
+        </p>
+        <p> You can run a Node.js application using </p>
+        <pre>$ node myprogram.js</pre>
+
+        <h4><strong>Task 1:</strong> Write a Node.js program <code>helloworld.js</code> that prints "Hello world" to your terminal.</h4>
+        <hr>
+
+        <h3>Processing Command Line Arguments</h3>
+        <p>
+            You can use the <code>argv</code> array of the <code>process</code> object provided by Node.js to access the command line arguments passed to your program. <br>
+
+            <code><strong>args.js</strong></code> contains the following:
+            </p><pre>console.log(process.argv);</pre>
+            Running the file produces the following output.
+            <pre>$ node args.js 1 2 3 these are command line arguments
+[ '/usr/local/bin/node',
+  '/Users/Ajeya/NodeLab/Hello.js',
+  '1',
+  '2',
+  '3',
+  'these',
+  'are',
+  'command',
+  'line',
+  'arguments' ]</pre>
+        <p></p>
+
+        <h4><strong>Task 2:</strong> Write a Node.js program <code>hello.js</code> that accepts a string name as a command line argument and prints "Hello, [name]!" to your terminal.</h4>
+
+        <p>Example:</p>
+        <pre>$ node hello.js Gary
+Hello Gary!</pre>
+
+        <hr>
+
+        <h3><strong><i>Aside:</i></strong> Node.js Interactive Command Line Interface</h3>
+        <p>Node.js provides you with a command line interface which you can use to quickly test some code.</p>
+        <pre>$ node
+&gt; "That's the waaaaaay the news goes!";
+That's the waaaaaay the news goes!
+&gt; a = 1; b = 2; a+b;
+3
+<i>^D</i></pre>
+        <hr>
+
+        <h3>I/O Operations!</h3>
+        <p>Let’s learn to implement something we might actually want a server to do.
+            Node.js provides us with the fs module to perform filesystem operations.
+            We can load the <code>fs</code> module using:
+            </p><pre>var fs = require('fs');</pre>
+            All synchronous (or blocking) file system methods in the fs module end with suffix 'Sync'. To read a file, you'll need to use:
+            <pre>var buf = fs.readFileSync('/path/to/file')</pre>
+            This method will return a <code>Buffer</code> object containing the complete  contents of the file.
+            Buffer objects are Node's way of efficiently representing arbitrary arrays of data.
+            Buffer objects can be converted to strings by simply calling the toString() method on them.
+            <pre>var str = buf.toString();</pre>
+        <p></p>
+
+        <h4><strong>Task 3:</strong> Write a Node.js program <code>'newlines.js'</code> to count the number of lines in a file.</h4>
+        <p>
+            Example:<br><code><strong>foo.txt</strong></code> contains the following:
+            </p><pre>This
+File
+Has
+Five
+Lines</pre>
+<pre>$ node newlines.js
+5</pre>
+            <strong>Tips:</strong> Vanilla JavaScript String functions could be useful!
+            <ul>
+                <li><a href="https://nodejs.org/api/fs.html">Documentation for fs</a></li>
+                <li><a href="https://nodejs.org/api/buffer.html">Documentation for Buffer objects</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">Documentation for JavaScript Strings</a><p>Hint: think how you can use the newline character ('\n') with one of the String methods.</p></li>
+            </ul>
+        <p></p>
+
+        <hr>
+        <h3>Asynchronous I/O Operations!</h3>
+        <p>
+            We learned that one of the key features of Node.js is that it is <strong>asynchronous and event driven</strong>. Let’s learn how to utilize that by learning to perform non-blocking I/O operations.<br>
+            </p><h4>Asynchronous Functions</h4>
+            <i><h4 style="color:crimson;">If you're new to callbacks and/or JavaScript, pay close attention here!</h4></i>
+            An asynchronous function call doesn’t wait for the function to finish before proceeding to the next instruction. But as programmers, we want to logically do things synchronously -- one after the other. <br>
+            Thus, to run code after some async procedure has finished without blocking and waiting for it, asynchronous functions accept a <strong>callback function</strong> as an argument. This function is user-defined (you write it), and will be called by the asynchronous function once the operation is complete. This allows us to continue doing other tasks while waiting for a slower I/O operation (such as reading a file) to finish.
+            <br><br>
+            <strong>Examples!</strong>
+            <ul>
+                <li>
+                    <strong>Improper async function usage. </strong><br>
+                    <pre>var fs = require('fs');
+var myNumber = undefined // we don't know what the number is yet
+function addOne() {
+  fs.readFile('number.txt', function doneReading(err, fileContents) {
+    // inside the callback, after we finish reading the file
+    myNumber = parseInt(fileContents)
+    myNumber++
+  })
+}
+
+addOne();
+console.log(myNumber) // undefined -- this line gets run before readFile is done</pre>
+                    Notice how we called <code>addOne()</code> and then <code>console.log()</code> right after. <code>addOne()</code> calls <code>fs.readFile()</code> which is an async function which starts reading the file <code>'number.txt'</code> in the background and returns immediately. Thus, the <code>myNumber</code> variable hasn't been updated yet by the time <code>console.log(myNumber)</code> executes, and we get <code>undefined</code> as the output.<br>
+                </li>
+                <li>
+                    <strong>Proper async function usage. </strong><br>
+                    <pre>var fs = require('fs')
+var myNumber = undefined
+
+function addOne(callback) {
+  fs.readFile('number.txt', function doneReading(err, fileContents) {
+    myNumber = parseInt(fileContents)
+    myNumber++
+    callback(); // The callback function (logMyNumber) gets called here, and console.log correctly prints the incremented number.
+  })
+}
+
+function logMyNumber() {
+  console.log(myNumber)
+}
+
+addOne(logMyNumber)</pre>
+                    Here, the <code>console.log(myNumber)</code> line is placed within a function named <code>logMyNumber</code>. We pass this callback function as a parameter to <code>addOne</code>. Then, in the <code>readFile</code> function parameter <code>doneReading</code>, we call the callback function at the end, once <code>myNumber</code> has been incremented. Thus, the number gets printed out <i>after</i> it has been updated, in an asynchronous way.
+                </li>
+                <p><strong>Callbacks and async functions can be pretty confusing, so don't hesitate to <a href="https://github.com/maxogden/art-of-node#callbacks">read the article these snippets are based off</a> to gain a deeper understanding!</strong></p>
+            </ul>
+
+            <h4><strong>Task 4:</strong> Perform Task 3 using <code>fs.readFile()</code> (the async function) instead of <code>fs.readFileSync()</code></h4>
+
+            <p><b></b></p><p style="color:crimson;"><b>Note:</b></p> Your text file may be encoded in UTF-8 rather than ASCII, so you may need to add a 'utf-8' parameter to your readFile call like so: <code>fs.readFile('filename.txt', <b>'utf-8'</b>, callback);</code><p></p>
+
+            <hr>
+
+            <h3>Let's get creative!</h3>
+            <h4><strong>Task 5:</strong> Write a Node.js program <code>'listjs.js'</code> that reads all files in a given directory and prints all the JavaScript files in the directory (those that end with .js)</h4>
+
+            <p>
+                Example:
+                </p><pre>$ ls /path/to/directory
+Apple.java Banana.java Apple.js Banana.js Apple.py Banana.py
+$ node listjs.js /path/to/directory
+Apple.js
+Banana.js</pre>
+                <b>Tips:</b> The fs.readdir() method takes the path to a directory as its first argument and a callback as its second. The callback signature is: <code>function callback (err, list) { /* ... */ }</code> where list is an array of the filenames in the specified directory.
+            <p></p>
+
+            <hr>
+
+            <h3>Modules</h3>
+            <p>
+                A common pattern for a Node.js application to share objects and functions between files is to use <i>modules</i>. In Node.js, each file can be treated as a logical ‘module’. To "export" something (like a function) from a file so that it can be used in another file, we can overwrite the <code>module.exports</code> object.
+                </p><pre>module.exports = function foo() {...}</pre>
+                Here's an example of exporting a function from one file and using it in another.<br>
+                <strong>square.js</strong>
+                <pre>module.exports = function square (num) {
+     return num * num;
+}</pre>
+                <strong>main.js</strong>
+                <pre>var squareFunc = require('./square'); // Import square.js's exports
+console.log(squareFunc(2));</pre>
+
+                <strong>Terminal output</strong>
+                <pre>$ node main.js
+4</pre>
+
+                Using the <code>module.exports</code> object, you will be able to export primitives, functions, objects of your choice, and use them in different files to make your code more modular.
+
+Read the <a href="https://nodejs.org/api/modules.html">Node.js Modules Documentation</a> for more information about how to export data from your .js file!
+
+            <p></p>
+
+            <h4><strong>Task 6:</strong> Implement Task 5 using Node.js modules!</h4>
+            <p>
+                Create a file <code>filter.js</code> which <u>exports a single function</u> with the signature: </p><pre>function filterFiles (pathToDir, callback)</pre>. This function will do the necessary work for Task 5, and invoke <code>callback</code> on every valid filename found (those that end with .js). <br>
+                Now create a new file called <code>main.js</code> that accepts a path to a directory from the command line, and uses your new module to print the filenames in that directory with a .js extension.
+            <p></p>
+
+            <hr>
+            <h2>In-Progress Checkoff!</h2>
+            <p>The tutor will ask you to run a few of the above tasks to make sure you implemented them correctly. Move on to the next part of the lab once you receive the Checkoff!<br><br>
+            <strong>References:</strong> The following resources were referred to during the creation of this lab. Some content has been taken from them and modified for clarity and to meet our requirements.
+            </p><ul>
+                <li>https://nodejs.org/en/</li>
+                <li>https://www.w3schools.com/nodejs/</li>
+                <li>https://github.com/workshopper/learnyounode</li>
+            </ul>
+            <hr>
+
+
+    <h1>Unit 2. Building a functional Chat App!</h1>
+    <p>
+        We'll use our new NodeJS knowledge to build a realistic web server that handles the backend of a messaging app for realtime chatting. We will also create a minimal front end so we can see the service working. <strong>These skills will be very applicable to those of you who are creating a web app for your project!</strong>
+    </p>
+    <hr>
+
+    <h3>The Client/Server Relationship</h3>
+    <p>
+        Before we begin, let’s define the key actors in our client-server model. Follow along with this image.
+    </p>
+    <img src="./Lab 6 · CSE 110 Software Engineering_files/client-server-relationship.jpg">
+    <h4>The Client</h4>
+    <p>
+        The client makes requests to the server to get content or send actions. When we talk about <strong>"client-side"</strong> logic or the <strong>"front-end"</strong>, we are referring to the HTML, CSS, and JavaScript code that is running in our browser or the Android/iOS layouts on our phone. This code has the primary objective of correctly rendering the website/app and providing an interactive interface for the user. <br><br>There are many front-end frameworks for JavaScript that make creating dynamic websites easier such as React, Angular, Fuse, jQuery and Vue, to name a few. Without these frameworks, we would have to create interactive websites using vanilla(pure) JavaScript code and HTTP requests.
+    </p>
+
+    <h4>The Server</h4>
+    <p>
+        The server is exactly what it sounds like: it "serves" (sends) things to those that want them. When we talk about <strong>"server-side"</strong> logic or the <strong>"back-end"</strong>, we're talking about code that runs on the server, with the overall objective of serving the requested content.
+
+        We can run whatever software we want in our server as long as it fulfills the objective of serving files. A popular option is <strong>Node.js</strong> and other popular back-end options include Django (Python), Flask (Python), Ruby on Rails (Ruby), and Spring MVC (Java).
+    </p>
+
+    <h3>Building a NodeJS Server</h3>
+    <h4>Communication between the client and server</h4>
+    <p>Any good relationship requires communication. So how do the client and server talk to each other? A basic website can be requested from the server through a <strong>HTTP Request</strong>. This is a request from the client to the server for a certain file, such as <code>"index.html"</code>, which the server proceeds to send. HTTP Requests can only be initiated from the client, and they can have different "verbs," which tell the server what to do. A GET request typically asks for a static resource like a webpage. A POST request typically asks the server to create or update data on the server. </p>
+    <img src="./Lab 6 · CSE 110 Software Engineering_files/http-requests.png">
+
+    <p>
+        Each HTTP Request spawns a new connection. What if we want to keep a channel of communication open so that the client and server and continually connected? If the server supports it, the client can also use a different method of communication called <strong>WebSockets</strong>. This protocol supports a more real-time method to communicate, and is used in situations when rapid real-time communication is required such as a chat app or a multiplayer game. <br><br>We will first implement our Chat app with POST requests, then again with WebSockets to demonstrate both of these technologies. Let's get started!
+    </p>
+
+    <p>First off, let's create the project directory we are going to work in. Type the following in the terminal:</p>
+    <pre>$ cd
+$ mkdir chatapp
+$ cd chatapp</pre>
+
+    <h3>NPM and Node packages</h3>
+    <p>
+        One reason why Node.js is so popular is that there exists a thriving community around it which creates useful packages that anyone can use in their Node projects. We can import these packages to our own project, just like how we imported modules to our files earlier. We will use a package, called <strong>Socket.io</strong>, which allows us to communicate with the clients connected to our server in real time using WebSockets, a communication protocol. <br> <br>
+        We will also use <strong>Express</strong>, a package that allows us to handle backend routing for our website. Each HTTP request includes a path for the requested resource. Routing allows us to define which webpage to serve for the requested URL. (Much more on these frameworks coming up!) <br><br>
+        <strong>NPM</strong> is a package manager which allows us to download and manage the packages we wish to import into our project, as well as our Node project as a whole. <br><br>
+        We can use NPM to create a barebones project directory to get started. Let's do that with the <code>npm init</code> command:</p><pre>$ npm init</pre>
+
+        This command creates a file called <code>package.json</code>. This file is essential to Node.js development as it contains important information about our project and our package dependencies. <br><br>
+
+        <strong>Fill out the following details as the command asks for them:</strong>
+        <pre>Package name: <b>"chatapp"</b>
+Version: <i>Just press enter</i>
+Description: <b>"Simple chat app"</b>
+Entry point: <b>"server.js"</b>
+    <i>This is the file that starts our server.
+    (Where "main" method is.)</i>
+Test command: <i>Just press enter</i>
+Git repository: <i>Just press enter</i>
+Keywords: <i>Just press enter</i>
+Author: <i>Your name</i>
+License: <i>Just press enter</i>
+Is this ok?: <b>"yes"</b></pre>
+
+    In the end, your package.json should look like the following:
+    <img src="./Lab 6 · CSE 110 Software Engineering_files/packagejson.png">
+    The ability to install and use open source libraries is one of the reasons why Node.js is so powerful. Lets download and install the two aforementioned packages we want to use with the <code>npm install</code> command. <pre>$ npm install --save express body-parser socket.io</pre>
+    Now check your <code>package.json</code>. Notice that <code>npm install</code> installs the package we specify into the <code>node_modules</code> folder, and the <code>--save</code> flag adds it as a dependency in our <code>package.json</code>.
+
+    <h2> Creating a Server</h2>
+
+    Lets create a simple "hello world" HTML page as the first page on our site.
+    Create a new file <code>index.html</code> and add whatever you like to it. Just make sure it at least has a body and 1 visible element. Here is an example:
+    <img src="./Lab 6 · CSE 110 Software Engineering_files/serverisrunning.png">
+    Create and open <code>server.js</code>. This will contain the main back-end logic for our server. Paste the below code into it to import the libraries we need:
+    <pre>var express = require('express');
+var http = require('http');
+var app = express();
+var httpServer = http.createServer(app);
+
+httpServer.listen(3000, function(){
+    console.log("Listening on port 3000");
+});</pre>
+    <strong>Step by step explanation of the code</strong>
+    <pre>var express = require('express');
+var http = require('http');</pre>
+    First we import the packages necessary for starting a server. Namely <code>express</code> and the built-in <code>http</code> package.
+    <pre>var app = express();
+var httpServer = http.createServer(app);</pre>
+    Next we create the app and server. The <code>app</code> object defines the behavior for our application, such as what to do when the user requests for a certain resource. The <code>httpServer</code> object is an interface between the application and the client connection, which means when the client makes a request, the server will notify our app of the request.
+    <pre>httpServer.listen(3000, ...);</pre>
+    Finally, our server starts listening to port 3000 for incoming requests. We also supply a callback that is called when the server starts up.
+    <br><br>
+    Run <code>npm start</code> to start the app, and access <code>localhost:3000</code> on your browser. What do you notice in the terminal? In the browser? (Don’t be alarmed if you see an error)
+
+    <h2>The Request/Response Model</h2>
+    Oh no! When we open our browser to the page, all we get is an error that says
+    <pre>Cannot GET /</pre>
+    So, is our server up and running?<br><br>
+    The truth is, our server is running normally. The console message is evidence for that. But remember, our <code>app</code> object defines the behavior of our application. We still haven't defined what it should do yet!
+
+    We mentioned earlier that HTTP uses a request / response model for communicating. First the client requests some resource, occasionally including extra headers or body to add specific details to the request. Then on receipt of the request, the server returns a response with either the data requested, an error, or some other appropriate response. Here is a simple illustration of this:
+    <img src="./Lab 6 · CSE 110 Software Engineering_files/reqresp.jpg">
+    Now, we need to define how to <code>GET /</code>, so that the server can serve <code>index.html</code> to the client. We can do this easily using the <code>get()</code> method. Add the following to server.js and try to understand what it’s doing.
+    <pre>app.get('/', function(req, res) {
+    console.log("Received GET request for resource /");
+    res.sendFile('index.html', { root: __dirname });
+});</pre>
+    The <code>get()</code> function defines our function to be called when the client requests <code>'/'</code>, and <code>res.sendFile</code> gives a <code>"200 OK"</code> response with index.html as the body. Our server.js should now look like this:
+    <img src="./Lab 6 · CSE 110 Software Engineering_files/sendfile.png">
+    Access <code>localhost:3000</code> now after running npm start and now we can see our <code>index.html</code> being rendered!
+
+    Our current GET callback is very basic. The behavior does not change regardless of the client's request, so we say that it is serving <strong>static content</strong>. We can confirm this is the case since the <code>req</code> parameter, which contains the request data, is not used. It would be troublesome if we had to define an endpoint for every single static resource (an <code>app.get()</code> call for every file single file!), but luckily there is an easier way.
+
+    First, create a new subdirectory <code>"src"</code> and move <code>index.html</code> into that directory. The directory structure should look like below:
+    <img src="./Lab 6 · CSE 110 Software Engineering_files/folders.png">
+
+    Now in <code>server.js</code>, replace the <code>app.get()</code> call with the following code:
+
+    <pre>app.use(express.static('src'));</pre>
+
+    The line above adds <strong>middleware</strong> for the application to handle static content. Middleware is a generic callback, usually a library, that handles only requests that are relevant to it. It will usually either transform the request to make it easier to process, or handle it entirely. In our case, if the <code>express.static()</code> middleware sees a request that starts with <code>/src</code>, it will automatically handle the request by sending the relevant file to the client. Your code should now look like this:
+    <img src="./Lab 6 · CSE 110 Software Engineering_files/middleware.png">
+    <strong>Restart the server</strong>and visit <code>localhost:3000</code> again, and make sure the page still loads correctly. Even though we are accessing resource <code>'/'</code>, our app will know to access <code>'/index.html'</code>, since that is the default behavior for web servers.<br><br>
+    Note that now our app will not log the GET request anymore. We can fix this with middleware of our own. Add the following middleware function to your app <strong>above</strong> the original <code>app.use()</code> call:
+    <pre>var myLogStatement = function(req, res, next) {
+    console.log("Received", req.method, "request for resource", req.path, "from", req.ip);
+    next(); // callback to the middleware function
+}</pre>
+    Now that we've defined our middleware function, we need to include it in our server's pipeline. <strong>Assign the <code>myLogStatement</code> function as middleware, similar to how you added the <code>express.static()</code> middleware using <code>app.use</code></strong><br><br>
+
+    Restart the server and watch the console when you access the page from your browser. It should look something like this:
+    <img src="./Lab 6 · CSE 110 Software Engineering_files/serveroutput.png">
+    For this middleware, we use the req object to provide us information about the request, and <code>next()</code> to call the <u><b>next handler in the middleware chain</b></u>. Essentially, we can log the request without consuming it. This means that <b><u>order in which we declare middleware matters!</u></b> (Try switching the order of the two and running the server. What changes?)
+    <p></p>
+
+<!-- Serving Dynamic Content Section -->
+<h2 id="ReactJS">Serving Dynamic Content</h2>
+
+<p>
+	So far everything we've done has been regarding static, unchanging content. In order to support our chat app, we will need something more powerful so that the page can change responsively to user actions. First, download the two files <code>index.html</code> and <code> style.css</code> and add them to the <strong>src</strong> folder.
+</p>
+
+<a href="https://gist.github.com/fro-yo/3ec47108804bffe6aaf5d4a24d39e0b8">Download the files from this gist.</a>
+
+<br> <br>
+
+<p>Restart the server, you should see the following:</p> <br>
+
+<img src="./Lab 6 · CSE 110 Software Engineering_files/image9.png">
+
+<p>
+	Here we've provided the structure of the chat app. Everything is set in place, but alas when something is typed in no messages appear. Our first task here is to show our own messages. Since no communication is required for this, we can use a simple client-side script.
+</p>
+
+<p>
+	<b>Create and open</b> a new file <code>script.js</code> in the <strong>src</strong> directory, and copy the following code into it:
+	</p><pre>var inputElem = document.querySelector('.chatMessage');
+var messages = document.querySelector('.messages');
+
+function createHTMLMessage(msg, source){
+	var li = document.createElement("li");
+	var div = document.createElement("div");
+	div.innerHTML += msg;
+	div.className += "messageInstance " + source;
+	li.appendChild(div);
+	messages.appendChild(li);
+}
+
+inputElem.addEventListener('keypress', function (e) {
+	var key = e.which || e.keyCode;
+	if (key === 13) {
+	createHTMLMessage(inputElem.value, 'client');
+	inputElem.value = "";
+	}
+});</pre>
+
+	<h5>Explanation:</h5>
+	<ol>
+		<li>
+			The <code>createHTMLMessage()</code> function is a helper that takes a message and a source (either "client" or "server"), and generates an html element for that single message.
+		</li>
+		<li>
+			<code>inputElem.addEventListener(...)</code> detects when "Enter" (key code 13) is pressed inside the bottom text box. When it is, is creates a client message using the inner text and adds it directly to the page. Finally, it clears the text field.
+		</li>
+	</ol>
+	Test the updated page, and now we can see our own messages being populated in the list. However, there is still no communication between separate clients, so let's take care of that next.
+<p></p>
+
+<h4 id="ReactJS"><b>The POST Request</b></h4>
+<strong style="color: red">Note: Please make sure you are typing everything correctly for this step to work as expected.</strong>
+<p>
+	There are couple of ways we can add dynamic content, so we'll start with the most basic way first which is the <b>POST</b> request. What makes POST different from GET is that the client can send parameters or other content through its body which can change the nature of the request, and the returned data does not have to be a static resource. Query results are often returned as <b>JSON</b> (JavaScript Object Notation). JSON is a generic representation of key-value pairs that can be nested, and thus can represent virtually any possible response data.
+</p>
+
+<p>
+	In order to make POST requests dynamically, we will be making use of <b>XHRs (XMLHttpRequests)</b> to make requests from JavaScript on the fly.
+</p>
+
+<p>
+	Add the following code to your <strong>script.js</strong> file:
+	<img src="./Lab 6 · CSE 110 Software Engineering_files/image19.png">
+</p>
+
+<p>
+	In addition, replace the <code>createHTMLMessage()</code> line in <code>inputElem.addEventListener(...)</code> with the following:
+	</p><pre>doPostRequest('/newMsg', {
+	msg: inputElem.value,
+	nextIdx: nextIdx
+}, onPostResponse);</pre>
+<p></p>
+
+<p>
+	Your code should look like the following:
+	<img src="./Lab 6 · CSE 110 Software Engineering_files/image14.png">
+</p>
+
+<p>
+	Explanation:
+	</p><ol>
+		<li>
+			First, we create the <b>XHR</b> object that we will use to make requests at the top of the script. Then we add a <code>doPostRequest()</code> function which makes it convenient to make POST requests.
+			<br> <br>
+			<code>xhr.onreadystatechange = callback;</code>
+			<p>Assigns the event handler which is called when the <b><u>readyState</u></b> for the XHR request changes.</p>
+			<code>xhr.open('POST', endpoint);</code>
+			<p>We then open the endpoint as a POST request.</p>
+			<code>xhr.setRequestHeader('Content-Type', 'application/json');</code>
+			<p>Sets the ‘Content-Type’ header to indicate JSON will be transmitted.</p>
+			<code>xhr.send(JSON.stringify(body));</code>
+			<p>Finally send the JSON body.</p>
+		</li>
+		<br>
+		<li>
+			Next, we add an <code>onPostResponse()</code> callback that will wait until the request is <u><b>done</b></u> (readyState = 4) and is <b><u>successful</u></b> (status = 200). Then it will take any new messages the server sent and append them to the page as "server" chat bubbles. It will append the last message as a "client" chat bubble, since the server will send the message back.
+		</li>
+		<br>
+		<li>
+			Finally, we add a line in our <code>inputElem</code> handler to make the post request to the <strong>'/newMsg'</strong> endpoint using <code>doPostRequest()</code>.
+		</li>
+	</ol>
+<p></p>
+
+<p>
+	We have now defined the <b>client-side</b> logic in <code>script.js</code> that makes POST requests and have added a callback that defines what to do once the server responds to our request. This will hook in the client side, and we can see that POST requests are <u>being made</u> to the server through the server's logs. After implementing the above, you should see this printed on your console.
+	<br> <br>
+	<code>Received POST request for resource /newMsg from ::1</code>
+</p>
+
+<p>
+	However, the server side hasn’t been implemented yet (you shouldn’t see any change on the browser). We have added code to the client that makes requests haven’t defined what happens when the server receives a POST request.
+</p>
+
+<p>
+	<b style="color: green">What we have so far:</b> Client Makes Requests, Client can handle responses to POST requests
+	<br>
+	<b style="color: blue">What we need:</b> Server recognizes and responds to POST Requests.
+</p>
+
+<p>
+	We will add server-side logic to define how to handle POST requests next, but first we need an extra package. In order to parse the body as JSON, we need to use the body-parser package. Here is how we can add it to <code>server.js</code>:
+	</p><ol>
+		<li>
+			Add the following line at the top of <code>server.js</code>:
+			<br> <br>
+			<pre>var bodyParser = require('body-parser');</pre>
+		</li>
+		<li>
+			Use the <code>body-parser</code> middleware, <code>bodyParser.json()</code>. <br>
+			It should be added <u>above all other middleware</u> we use. If you need a refresher on how to add middleware, check the end of the last unit (Hint: <code>app.use</code>).
+		</li>
+	</ol>
+	Now that <code>body-parser</code> is added, we can handle our POST request. Add the following code to <code>server.js</code>. It should be added below our logging, but above the static resource middleware.
+<p></p>
+
+<img src="./Lab 6 · CSE 110 Software Engineering_files/image20.png">
+
+<p>The most important thing to note about the server-side code is that the client's request parameters are kept in <code>req.body()</code> as JSON that we can use immediately. Then we can return our own JSON back to the client.</p>
+
+<p>This is what <code>server.js</code> should look like:</p>
+
+<img src="./Lab 6 · CSE 110 Software Engineering_files/image4.png">
+
+<p>
+	Now everything is finally hooked together. Open two separate tabs or windows and try to send messages between windows.
+</p>
+
+<p>
+	<u>Quick note on how the chat system is implemented:</u> <br>
+	The server has a <b>messages</b> array that stores <u>every message</u> sent so far. Each client keeps track of a variable <b>nextIdx</b> which stores the index of their next message. On receiving a request, the server returns a subarray of messages starting at <b>nextIdx</b> field included in the request. Note that this subarray will include the message just sent by the client, and other outstanding messages that the client might have not received yet. Try to go through the logic yourself and see how the clients and server keep track of the messages!
+</p>
+
+<p>
+	Awesome, well except the fact that messages only get received after a client sends a new message. Luckily, there is a simple solution: <b>polling</b>. In essence, all the client needs to do is manually check every so often to see of there is any updates.
+</p>
+
+<p>
+	<b>Add another POST endpoint</b> to <code>server.js</code>, similar to <b>'/newMsg'</b> with the following changes: <br>
+	</p><ol>
+		<li>The endpoint should be <b>'/'</b></li>
+		<li>No message should be added to our server’s array (since we just want to respond with new data).</li>
+		<li>The server should respond with any new messages and the new index, similar to our old endpoint.</li>
+		<li><b>isLastClient</b> should be false, since all new messages will come from the server</li>
+	</ol>
+<p></p>
+
+<p>Then add the following code to <code>script.js</code>:</p>
+
+<img src="./Lab 6 · CSE 110 Software Engineering_files/image21.png">
+
+<p>
+	Now when you test two separate windows again, they both update automatically every 5 seconds. This is definitely an improvement, but there is still some awkwardness about the method. When sending messages, there will be no contact for 5 seconds then a sudden burst of messages all at once. We could mitigate the issue by lowering the time between polls, but then how low can we make it before performance starts to degrade? There is a much better solution that fits this problem.
+</p>
+
+<br>
+
+<!-- WEB SOCKETS SECTION -->
+<h2 id="ReactJS">Web Sockets</h2>
+<p>
+	<b>Web Sockets</b> are a much more responsive technology, since they keep a connection directly open at all times for each client. This allows either the client or server to directly notify each other when changes occur on their side. In contrast to the request / response model, the server does not wait for a request before responding. We will use the package socket.io to finish up the chat app.
+</p>
+
+<p>
+	First, <b style="color: red">remove</b> the code in <code>script.js</code> and <code>server.js</code> that had to do with <u>either POST requests
+	or polling</u>, since they will not be necessary anymore. (You could store them in a different file for
+	reference).
+</p>
+
+<p>Next, there are a few number of things we need to do to set up sockets:</p>
+
+<ol>
+	<li>Add the following line to <code>index.html</code> <strong>right above</strong> the existing <b>&lt;</b><b>script</b><b>&gt;</b> tag (the order is important):
+	<br> <br>
+	<pre>&lt;script
+src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"&gt;
+&lt;/script&gt;</pre>
+	This line will simply import the socket.io package onto the front-end.
+	</li>
+	<br>
+	<li>
+		Add the following line to <code>script.js</code>:
+		<br> <br>
+		<pre>var socket = io.connect('http://localhost:3000');
+socket.on('connect', function(data) {
+	socket.emit('join', 'Hello server from client');
+});</pre>
+	The <code>socket.on()</code> method tells the package how to handle the <strong>'connect'</strong> event <strong>"emitted"</strong>, or sent, by the server. In our case, when the socket connects to the server, it emits a message of type <strong>'join'</strong> to the server, so that we can log the connection.
+	</li>
+	<br>
+	<li>
+		Finally, add the following code to the end of <code>server.js</code>
+		<br> <br>
+		<pre>var io = require('socket.io')(httpServer);
+
+// other middleware from earlier goes here
+
+var numClients = 0;
+io.on('connection', function(client) {
+	console.log('Client', numClients++, 'connected.');
+
+	client.on('join', function(data) {
+	console.log(data);
+	});
+});</pre>
+		Which will set up the server side to listen for incoming socket connections, and log them once connected. The 'connection' event is built in when a new socket connects to the server, where we just add the number of connections and log it. The 'join' event is custom defined by our application so that the client can send us unique data on connection.
+		<br>
+		After doing all the setup above, your code should overall look something like this: <br> <br><b>index.html</b><br>
+		<img src="./Lab 6 · CSE 110 Software Engineering_files/image1.png">
+		<br> <b>script.js</b> <br>
+		<img src="./Lab 6 · CSE 110 Software Engineering_files/image5.png">
+		<br> <b>server.js</b> <br>
+		<img src="./Lab 6 · CSE 110 Software Engineering_files/image15.png">
+		Test out the page again and check the console. Now we should see logs of the socket connections being made appear when a new page is connected:
+		<br> <br> <img src="./Lab 6 · CSE 110 Software Engineering_files/image18.png">
+		Now all that's left to do is hook up the real time updates to send messages! In script.js, we can add a handler for 'chat msg' events emitted by other clients:
+		<pre>socket.on('chat msg', function(msg) {
+	createHTMLMessage(msg, 'server');
+});</pre>
+		And add the following code in <code>inputElem.addEventListener(...)</code> inside the if statement, above the <code>inputElem.value = ""</code> line, where we previously had a call to <code>doPostRequest()</code>:
+		<br> <br>
+		<pre>createHTMLMessage(inputElem.value, 'client');
+socket.emit('chat', inputElem.value);</pre>
+		The above <code>socket.on('chat msg', ...)</code> call tells the socket.io how to handle 'chat msg' events emitted by the server. In our case, we just want to add them to the page as 'server' messages. Then, the <code>socket.emit()</code> code just tells the client to add the message locally to the front-end, then dispatch the event to the server so all other clients can receive the message. How the server does that is defined below.
+		<br> <br>
+		In <code>server.js</code>, we just need to add a handler for the chat action that will broadcast to all other open sockets. This should be added right next to the <code>client.on('join', ...)</code> (inside the callback to <code>io.on(‘connection’...)</code>, since it needs to be set per client on connection. <br> <br>
+		<pre>client.on("chat", function(msg) {
+console.log(msg);
+client.broadcast.emit('chat msg', msg);
+});</pre>
+		Now everything should be setup, and ready to chat! Open up the page in 2 windows and test that you are able to send messages instantly between them.
+		<br> <br>
+		<img src="./Lab 6 · CSE 110 Software Engineering_files/image12.png">
+		<br>
+	</li>
+</ol>
+
+
+
+<h1>Completion Checkoff!</h1>
+<ul>
+	<li>
+		Please fill out this Google form to let us know how we can improve this lab in the future!<br>
+		<a href="https://goo.gl/forms/7ksF3mQOvj7Gs1Up2">https://goo.gl/forms/7ksF3mQOvj7Gs1Up2</a>
+	</li>
+	<br>
+	<li>
+		Make sure you understand the different ways to use express, and the different ways of serving dynamic content (such as POST requests, polling, and sockets).
+	</li>
+	<br>
+	<li>
+		Open up two windows such as the screenshot above and ensure messages can be sent between the two. A staff member will verify the above works before giving the checkoff.
+	</li>
+</ul>
+
+</div>
+</div>
+
+<label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+<script type="text/javascript" src="./Lab 6 · CSE 110 Software Engineering_files/script.js.download"></script>
+
+
+</body></html>

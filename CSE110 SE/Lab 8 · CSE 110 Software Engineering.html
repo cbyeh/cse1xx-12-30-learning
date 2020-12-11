@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://ieng6.ucsd.edu/~cs110x/static/labs/lab8/index.html -->
+<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+
+      Lab 8 · CSE 110 Software Engineering
+
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./Lab 8 · CSE 110 Software Engineering_files/poole.css">
+  <link rel="stylesheet" href="./Lab 8 · CSE 110 Software Engineering_files/syntax.css">
+  <link rel="stylesheet" href="./Lab 8 · CSE 110 Software Engineering_files/lanyon.css">
+  <link rel="stylesheet" href="./Lab 8 · CSE 110 Software Engineering_files/css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://ieng6.ucsd.edu/~cs110x/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="http://ieng6.ucsd.edu/~cs110x/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://ieng6.ucsd.edu/atom.xml">
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>Course Website for CSE110, Fall Quarter 2019</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/">Home</a>
+    <a class="sidebar-nav-item active" href="http://ieng6.ucsd.edu/~cs110x/static/labs/">Labs</a>
+    <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/lectures_a00/">Lecture Notes</a>
+    <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/logistics_a00/">Logistics</a>
+    <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/resources/">Resources</a>
+    <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/artifacts/">Artifacts</a>
+    <a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/syllabus/">Syllabus</a>
+    <!-- <a class="sidebar-nav-item" href="">Weekly TODO</a> -->
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      © 2019. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="http://ieng6.ucsd.edu/~cs110x/" title="Home">CSE 110 Software Engineering</a>
+            <small>Inc.</small>
+          </h3>
+        </div>
+      </div>
+
+
+      <div class="container content" id="instructions">
+        <h1 id="refactoring">Refactoring</h1>
+
+<hr>
+
+<h2 id="unit-1-introduction-to-refactoring">Unit 1: Introduction to refactoring</h2>
+<ul>
+  <li>Definition: Code refactoring is the process of restructuring existing computer code – changing the
+      factoring – without changing its external behavior. Refactoring improves portabilty and reusability of the software.</li>
+  <li>Often it is good to refactor your code many times during the course of developing a project.  As
+      you progress you think of better ways of structuring your code as well as possibly better algorithms
+      or data structures to use to support functionality and speed.</li>
+  <li>In this lab you will focus on the act of refactoring. Having code and tests that enable easy refactoring
+      without fear of “breaking” something is a sign of a well-designed project. If you as a software
+      engineer are afraid to refactor your code, it is probably because it is not well written in the first
+      place or you have not written sufficient tests to feel comfortable in changing how your project is run.</li>
+</ul>
+
+<hr>
+
+<h2 id="unit-2-to-start-this-lab-create-a-new-intellij-project-as-you-did-in-lab-2">
+       Unit 2: Creating Project</h2>
+
+<ul>
+  <li>To start this lab create a new java project in IntelliJ like the one you did for lab 2 and name it CSE110Refactoring.
+      If you need some reminders on how to create a project visit the link below for more information.
+      <a href="http://ieng6.ucsd.edu/~cs110x/static/labs/lab2/index2.html" title="Home">Lab 2</a></li>
+</ul>
+
+<hr>
+
+<h2 id="unit-3-now-that-your-project-is-created-lets-download-the-files-for-this-project">
+    Unit 3: Downloading the Necessary Files</h2>
+
+<ul>
+  <li>Download the files: <a href="http://ieng6.ucsd.edu/~cs110x/static/res/Refactoring-StarterFiles.zip">here</a></li>
+ <!-- <li>Also, you can use the following command to obtain the files from GitHub <code>git clone https://github.com/cse110sp2015/lab7.git</code></li>-->
+  <li>Inside the downloaded file you should see 9 java files. Copy paste them into your new projects src file and it should look like this.<br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image1.png" alt="image1"></li>
+  <li>Likely you will immediately get errors concerning JUNIT not being detected. To fix these issues:
+    <ul>
+      <li>Open up either of the two test classes <strong>VideoGameRentalTest.java</strong> for example.
+	  At the top of the code next to <strong>import</strong> click on the <strong>+</strong> to expand the code.
+          You will see red highlighted code next to the <strong>import</strong> over the word <strong>junit</strong>
+	  right click on the red lightbulb and select <strong>Add JUnit to the path</strong> ('Junit4'). Then choose the
+	  <strong>Copy JUnit library files</strong>  and add it to the <strong>lib</strong> folder of your project.
+	  Now click <strong>OK</strong>, then all the errors from the test classes should disappear.
+	  If you couldn't see the light bulb after hovering over the red section, just click on the red section and then
+	  <strong>alt+enter</strong> will bring up the light bulb for you. If you do not get the proper option to add junit
+	  to the classpath; try this process while hovering over one of the other red highlights, such as <strong>@Before</strong>,
+	  restarting IntelliJ, and (as a last resort, this is bad practice) moving a junit-4.7.jar file into the src directory.
+	  <br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image2.png" alt="image2"></li>
+    </ul>
+  </li>
+  <li>Now run the provided tests to make sure your project is running as expected.
+    <ul>
+      <li>Navigate to <strong>MovieRentalTest.java</strong> open the file and right click anywhere in the code panel.
+          You will see an option <strong>Run MovieRentalTest</strong> and it should complete with no errors.
+          Repeat this for the file named <strong>VideoGameRentalTest.java</strong><br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image5.png" alt="image5"></li>
+    </ul>
+  </li>
+</ul>
+
+<hr>
+
+<h2 id="unit-4-junit-tests">Unit 4: Junit Tests</h2>
+
+<ul>
+  <li>
+     <p>Refactoring is not supposed to change any of the functionality of the code, you are just supposed to be
+	cleaning up the codebase. Thus, it is vital that you have a set of unit tests which makes sure that your
+	refactoring hasn’t broken anything. If you look in the file MovieRentalTest.java, you will see a
+	number of tests already written, and a number of stubs. A stub is a controllable replacement for an
+	existing dependency (or collaborator) in the system. By using a stub, you can test your code without
+	dealing with the dependency directly. When a customer rents a movie, they specify
+	how many days they will rent that movie for. Depending on the type of movie (REGULAR, CHILDRENS, or NEW_RELEASE)
+	they will pay a different price, and gain a different amount of frequent renter points. The table
+	spelling out these calculations can be seen below.<br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image6.png" alt="image6"><br>
+So for example, a customer renting a REGULAR movie for 5 days would pay $2.00 + 3 * $1.50 = $6.50.</p>
+  </li>
+  <li>
+     <p>Now lets say you rented 2 movies, a REGULAR movie for 1 day and another regular movie for 3 days.
+	You would pay $2.0 for the first one + $3.5 dollars for the second ($2.0 for first two days and $1.50 for the third).
+	You would get 2 frequent renter points, 1 for each movie.</p>
+    <ul>
+     <li>Notice that the 3 stubs are:<strong>testStatementRegularMovieOnly(), testStatementChildrensMovieOnly(), and
+	 testStatementNewReleaseOnly()</strong>. You are to&nbsp;<strong>fill in these methods</strong> with tests&nbsp;that test what
+	 happens when a customer rents out the specified movie type for&nbsp;<strong>different day lengths</strong>.
+	 Hint: As the only way to tell that the customer’s amounts and frequent renter points are added up correctly
+	 is through the statement() method in Customer.java, you must use an <strong>assertEquals()</strong>.</li>
+      <li>Here is an example for <strong>testStatementNewReleaseOnly()</strong>:</li>
+    </ul>
+
+    <pre><code>Customer janeDoe = new Customer("Jane Doe");
+//rental #1
+janeDoe.addMovieRental(new MovieRental(slumdogMillionaire, 1));
+assertEquals("Rental Record for Jane Doe\n" +
+              "\tSlumdog Millionaire\t3.0\n" +
+              "Amount owed is 3.0\n" +
+              "You earned 1 frequent renter points",
+              janeDoe.statement());
+
+//rental #2, renting additional copy of slumdogMillionaire
+janeDoe.addMovieRental(new MovieRental(slumdogMillionaire, 2));
+assertEquals("Rental Record for Jane Doe\n" +
+              //the first movie rental above ( for 1 day )
+              "\tSlumdog Millionaire\t3.0\n" +
+              //the current movie rental ( for 2 days )
+              "\tSlumdog Millionaire\t6.0\n" +
+              //Total of first movie rental cost and second movie rental cost
+              "Amount owed is 9.0\n" +
+              //notice it is the 1 point from before and 2 points for 2 or more days for the current movie.
+              "You earned 3 frequent renter points",
+              janeDoe.statement());</code></pre>
+
+    <ul>
+      <li>Something you should notice in this code is that the second statement shows both the first and second movie,
+	that is because the first movie is still in janeDoe's Movie Rentals. Be sure to account for this when
+	you write the print statements for your tests! You should have <strong>at least 3 rentals</strong> per
+	test case to make sure that you are testing all the different cases (amounts of days) for each rental type.
+	Note: You should not need to change any of the provided code (under src/) at this step to make your tests pass.
+	If you find something that you think requires changing any code (under src/), then ask an executive for clarification.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr>
+
+<h2 id="unit-5-refactoring">Unit 5: Refactoring</h2>
+
+<ul>
+  <li>IntelliJ presents a number of excellent automatic refactoring tools that take much of the tedium out of refactoring.
+	Of course, none of these tools are perfect and you will still need to do some of the refactoring by hand,
+	but they can reduce the total amount of time that refactoring would otherwise take.</li>
+  <li>Navigate to the <strong>statement()</strong> method in the <strong>Customer.java</strong> class and notice that
+	for each movie in the vector, you are calling into a switch statement. This would be much easier to read in its own method.
+	To have IntelliJ automatically extract a method for you, highlight the block of code starting with
+	<strong>double thisAmount = 0;</strong> and the entire switch statement. Now select
+	<strong>Refactor =&gt; Extract=&gt; Method...</strong> and for the Method name put <strong>amountFor</strong>.
+	Notice that IntelliJ has automatically generated this method at the end of the file<br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image7.png" alt="image7"><br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image8.png" alt="image8"><br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image9.png" alt="image9"></li>
+  <li>
+    <p>Now you should see the code replaced with a method call!<br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image10.png" alt="image10"></p>
+  </li>
+  <li>
+    <p>The names of the variables inside of our new method should be renamed, as they do not provide enough
+	information as to what they represent. To do this, highlight the variable <strong>each</strong> inside of the
+	amountFor method and go to <strong>Refactor =&gt; Rename</strong> and enter in the new name
+	<strong>aRental</strong>. Do the same for <strong>thisAmount</strong> and rename it <strong>result</strong>.
+	IntelliJ will rename all instances of both variables, but only within this scope.<br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image11.png" alt="image11"><br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image12.png" alt="image12"><br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image13.png" alt="image13"></p>
+  </li>
+  <li>
+    <p>Since the method <strong>amountFor()</strong> uses nothing in the <strong>Customer</strong> class,
+	and uses methods inside of the <strong>MovieRental</strong> class exclusively, you ought to move this method.
+	Highlight the <strong>amountFor</strong> method and navigate to <strong>Refactor =&gt; Move</strong>.
+	 IntelliJ is smart enough to automatically detect that this method should be moved to the <strong>MovieRental</strong>
+	class, so no work needs to be done other than clicking <strong>Refactor</strong>.<br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image14.png" alt="image14"></p>
+  </li>
+  <li>
+	<p>Now rename the <strong>amountFor</strong> method in <strong>MovieRental</strong> class to something more
+	   readble. Go to <strong>MovieRental.java</strong> and highlight the <strong>amountFor</strong> method and
+	   navigate to <strong>Refactor -&gt; Rename -&gt;</strong> and then change the name of <strong>amountFor</strong>
+	   to <strong>getCharge</strong>.
+	   <img src="./Lab 8 · CSE 110 Software Engineering_files/image14.1.png" alt="image14.1"></p>
+  </li>
+  <li>
+    <p>Notice that in the <strong>Customer</strong> class you are directly accessing the movie's _title field, which is not good a
+	encapsulation practice, so you need to change that. Navigate to <strong>Movie.java</strong>  select the <strong>_title</strong>
+	field and on the top menu click on <strong>Refactor =&gt; Encapsulate Fields</strong>. Keep everything the same in the
+	prompt and click <strong>Refactor</strong>. This will replace all references to the _title field in all of your code,
+	which saves you from looking for all references in your code.<br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image15.png" alt="image15"><br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image16.png" alt="image16"></p>
+  </li>
+  <li>
+    <p>The variable <strong>thisAmount</strong> in <strong>Customer.java</strong> seems unnecessary, as it is used in only 2 places in the code,
+	and you would be better off not declaring a variable at all. When you inline a variable you exchange all references to that
+	variable with its value. In this case you are going to replace all instances of <strong>thisAmount</strong> with
+	<code>each.getCharge()</code>. Find and replace does the same thing, but the refactoring tool is more aware of
+	Java syntax, and only replaces references to the <strong>thisAmount</strong> in the <strong>statement</strong> method. Highlight
+	any <strong>thisAmount</strong> (anywhere will do) and go to <strong>Refactor =&gt; Inline</strong> and select <strong>Refactor</strong>.<br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image17.png" alt="image17"></p>
+  </li>
+  <li>
+    <p>Now extract the calculation for <strong>frequentRenterPoints</strong> into its own method inside the <strong>
+	Customer</strong> class. This will make your code
+	more reusable since this method can be used by various sections and classes of your code in case you come up
+	with a good idea to add to your code later. Do so by selecting <strong>frequentRenterPoints++</strong> and the
+	if statement immediately following "//add bonus". (See screenshot below.) Then do <strong>Refactor =&gt; Extract Method</strong> again.
+	This time name the method <strong>getFrequentRenterPoints</strong>.<br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image18.png" alt="image18"><br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image19.png" alt="image19"></p>
+  </li>
+  <li>
+    <p>Now you need to clean up the method that you just extracted, as you don't need to really pass in <strong>
+	frequentRenterPoints</strong>. Since you are already returning the new value of <strong>frequentRenterPoints</strong>
+	anyway, you might as well just change the method so you return the value of the points gained <strong>only on this movie
+	</strong> and instead add that returned value to the current value of the statement method's <strong>frequentRenterPoints
+	</strong> variable instead. Now remove the parameter <strong>frequentRenterPoints</strong> from the <strong>
+	getFrequentRenterPoints</strong> method. To do this select the method <strong>getFrequentRenterPoints</strong>
+	and go to <strong>Refactor =&gt; Change Signature</strong>. Select the frequentRenterPoints parameter and click
+	the <strong>minus sign</strong> on the bottom or on the right of the window and then click <strong>Refactor</strong> and click <strong>continue</strong>. Notice all the
+	red you created? Well that can be fixed really simply, replace the first
+	line (<code>frequentRenterPoints++</code>) in the method with <code>int frequentRenterPoints = 1;</code>.</p>
+	<img src="./Lab 8 · CSE 110 Software Engineering_files/image19.1.png" alt="image19.1"><p></p>
+	<img src="./Lab 8 · CSE 110 Software Engineering_files/image19.2.png" alt="image19.2"><p></p>
+  </li>
+  <li>
+    <p>Now you need to test your new methods to ensure you did not break anything. Navigate to <strong>MovieRentalTest.java</strong>
+	and right click anywhere inside the code then hit <strong>run</strong>. You will see an error pop up in the bottom,
+	your refactoring has broken something! Click on the <strong>error</strong> to get the below display.<br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image20.png" alt="image20"></p>
+  </li>
+  <li>
+	<!--The one character chnage is frequentRenterPoints += getFrequentRenterPoints(each)-->
+    <p>Looking at the failure trace you seem to be adding up frequent renter points wrong, or, rather, <strong>not at all</strong>.
+	There is one character that needs to be changed (<code>frequentRenterPoints = getFrequentRenterPoints(each);</code>)
+	depending on how you highlighted things earlier. <strong>Make the one character change yourself</strong>.  Hint:
+	Read this step on frequent renter points again. This is why you need unit tests, small mistakes can break the functionality
+	of your program and you would likely have never seen that one.</p>
+	<img src="./Lab 8 · CSE 110 Software Engineering_files/image20.3.png" alt="image20.3"><p></p>
+  </li>
+  <li>Looking over the <strong>getFrequentRenterPoints</strong>, it seems that this method would make a lot more sense in the
+	<strong>MovieRental</strong> class, so move it like you did for <strong>amountFor/getCharge</strong>.</li>
+</ul>
+
+<hr>
+
+<h1 id="check-point--">— <strong>In Progress Check</strong> —</h1>
+<p>When you reach to this point make sure you have 3 test cases for each <strong>MovieRental</strong> (total of 9 test cases
+   for Regular, new release and children movies) unit tests in your <strong>MovieRentalTest.java</strong>,
+   if your <strong>MovieRentalTest</strong> passes all 9 then add a ticket to
+   the Autograder queue with one tag for the priority of your ticket and another with in progress check status. Bring up your
+   lab reserevation time in cse110.com for the staff member to verify. A member of the staff will verify that you have completed the required sections
+   so far along with your lab reservation time.</p>
+<hr>
+
+<h2 id="unit-6-sub-classing-and-constants">Unit 6: Sub-classing and Constants</h2>
+
+<ul>
+  <li>
+    <p>That switch statement in <strong>MovieRental</strong> class is verbose and will only become longer with more
+	movie-specific implementations. Thus we will replace the state variable <strong>priceCode</strong> of
+	<strong>MovieRental</strong> with inheritance to get rid of it. Note that this change will
+	somewhat alter the usage of your classes, the functionality will all be there, but you will no longer need
+	the <strong>priceCode</strong> passed into the movie. As you have to edit your tests; this is technically not a
+	true refactoring, but you will be implementing it because it will show off some more useful IntelliJ features.</p>
+  </li>
+  <li>
+    <p>Before you do that, move the <code>getCharge()</code> and <code>getFrequentRenterPoints()</code> methods into the
+	<strong>Movie</strong> class. <strong>Do not use IntelliJ move method.</strong> To save you time you will just
+	<strong>copy-paste</strong> the code, add the following to the movie class:</p>
+  </li>
+</ul>
+<pre><code>public double getCharge(int _daysRented) {
+  double result = 0;
+  // determine amounts for each line
+  switch (_priceCode) {
+    case Movie.REGULAR:
+      result += 2;
+      if (_daysRented &gt; 2)
+        result += (_daysRented - 2) * 1.5;
+      break;
+    case Movie.NEW_RELEASE:
+      result += _daysRented * 3;
+      break;
+    case Movie.CHILDRENS:
+      result += 1.5;
+      if (_daysRented &gt; 3)
+        result += (_daysRented - 3) * 1.25;
+      break;
+  }
+  return result;
+}
+
+public int getFrequentRenterPoints(int _daysRented) {
+  int frequentRenterPoints = 1;
+  // add bonus for a two day new release rental
+  if ((getPriceCode() == Movie.NEW_RELEASE) &amp;&amp; _daysRented &gt; 1)
+    frequentRenterPoints += frequentRenterPoints;
+  return frequentRenterPoints;
+}
+</code></pre>
+
+<ul>
+  <li>Now change the <strong>getCharge()</strong> and <strong>getFrequentRenterPoints()</strong> method in the
+	MovieRental class to instead read:</li>
+</ul>
+<pre><code>public double getCharge() {
+  return _movie.getCharge(_daysRented);
+}
+
+public int getFrequentRenterPoints() {
+  return _movie.getFrequentRenterPoints(_daysRented);
+}
+</code></pre>
+
+<ul>
+  <li>Run the <strong>MovieRentalTest</strong> again to make sure you have not broken your code after the changes
+	you made so far.
+  </li>
+  <li>Now you will implement some object oriented design principles and create 3 subclasses of <strong>Movie</strong>.
+    <ul>
+      <li>Right click <strong>src=&gt;New=&gt;Java Class</strong>
+	<img src="./Lab 8 · CSE 110 Software Engineering_files/image20.4.png" alt="image20.4"></li>
+
+      <li>Name this first class <strong>RegularMovie</strong> then edit the class to extend <strong>Movie</strong><br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image21.png" alt="image21"></li>
+      <li>You can see the class is underlined in red. Right hover over the red underline and click the lightbulb to the
+	left and select <strong>Create constructor matching super class</strong>. This will create a constructor to work
+	with the original <strong>Movie</strong> constructor via the super method to make an extended object.<br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image22.png" alt="image22"><br>
+    </li></ul>
+  </li>
+  <li>Repeat these steps creating 2 more classes
+    <ul>
+      <li>ChildrensMovie</li>
+      <li>NewReleaseMovie</li>
+    </ul>
+  </li>
+  <li>
+    <p>Because the <strong>Movie</strong> class now has classes that extend off it, you can push the <strong>getCharge(int)</strong>
+	and <strong>getFrequentRenterPoints(int)</strong> methods into its children. As you want the actual implementation of the
+	<strong>getCharge(int)</strong> and <strong>getFrequentRenterPoints(int)</strong> methods to occur in the subclasses,
+	you should move that method down from <strong>Movie</strong>. Select the <strong>getCharge(int)</strong> and
+	<strong>getFrequentRenterPoints(int)</strong> method and navigate to <strong>Refactor =&gt; Push Member Down</strong>.
+	Select the two methods to be pushed down and check the abstract button as in the images below.<br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image24.png" alt="image24"><br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image25.png" alt="image25"><br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image26.png" alt="image26"></p>
+  </li>
+  <li>
+    <p>For each of the 3 subclasses <strong>remove the switch statement</strong> in <strong>getCharge</strong>, and have it
+	<strong>return the cost for the appropriate movie type</strong>.</p>
+  </li>
+  <li>
+    <p>While you are in those 3 classes we will be removing all of those magic numbers. Lines like <strong>thisAmount += 1.5;</strong>
+	magically add some amount that we would have to go through and change in our code if we wanted to edit it. The easiest solution
+	to these is to replace them all with constants that make this all much easier to read. In the <strong>ChildrensMovie</strong>
+	class highlight the number 3 and go to <strong>Refactor =&gt; Extract =&gt; Constant</strong>; name it
+	<strong>NUM_DAYS_BASE_CONST</strong> and make sure that <strong>Replace all occurrences of the selected expression with references
+	to the constant</strong> is checked. Now replace the remaining numbers in the same manner. In the end you should have 4 constants:
+	<strong>FREQUENT_RENTER_POINTS, NUM_DAYS_BASE_CONST, LONG_TERM_RENTAL_COST, BASE_RENTAL_COST</strong>. (For the <strong>ChildrensMovie</strong>
+	class these would have the values 1, 3, 1.25, 1.5, respectively.) Do the same in <strong>RegularMovie and NewReleaseMovie</strong>.<br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image27.png" alt="image27"><br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image28.png" alt="image28"></p>
+  </li>
+  <li>Because <strong>getCharge</strong> now returns the cost for each subclass, the <strong>priceCode</strong> parameter is now deprecated.
+	<strong>Delete all references</strong> to the <strong>_priceCode</strong> parameter in the constructors of all 3 subclasses.
+	<strong>Delete all 3 static constants</strong> in the <strong>Movie</strong> class, any reference to <strong>_priceCode</strong>
+	in the constructor, and the getter and setter methods. Make sure that you delete the setter and getter mthods from the <strong>Movie</strong>
+	class.
+    <ul>
+      <li>To do this press <strong>cntrl+shift+f</strong> this will bring up a box that will search all files for you. They will be listed in
+	  the bottom section of the IDE as shown in the images below.<br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image29.png" alt="image29"><br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image30.png" alt="image30"></li>
+    </ul>
+  </li>
+  <li>
+	<p>Now you need to change the <strong>getFrequentRenterPoints</strong> method in each of the subclasses, since this method now
+	is specific to each type of movie and doesn't require to get the price code and check. Update the <strong>getFrequentRenterPoints</strong>
+	so it is not dependant on the <strong>getPriceCode()</strong> any longer. Update this in all 3 subclasses.
+  </p></li>
+  <li>Since we have now fundamentally changed our code's functionality, our tests need to be slightly rewritten.
+	Replace the setup method in the test class with the following:</li>
+</ul>
+
+<pre><code>@Before
+public void setUp() {
+  theManWhoKnewTooMuch = new RegularMovie("The Man Who Knew Too Much");
+  mulan = new ChildrensMovie("Mulan");
+  slumdogMillionaire = new NewReleaseMovie("Slumdog Millionaire");
+}
+</code></pre>
+
+<ul>
+  <li>
+    <p>Now delete all tests in the <strong>MovieRentalTest</strong> having to do with <strong>priceCode.</strong></p>
+  </li>
+  <li>
+    <p>Rerun your tests to make sure they all pass. The code you pasted in fixes the issue with frequent renter points so
+	they will match the description given to you at the starting of the lab. Please change your tests accordingly.
+	For example, if you rented a 3 children's movies, you would get 3 renter points (one for each rental).</p>
+    <ul>
+      <li>Note the tests will fail at first and point you to methods that need to change to support your new implementation
+	with inheritance. If you understand the steps you just completed fixing these errors should be trivial.</li>
+      <li>If you are getting errors, ensure that you have deleted all the refernces to the <strong>priceCode</strong>,
+	  the constants relevant to it, and all the getter and setter methods in the <strong>Movie</strong> class that
+	  has anything to do with the <strong>priceCode</strong>. Also ensure that the signature for the <strong>Movie</strong>
+	  class constructor and the constructors of its subclasses has been updated to reflect all the changes.</li>
+      <li>After you are done with these changes your tests need to pass.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr>
+
+<h2 id="unit-7-superclassing">Unit 7: Superclassing</h2>
+
+<ul>
+  <li>
+    <p>So far we have only paid attention to the <strong>Movie</strong> class and all its issues, now you will turn your
+	attention toward the 3 video game classes: <strong>Ps3Game, Xbox360Game, and WiiGame</strong>. If you look through
+	all these classes they seem to have very similar methods (in fact duplicated for the most part), yet are used in a
+	rather ugly fashion in the <strong>VideoGameRental</strong> class. To solve this you will be creating a superclass
+	called <strong>VideoGame</strong> which all 3 will inherit from.</p>
+  </li>
+  <li>
+    <p>In the <strong>Ps3Game</strong> class select <strong>Ps3Game</strong> right after public class and navigate to
+	<strong>Refactor =&gt; Extract =&gt; Superclass</strong>. In the prompt make sure to name the new class
+	<strong>VideoGame</strong>. Select the options in the image below to create your super class.
+	Now change both the other video game classes <strong>xbox360 and wii</strong> to extend the new <strong>VideoGame</strong>
+	superclass.<br>
+<img src="./Lab 8 · CSE 110 Software Engineering_files/image31.png" alt="image31"></p>
+  </li>
+  <li>
+    <p>Now you need to go and change the implemenation of the <strong>VideoGameRental</strong> class. Right now it is using
+	a field of type Object, a very bad practice since finding bugs will be very hard. Replace the class with the following:</p>
+  </li>
+</ul>
+<pre><code>public class VideoGameRental {
+  private VideoGame _videoGame;
+  private int _daysRented;
+  private boolean _consoleRented;
+
+  public VideoGameRental(VideoGame videoGame, int daysRented, boolean consoleRented) {
+    _videoGame = videoGame;
+    _daysRented = daysRented;
+    _consoleRented = consoleRented;
+  }
+
+  public int getDaysRented() {
+    return _daysRented;
+  }
+
+  public VideoGame getVideoGame() {
+    return _videoGame;
+  }
+
+  public double getCharge() {
+    return _videoGame.getCharge(_daysRented, _consoleRented);
+  }
+
+  public int getFrequentRenterPoints() {
+    return _videoGame.getFrequentRenterPoints(_daysRented, _consoleRented);
+  }
+}
+</code></pre>
+
+<ul>
+  <li>Run your tests and ensure that they pass!</li>
+  <li>If you get some errors then you need to ensure that all 3 subclasses extend the <strong>VideoGame</strong> superclass.</li>
+</ul>
+
+<hr>
+
+<p>Please fill out this Google form to let us know how we can improve this lab in the future! <a href="https://goo.gl/forms/7ksF3mQOvj7Gs1Up2">https://goo.gl/forms/7ksF3mQOvj7Gs1Up2</a>
+
+
+</p><h1 id="check-point----">— <strong>Completion Check</strong> —</h1>
+<ul>
+  <li>When you finish with both the <strong>Movie and VideoGame</strong> sections and both test classes pass all the tests then
+	add a ticket to the Autograder queue with one tag for the priority of your ticket and another with lab completion
+	check tag so a member of the staff will help you. However bear in mind that you will only get checkoff priority
+	during your own lab reservation time. During any other CSE 110 lab hour your checkoff request will be considered
+	only if there are staff members who are not helping students from that lab hour.
+  </li>
+</ul>
+<hr>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script type="text/javascript" src="./Lab 8 · CSE 110 Software Engineering_files/script.js.download"></script>
+
+
+
+</body></html>

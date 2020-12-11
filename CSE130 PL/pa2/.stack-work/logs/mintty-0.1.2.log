@@ -1,0 +1,6 @@
+Configuring mintty-0.1.2...
+Preprocessing library for mintty-0.1.2..
+Building library for mintty-0.1.2..
+[1 of 1] Compiling System.Console.MinTTY ( src\System\Console\MinTTY.hs, .stack-work\dist\e626a42b\build\System\Console\MinTTY.o )
+Installing library in C:\sr\snapshots\b7cb0a9e\lib\x86_64-windows-ghc-8.6.5\mintty-0.1.2-85g9gbo2GMg5MDWVJGE1JU
+Registering library for mintty-0.1.2..

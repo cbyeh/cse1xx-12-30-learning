@@ -1,0 +1,17 @@
+1.  For inserting, the BST was significantly faster than the BSA.
+
+2.  For finding, the BST was slightly faster than the BSA.
+
+3.  The BST finding is O(h), as we only need to traverse up to its height.
+In the worst case, h is n. Similarly it is the same for its insertion,
+as we need to find its proper place in the tree.
+    The BSA finding is O(logn) as we half our array elements to look in
+with each iteration. Similarly it is the same for its insertion,
+as we just call find and insert where it should be.
+
+    When we have a small number of data to insert, our BSA will occasionally
+be faster for finding. However it is rare.
+    My guess why our BST is usually faster is because when we have a large
+problem size, it is very improbable we reach a worst case. 
+Which means our height is small and thus finding
+and inserting takes less than O(logn) time.

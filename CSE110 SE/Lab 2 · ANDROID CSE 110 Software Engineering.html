@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://ieng6.ucsd.edu/~cs110x/static/labs/lab2/index.html -->
+<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link href="http://gmpg.org/xfn/11" rel="profile">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+	<title>
+
+		Lab 2 · CSE 110 Software Engineering
+
+	</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="./Lab 2 · CSE 110 Software Engineering_files/poole.css">
+	<link rel="stylesheet" href="./Lab 2 · CSE 110 Software Engineering_files/syntax.css">
+	<link rel="stylesheet" href="./Lab 2 · CSE 110 Software Engineering_files/lanyon.css">
+	<link rel="stylesheet" href="./Lab 2 · CSE 110 Software Engineering_files/css.css">
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://ieng6.ucsd.edu/~cs110x/public/apple-touch-icon-precomposed.png">
+	<link rel="shortcut icon" href="http://ieng6.ucsd.edu/~cs110x/public/favicon.ico">
+
+	<!-- RSS -->
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://ieng6.ucsd.edu/atom.xml">
+</head>
+
+
+<body>
+
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+ styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+	<div class="sidebar-item">
+		<p>Course Website for CSE110, Fall Quarter 2019</p>
+	</div>
+
+	<nav class="sidebar-nav">
+		<a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/">Home</a>
+		<a class="sidebar-nav-item active" href="http://ieng6.ucsd.edu/~cs110x/static/labs/">Labs</a>
+		<a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/lectures_a00/">Lecture Notes</a>
+		<a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/logistics_a00/">Logistics</a>
+		<a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/resources/">Resources</a>
+		<a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/artifacts/">Artifacts</a>
+		<a class="sidebar-nav-item" href="http://ieng6.ucsd.edu/~cs110x/static/syllabus/">Syllabus</a>
+		<!-- <a class="sidebar-nav-item" href="">Weekly TODO</a> -->
+	</nav>
+
+	<div class="sidebar-item">
+		<p>
+			© 2019. All rights reserved.
+		</p>
+	</div>
+</div>
+
+
+<!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+     content to avoid any CSS collisions with our real content. -->
+<div class="wrap">
+	<div class="masthead">
+		<div class="container">
+			<h3 class="masthead-title">
+				<a href="http://ieng6.ucsd.edu/~cs110x/" title="Home">CSE 110 Software Engineering</a>
+				<small>Inc.</small>
+			</h3>
+		</div>
+	</div>
+
+
+	<div class="container content" id="instructions">
+
+		<h2 id="lab-title">Android Calculator</h2>
+
+		<h3 id="Goals">Learning Goals:</h3>
+		<ul>
+			<li>
+				<p>At the end of this lab, you should be able to:</p>
+			</li>
+			<ul>
+				<li>Familiarize yourself with Android Studio, the official IDE for building Android apps;</li>
+				<li>Use Android Studio to create a basic Android calculator application.<br></li>
+			</ul>
+			<li>
+				<p>For more information on Android and Android Studio,
+					check the following:</p>
+			</li>
+			<ul>
+				<li><a href="https://developer.android.com/about/android.html" target="_blank">Android</a></li>
+				<li><a href="https://developer.android.com/studio/features.html" target="_blank">Android Studio</a></li>
+			</ul>
+
+		</ul>
+
+		<hr>
+
+		<h3 id="Content">Content:</h3>
+		<ul>
+			<li><a href="http://ieng6.ucsd.edu/~cs110x/static/labs/lab2/index.html#intro-android">Unit 1: Introduction to Android</a></li>
+			<li><a href="http://ieng6.ucsd.edu/~cs110x/static/labs/lab2/index.html#project">Unit 2: Creating a Project</a></li>
+			<li><a href="http://ieng6.ucsd.edu/~cs110x/static/labs/lab2/index.html#android-vm">Unit 3: Creating an Android Virtual Machine</a></li>
+			<li><a href="http://ieng6.ucsd.edu/~cs110x/static/labs/lab2/index.html#calculator">Unit 4: Calculator Application</a></li>
+			<ul>
+				<li><a href="http://ieng6.ucsd.edu/~cs110x/static/labs/lab2/index.html#calc-start">4.1: Getting Started</a></li>
+				<li><a href="http://ieng6.ucsd.edu/~cs110x/static/labs/lab2/index.html#calc-design">4.2: Designing the App</a></li>
+				<li><a href="http://ieng6.ucsd.edu/~cs110x/static/labs/lab2/index.html#calc-logic">4.3: Adding the Logic</a></li>
+			</ul>
+			<li><a href="http://ieng6.ucsd.edu/~cs110x/static/labs/lab2/index.html#linux-help">NOTE: Additional info for Linux users</a></li>
+		</ul>
+
+		<hr>
+
+		<h2 id="intro-android">Unit 1: Introduction to Android</h2>
+		<ul>
+			<li>What is Android?
+				<ul>
+
+					<p>
+						Android is an operating system offered by Google. It runs in several different devices, such
+					as phones, tablets, wearables, automobiles, TVs, etc.
+					It uses Java under the hood, with many APIs available. An
+					application programming interface (API)
+					is a library provided by other developers to facilitate the use of certain generic
+					functionalities.
+					If you want to learn more about APIs, click
+					<a href="https://en.wikipedia.org/wiki/Application_programming_interface" target="_blank">here</a>.
+					</p>
+					<p>
+					Google is constantly releasing updates to Android. The (current) latest version of Android
+						is called Android 10. If you want to learn more about Android 10 and its new features, click
+					<a href="https://developer.android.com/about/versions/10" target="_blank">here</a>.
+					In this lab, you will get a brief introduction to some of the Android features and learn how to build
+						a simple mobile app. This lab is NOT a comprehensive tutorial; it is, however, a way to get
+						you acquainted with this platform, and hopefully inspire you to many great projects and products.
+						Be bold, limitless, and don't be afraid of exploring what Android has to offer.
+					</p>
+
+				</ul>
+			</li>
+			<li>Why Android?
+				<ul>
+					In CSE110, you will have 10 weeks (in reality, ~8 weeks) to develop a working application
+						from the ground up, and Android offers a great platform across different devices, a vibrant community,
+						and regular updates announced every year during the <a href="https://events.google.com/io" target="_blank">Google I/O event</a>.
+				</ul>
+			</li>
+		</ul>
+
+		<hr>
+		<p>In order to get the In Progress Check, you will need to run the <strong>First Application</strong> successfully
+			on the day of the lab during your specific lab reservation time.</p>
+
+		<hr>
+
+		<h2 id="project">Unit 2: Creating a Project</h2>
+		<ul>
+			<li>In case you have not already done so, please refer to the
+				<a href="http://ieng6.ucsd.edu/~cs110x/static/labs/lab2/index2.html" target="_blank"> pre-lab</a>
+				on how to download and install Android Studio.
+			</li>
+			<li>Launch Android Studio to create your first project.
+				<ul>
+					<li>
+						Click on the <strong>Start a new Android Studio project</strong> to get started
+						<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image1.png" alt="image1">
+					</li>
+					<li>
+						Next, there will be series of template "Activities" to add to the application.
+						Selecting these activities will configure the application for specific tasks,
+						such as the <em>Login Activity</em>. For now, select the <strong>Basic Activity</strong> under the <strong>Phones and Tablets</strong> tab,
+						then click <strong>Next</strong>.<br>
+						NOTE: You can add more activities to your application later.
+						<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image2.png" alt="image2">
+					</li>
+					<li>
+						Name the application <strong>FirstApplication</strong>.
+						The minimum API level asks for the target devices and minimum SDK for your application to run on.
+						The minimum SDK refers to the version
+						of Android any device running the application will be required to have in order to run properly.
+						For this project select:
+						<strong>API 21: Android 5.0 (Lollipop)</strong>,
+						and click <strong>Finish</strong>.
+						<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image3.png" alt="image3">
+					</li>
+					<li>
+						Android Studio generates all the necessary files to create the application,
+						which will load in a window similar the one below in about 1-2 minutes.
+						<ul>
+							<li>Note: if the project view (left side of the screen) looks different than
+							the image below, click the dropdown menu in the upper left (labeled "Android")
+							and change the view to match. <br \="">
+								Note: if your working area (canvas) looks different, click on the MainActivity.java tab located
+								above the working area.
+							</li>
+							<li>If the MainActivity.java tab is not there, navigate as follows: <br \="">
+								<p>Select <strong>Project</strong> on the project view dropdown, then go to
+								<code>FirstApplication -&gt; app -&gt; src -&gt; main -&gt;
+								java -&gt; com.mycompany.firstapplication -&gt; MainActivity.java</code></p>
+								<p>OR</p>
+								<p>Select <strong>Android</strong> on the project view dropdown, then go to
+								<code>app -&gt;
+									java -&gt; com.mycompany.firstapplication -&gt; MainActivity </code></p>
+							</li>
+							<li>NOTE: If you are having issues with Gradle, please click <a href="https://developer.android.com/studio/releases/gradle-plugin.html#updating-plugin" target="_blank">here</a> for help.</li>
+						</ul>
+						<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image4.png" alt="image4">
+					</li>
+					<li>
+						Now open the Main Activity on left sidebar, and rename the <strong>MainActivity</strong> to <strong>HelloWorld</strong>. Do this by right clicking the Main Activity, going to refactor, and then rename.
+						<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image5.png" alt="image5">
+					</li>
+				</ul>
+			</li>
+		</ul>
+
+		<h2 id="android-vm">Unit 3: Creating an Android Virtual Machine</h2>
+		<ul>
+			<p>
+				Now, we will create an Android emulator to run our <strong>First Application</strong>.
+				Emulators help test certain aspects of your application in different devices with relative ease.
+				Keep in mind, though, that the
+				<a href="https://developer.android.com/studio/run/emulator.html" target="_blank">emulator</a> does not
+				replace a real device, and it does NOT contain
+				virtual hardware for some features such as Bluetooth, NFC, or Wi-Fi (&lt; API 25).
+				For this lab, the emulator will work just fine.
+				<br>
+				NOTE: In general, it is preferred to test your Android apps using a real device instead of the emulator.
+			</p>
+			<li>
+				To get started, right click on your working area and click on <strong>Run 'app'</strong>
+				. Alternatively, you can also click on the green <em>Play</em> button.
+				<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image6.png" alt="image6">
+			</li>
+			<li>
+				You will now be prompted to select a device or an emulator. Click on <strong>Create New Virtual Device</strong>
+				 to add a new emulator.
+				<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image7.png" alt="image7">
+			</li>
+			<li>
+				On the next screen, select <strong>Phone</strong> as the category, then select a device.
+				 Keep in mind that newer devices usually require more disk space. Click <strong>Next</strong>.
+				<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image8.png" alt="image8">
+			</li>
+			<li>
+				Now, download and select <strong>Pie (API 28)</strong> as the image to load onto the emulator. Click <strong>Next</strong>.
+				<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image9.png" alt="image9">
+			</li>
+			<li>
+				Finally, you will be able to review your selections. Click <strong>Finish</strong> when done.
+				<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image10.png" alt="image10">
+			</li>
+			<li>
+				You will, then, be brought back to select a device or an emulator. Your newly created emulator will be listed.
+				 Simply choose the emulator, and click <strong>OK</strong>.
+				<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image11.png" alt="image11">
+			</li>
+			<li>
+				<p>If everything goes OK, the emulator will appear in a new window and load your app automatically.</p>
+				<ul>
+					<li>If you get a message that SystemUI has stopped working, choose the option to wait. Do not close the application.</li>
+					<li>If you aren't taken directly to your app, "swipe" (drag your 
+mouse) up on the Android home screen and select your FirstApplication app from
+ the apps drawer that comes up.</li>	
+				</ul>
+				
+				<p><strong>NOTE:</strong> Linux and Windows users <em>might</em> have some hardware acceleration issues.
+					If so, please click <a href="https://developer.android.com/studio/run/emulator-acceleration.html" target="_blank">here</a>
+					for help or check with a tutor.
+				</p>
+				<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image12.png" alt="image12">
+			</li>
+		</ul>
+
+		<h2 id="check-point"><strong>In Progress Check</strong></h2>
+
+		<ul>
+			<li>
+				When you are able to run the <strong>First Application</strong> application on the emulator or your phone
+				, please follow these instructions:
+			</li>
+			<ul>
+				<li>Add a ticket to the Autograder with one tag for the priority of your ticket and another with <i>In Progress Check</i> status;</li>
+				<li>Display your lab reservation time on cse110.com for verification. <u>Select your lab reservation time correctly</u>;</li>
+				<li>Display your completed <strong>First Application</strong> on the emulator or your phone.</li>
+			</ul>
+
+			<li>
+				A staff member will verify the above and give you an <i>In Progress Check</i>.
+			</li>
+		</ul>
+
+		<hr>
+
+		<h2 id="calculator">Unit 4: Calculator Application</h2>
+
+		Now, you will create a second application that does a little more than just printing "Hello World!"
+
+		<h3 id="calc-start">4.1: Getting Started</h3>
+		<ul>
+			<li>
+				To get started, create a new project by going to <strong>File -&gt; New -&gt; New Project</strong>.
+			</li>
+			<li>
+				select the <strong>Basic Activity</strong> under the <strong>Phones and Tablets</strong> tab, then click <strong>Next</strong>.<br>
+				<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image13.png" alt="image13">
+			</li>
+			<li>
+				Name the project <strong>Simple Calculator</strong>, and choose the <strong>API 21</strong> from the Minimum API Level menu and click <strong>Finish</strong>.
+				<ul>
+					<li>This option allows you to pick what versions of Android OS your application will support.
+					API 21 supports about 85% of Android users, and still has some newer features.
+						<strong>API 29</strong> is the current version (Android 10). For the purpose of this lab, leave all other settings as default.
+					</li>
+					<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image14.png" alt="image14">
+				</ul>
+			</li>
+			<li>Now we need a more complete view of an Android project. If you do NOT have a project view, select
+				 <strong>Project</strong> on the upper left corner to show a tree of your project. Then, above
+				the <strong>app</strong> tree, there is a drop down menu with Android selected by default. Select
+				<strong>Project</strong> to change to project view.
+				<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image15.png" alt="image15">
+			</li>
+			<li>
+				Now open
+				<strong>SimpleCalculator -&gt; app -&gt; src -&gt; main -&gt; java -&gt; (package name) -&gt; MainActivity
+						</strong> from the panel on the left side of the IDE.
+				<ul>
+					<li>
+						This is your activity's main class, which is very similar to Java's main. When the application is run, this is
+					the code that starts your app.
+						<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image16.png" alt="image16">
+					</li>
+				</ul>
+			</li>
+			<li>The next few bullets will demonstrate how Android controls its visual layer, or View.
+				<ul>
+					<li>From the left side panel open <strong>res -&gt; layout</strong>.
+						<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image17.png" alt="image17">
+					</li>
+					<li>Under the <em>layout</em> subdirectory you will see two files: <strong>activity_main.xml</strong> and <strong>content_main.xml</strong>.
+						 These two files control the default layout for your activity. <strong>activity_main.xml</strong> contains the
+						starter code for your application, and, at the bottom, links in the <strong>content_main.xml</strong>. <strong>content_main.xml</strong> is
+						where we will be adding content to update how our application looks.
+				</li></ul>
+			</li>
+			<li>
+				First, remove some irrelevant code from <strong>activity_main.xml</strong>. Double click to open the <strong>activity_main.xml</strong>
+				. You should something similar to the screen below.
+				<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image18.png" alt="image18">
+			</li>
+			<li>
+				Click on the <strong>Text</strong> tab at the bottom of the screen (in the bottom-left of the working area), next to the <strong>Design</strong> tab.
+				Now, delete the <strong>FloatingActionButton</strong> as seen in the highlighted code in the image below.
+				This will remove the extra email button that can be seen in the above image.
+				<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image19.png" alt="image19">
+				<ul>
+					<li>In Android Studio you can edit .xml or design code in either design mode or text mode.
+						Text mode is more powerful in the sense that it gives you the full power of xml,
+						but design allows for a drag and drop interface which is convenient for simple tasks.
+					</li>
+				</ul>
+			</li>
+
+			<li>Now, open <strong>content_main.xml</strong>. By default, the layout has been set to a <strong>Constraint
+				Layout</strong>, which allows you to position items relative to other items on the screen and work with
+				dimension constraints. Change that to <strong>Linear Layout</strong> which
+				stacks elements linearly. This will be simpler to write for our application purpose. The steps to change to <strong>Linear Layout</strong> follow:
+				<ul>
+					<li>Currently your <strong>content_main.xml</strong> looks like the image below.
+					Change the <strong>ConstraintLayout</strong>
+					to <strong>LinearLayout</strong>. In order to do so, replace the <strong>android.support.constraint.ConstraintLayout</strong> with <strong>LinearLayout</strong>.
+						<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image20.png" alt="image20">
+				</li>
+					<li>Once you make the changes in the opening (and closing) tags, click back to the <strong>Design</strong> tab.</li>
+				</ul>
+			</li>
+			<li>Now look for a vertically-oriented <strong>Component Tree</strong> text. Clicking on that expands a view that outlines
+				all the elements currently in your <strong>content_main.xml</strong>.
+				<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image21.png" alt="image21">
+				<ul>
+					<li>When you select a component in the tree it will highlight it on the virtual phone.
+						Use this to delete the <strong>TextView</strong>
+					containing <strong>Hello World</strong>
+						<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image22.png" alt="image22">
+					</li>
+				</ul>
+			</li>
+		</ul>
+
+		<h3 id="calc-design">4.2: Designing the App</h3>
+
+			Now you will use the Design mode to create the layout of your calculator!
+			<strong>IMPORTANT!</strong> Make sure you are using the latest version of Android Studio.
+				<ul>
+					<li>
+						<p>Start by clicking the LinearLayout in the ComponentTree. Then find the <strong>background</strong> attribute under the <em>Attributes</em> section on the right hand side (you might need to click "View all attributes" to find the background attribute).
+						Click the <strong>...</strong> to open a new window with some colors. Pick a pre-existing color or
+						add a new color resource - in this case, a new color value. Select the background color for your calculator. <br \="">
+						(If you like the one on the screenshot, use FF8FA7B5)
+							<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image23.png" alt="image23"></p>
+					</li>
+					<li>
+						Now, you will display the application's title. On the left hand palette, select <strong>TextView</strong>,
+						and drag it onto the phone screen.
+						<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image24.png" alt="image24">
+					</li>
+					<li>
+						When you drag the TextView, you probably noticed that there is only one place you can put the item on the screen.
+						This is because you are using a <strong>Linear Layout</strong>, which either stacks items horizontally or vertically.
+					</li>
+					<li>
+						Now, double click on the TextView to change the displayed text. Change it to <strong>Simple Calculator</strong>.
+						The <em>ID</em> attribute is the name of the element. This is used to identify the <strong>TextView</strong> inside the
+						application itself. Change the ID to <strong>title</strong>.
+						<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image25.png" alt="image25">
+					</li>
+					<li>Now, center the text:
+						<ul>
+							<li><p>First, change the <strong>layout_width</strong> attribute to <strong>match_parent</strong>.
+								This will cause the text element's width to match the parent, which in this case is the <strong>LinearLayout</strong>.
+								The TextView will span the entire screen. Ignore any warnings you get.</p>
+							</li>
+							<li>Now that the element spans the entire horizontal space you need to center it inside the space.
+								Under <strong>Attributes</strong>, scroll down to <strong>gravity</strong> (you might need to click "View all attributes"), click on the empty
+								drop down, and select <strong>center_horizontal</strong>.
+							</li>
+							<p>NOTE: as you navigate through attributes, you can add favorites for easier access. The ones used
+							here were condensed in the image below:</p>
+							<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image26.png" alt="image26">
+						</ul>
+					</li>
+					<li>Next, add two fields for the number inputs:
+						<ul>
+							<li><p>First, you will have the LinearLayout with elements stacking vertically. To do this, click on the <strong>LinearLayout
+								</strong> inside the <em>Component Tree</em> and change the orientation field inside <em>Attributes</em>
+								to <strong>vertical</strong>.
+								<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image27.png" alt="image27"></p>
+							</li>
+							<li>Next add two <strong>Plain Text</strong> elements from the <strong>Text</strong> fields area under the left hand toolbar.
+								The screen should look like the one below when done. If not, make sure that your TextView is resized to fit the text.
+								<ul>
+									<li>
+										You might need to set the <strong>layout_weight</strong> attribute to 0 to ensure all components are displayed. Repeat this step for any other mis-aligned components in the lab.
+									</li>
+								</ul>
+							</li>
+							<li>Edit the ID and text attributes of both new <strong>editText</strong> and <strong>editText2</strong> to read <strong>input1</strong> and
+								<strong>input2</strong>. You can also add commonly used strings to <strong>strings.xml</strong>,
+								and use them as a <strong>hint</strong> to the user. You may use strings.xml, or simply remove "Name" from the <strong>text</strong> field, and add "Enter a number #1" and "Enter a number #2" in the <strong>hint</strong> field for each input.
+
+								<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image28.png" alt="image28">
+							</li>
+							
+							<li>Finally, set the input type so that the inputs entered in by the user are only decimal.
+								<ul>
+									<li>Go to <strong>Attributes -&gt; InputType -&gt; numberDecimal</strong> and check this option, and deselect any other options. This will
+									restrict users to only inputting numbers, and the app will display the number pad when an input is clicked.<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image28.png" alt="image28">
+										<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image29.png" alt="image29">
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+
+					<li>Next, add the basic math buttons:
+						<ul>
+							<li><p>Insert a <strong>LinearLayout Horizontal</strong> below the 2 inputs. You might need to set the <strong>layout_weight attribute to 0</strong> to ensure all components are displayed. Next drag 5 <strong>Button</strong> items
+								into the new <strong>LinearLayout</strong> and the result should look like the below image.</p>
+							</li>
+							<li>Name the buttons you created. For Text field of <strong>Button</strong> enter <strong>+</strong> and for
+								<strong>Id</strong> field enter <strong>plus</strong> for <strong>Button2</strong> enter <strong>-</strong> and
+								<strong>minus</strong> for Text and Id fields respectively. For <strong>Button3</strong> enter <strong>*</strong> and
+								<strong>multiply</strong> for Text and Id fields respectively. For <strong>Button4</strong> enter <strong>/</strong> and
+								<strong>divide</strong> for Text and Id fields respectively and for <strong>Button5</strong> enter <strong>CLR</strong> and
+								<strong>clear</strong> for Text and Id fields respectively.
+							</li>
+							<li>See if you can figure out how to center the buttons. To give you a hint, it is a property of the parent's layout.</li>
+							<li>Finally make sure your <strong>Horizontal LinearLayout's</strong> <em>layout_width</em> and <em>layout_height</em> 
+								fields are set to <em>match_parent</em>.
+								<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image30.png" alt="image30">
+							</li>
+
+							<li><strong>NOTE</strong>: you can drag an object between the linear layouts by clicking and holding the object.</li>
+
+						</ul>
+					</li>
+					<li>Lastly, you need to add space to display the final results:
+						<ul>
+							<li>Add a <strong>LinearLayout Vertical</strong> below <strong>LinearLayout Horizontal</strong>. You might need to reduce the height of this LinearLayout to ensure all components are displayed - ensure the <strong>layout_weight</strong> attribute is set to 0. Next,
+							add two <strong>TextView</strong> items inside your newly created LinearLayout. Make sure that for the <strong>LinearLayout</strong> that you just
+							added, <strong>layout_width and layout_height</strong> matches the parent. The result should look like the image below.
+							</li>
+							<li>Experiment with the text size and style in the <strong>Properties</strong> toolbar for both text views, but
+								give them the id's <strong>result_title</strong> and <strong>result</strong>
+								<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image31.png" alt="image31">
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+		<h3 id="calc-logic">4.3: Adding the Logic</h3>
+			<ul>
+
+			<li>Open <strong>MainActivity</strong> to link the functionality of the calculator to the simple design you implemented above.
+
+				</li><li>Start by deleting the highlighted code shown below. This code implements the <strong>FloatingActionButton</strong>
+					you deleted from your <strong>activity_main.xml</strong>.
+					<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image32.png" alt="image32">
+				</li>
+				<li>When you generated your blank activity, Android Studio created a lot of starter code for you. One of these methods
+					is <strong>onCreate</strong> method; this method is called when the activity or application starts up. This is
+					what links your Design code or <strong>View</strong> from your functional code or <strong>Controller</strong>
+					<ul>
+						<li>This process starts with the line <code>setContentView(R.layout.activity_main);</code><br>This will link the application's
+						<strong>MainActivity</strong> to the application's <strong>activity_main</strong> and <strong>content_main</strong>.
+						</li>
+						<li>
+							Most mobile app development follows the <strong>Model-View-Controller (MVC)</strong> architecture pattern or the 
+							<strong>Model-View-ViewModel (MVVM)</strong> architecture pattern. You can read more about them 
+							<a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller" target="_blank">here</a> 
+							and <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel" target="_blank">here</a>
+						</li>
+					</ul>
+				</li>
+				<li>Create the following fields above the <strong>onCreate</strong> method. These fields are the instances of the objects that
+					help you to control your application's layout.<br>
+					<code>private EditText operand1;</code><br>
+					<code>private EditText operand2;</code><br>
+					<code>private Button btnAddition;</code><br>
+					<code>private Button btnSubtraction;</code><br>
+					<code>private Button btnDivision;</code><br>
+					<code>private Button btnMultiplication;</code><br>
+					<code>private TextView txtResult;</code><br>
+					<code>private Button btnClear;</code><br>
+					<p>If there are any errors like the one below, you can click on the line where error is occurring and use <strong>
+						alt+ctrl (option + enter on Mac)</strong> to import the necessary library for any of the objects you created.
+						<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image33.png" alt="image33">
+					</p>
+
+				</li>
+				<li>Under <strong>setContentView(R.layout.activity_main);</strong> add the following lines of code. Each of these
+					lines will link an element from the <strong>content_main.xml</strong> to one of the fields that you just created above. This is
+					achieved by using the <strong>findViewById()</strong> function which you can use to look up ids you assigned inside
+					<strong>content_main.xml</strong><br>
+					<code>operand1 = (EditText) findViewById(R.id.input1);</code><br>
+					<code>operand2 = (EditText) findViewById(R.id.input2);</code><br>
+					<code>btnAddition = (Button) findViewById(R.id.plus);</code><br>
+					<code>btnSubtraction = (Button) findViewById(R.id.minus);</code><br>
+					<code>btnDivision = (Button) findViewById(R.id.divide);</code><br>
+					<code>btnMultiplication = (Button) findViewById(R.id.multiply);</code><br>
+					<code>txtResult = (TextView) findViewById(R.id.result);</code><br>
+					<code>btnClear = (Button) findViewById(R.id.clear);</code>
+					<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image34.png" alt="image34">
+					If there are any issues, make sure your components' ID fields are what you expect them to be.
+				</li>
+				<li>
+					<p>Now, you need to set up listeners for the buttons you created for the <strong>View</strong> of your application. Listeners
+					will take actions from users and connect the requests to the controller of your application, so the application can
+					perform the requested function. For this application you will use simple <strong>onClickListeners</strong>. They detect
+					when one of the buttons is clicked by the user. Android has a variety of built in listeners for things such as swipes,
+					taps, and more. The "listener" or "observer" pattern is the most common strategy for creating asynchronous callbacks
+					within Android development. Listeners are used for any type of asynchronous event in order to implement the code to
+					run when an event occurs. You could read more about listeners
+					<a href="https://developer.android.com/guide/topics/ui/ui-events.html" target="_blank">here</a>.</p>
+				</li>
+				<li>You need to setup the <strong>setOnClicker</strong> like shown below. <strong>setOnClickListener</strong>
+						is a method of the <strong>Button</strong> object in Android. This generates a new View and Override its
+						<strong>onClick</strong> method.
+				</li>
+				<li>When the button is clicked, the code inside <strong>onClick</strong> is run which, in this case, takes the input
+					the user has placed in both <strong>input1</strong> and <strong>input2</strong> TextViews and stores them as doubles.
+					The addition operation is performed, and the <strong>result</strong> TextView is updated to display the results
+					to the user. Otherwise, if the inputs are not valid, a popup prompting the user to enter a valid input is displayed.
+				</li>
+				Place the following code at the bottom of the <strong>onCreate()</strong> method.
+				<pre><code>btnAddition.setOnClickListener(new View.OnClickListener(){
+	@Override
+	public void onClick(View v){
+		if ((operand1.getText().length() &gt; 0) &amp;&amp; (operand2.getText().length() &gt; 0 )){
+			double oper1 = Double.parseDouble(operand1.getText().toString());
+			double oper2 = Double.parseDouble(operand2.getText().toString());
+			double theResult = oper1 + oper2;
+			txtResult.setText(Double.toString(theResult));
+		}
+		else{
+			Toast.makeText(MainActivity.this, "Please enter number in both operand fields", Toast.LENGTH_LONG).show();
+		}
+	}
+});
+				</code></pre>
+				<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image35.png" alt="image35">
+
+
+				<li>
+					Now implement the subtraction, multiplication, and division functionalities of your application following similar
+					process as addition that you followed above. Ensure to name each <strong>btn</strong> according to its functionality.
+					For example for division the button is called <strong>btnDivision</strong>.
+					<p><strong>NOTE:</strong> The code is intentionally repetitive. Feel free to come up with a DRY (don't repeat yourself) solution yourself.</p>
+				</li>
+				<li>
+					At last, you need to setup the clear button which will reset the inputs and the result display. Add the following
+					code after your button code that you added in the <strong>onCreate()</strong> method.
+					<pre><code>
+btnClear.setOnClickListener(new View.OnClickListener(){
+	@Override
+	public void onClick(View v){
+		operand1.setText("");
+		operand2.setText("");
+		txtResult.setText("(result will appear here)");
+		operand1.requestFocus();
+	}
+});
+					</code></pre>
+				</li>
+				<li>Now test your application. In the upper right hand corner click on the play button.
+					<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image36.png" alt="image36">
+						<ul>
+							<li>A window like the one below will pop up. Choose <strong>Launch emulator</strong> and click
+							<strong>OK</strong> to open your Android VM or load your Android device.
+								<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image37.png" alt="image37">
+							</li>
+							<li>If there is no emulator found, use the <strong>Create Virtual Device</strong> button to create one. Use all of the default settings.
+							</li>
+							<li>Once the emulator is launched (this may take a while), you should see something similar to the following.
+								<img src="./Lab 2 · CSE 110 Software Engineering_files/l2-image38.png" alt="image38">
+							</li>
+							<li>If you aren't taken directly to your app, "swipe" (drag your 
+mouse) up on the Android home screen and select your Calculator app from
+ the apps drawer that comes up.
+							</li>
+						</ul>
+				</li><li>Great job! You have built a simple, but functional app in Android.
+					This might be a great start to more interesting adventures for you.</li>
+			</ul>
+
+
+
+
+		<hr>
+		<h2 id="completion"><strong>Completion Checkoff:</strong></h2>
+
+		<p>When you reach the screen shown above, please follow these instructions:</p>
+		<ul>
+			<li>Add a ticket to the Autograder with one tag for the priority of your ticket and another with <i>Lab Completion Check</i> tag;</li>
+			<li>Display your lab reservation time on cse110.com for verification. <u>Select your lab reservation time correctly</u>;</li>
+			<li>Display your working calculator app.</li>
+		</ul>
+		<p>A staff member will verify the above and check you off.
+		</p>
+		<p><strong>NOTE</strong>: You will only get checkoff priority during 
+your own lab reservation time. During any other CSE 110 lab hours, your 
+checkoff request will only be considered if there are staff members who 
+are not busy assisting students from those specific lab hours.</p>
+
+		<h5>Feedback</h5>
+		<p>Please feel free to give us feedback via this <a href="https://forms.gle/XkpaqzD9YNk2hRjx7">google form</a>.</p>
+
+		<hr>
+		<h2 id="linux-help">NOTE: Additional info for Linux users</h2>
+
+		<h4>Starting up Android Studio</h4>
+		<p>You need to start up studio by executing
+			<code>./bin/studio.sh</code>
+		</p>
+
+		<h4>Cannot start Android VM</h4>
+		<ul>
+			<li>If you are encountering the <em>avdmanager.AvdManagerConnection - Failed to create the SD card</em> error when creating the virtual machine, you most likely need the <strong>lib32z1</strong> package or equivalent installed.</li>
+			<li>If you are on 64-bit Linux and are having problems starting the emulator, follow the second link answer <a href="https://stackoverflow.com/questions/42757928/waiting-for-target-device-to-come-online-in-android-studio-2-3" target="_blank">here</a>, after installing the required packages.</li>
+			<li>If you have an Nvidia card, make sure you have the <strong>mesa-utils</strong> package installed</li>
+		</ul>
+
+
+	</div>
+</div>
+
+<label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+<script type="text/javascript" src="./Lab 2 · CSE 110 Software Engineering_files/script.js.download"></script>
+
+
+</body></html>

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="pa11">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/production/CSE12/pa1/hamcrest-core-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/production/CSE12/pa1/junit-4.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

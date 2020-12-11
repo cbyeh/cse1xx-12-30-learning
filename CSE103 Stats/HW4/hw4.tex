@@ -1,0 +1,92 @@
+\documentclass[12pt, oneside]{article}
+\usepackage[letterpaper,scale=0.85, centering]{geometry}
+\usepackage{amssymb,amsmath}
+\usepackage{currfile,xstring,hyperref}
+\usepackage[labelformat=empty]{caption}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{multicol}
+\usepackage{listings}
+
+% NOTE(joe): This environment is credit @pnpo (https://tex.stackexchange.com/a/218450)
+\lstnewenvironment{algorithm}[1][] %defines the algorithm listing environment
+{   
+    \lstset{ %this is the stype
+        mathescape=true,
+        frame=tB,
+        numbers=left, 
+        numberstyle=\tiny,
+        basicstyle=\rmfamily\scriptsize, 
+        keywordstyle=\color{black}\bfseries,
+        keywords={,procedure, div, for, to, input, output, return, datatype, function, in, if, else, foreach, while, begin, end, }
+        numbers=left,
+        xleftmargin=.04\textwidth,
+        #1
+    }
+}
+{}
+
+\lstnewenvironment{java}[1][]
+{   
+    \lstset{
+        language=java,
+        mathescape=true,
+        frame=tB,
+        numbers=left, 
+        numberstyle=\tiny,
+        basicstyle=\ttfamily\scriptsize, 
+        keywordstyle=\color{black}\bfseries,
+        keywords={, int, double, for, return, if, else, while, }
+        numbers=left,
+        xleftmargin=.04\textwidth,
+        #1
+    }
+}
+{}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+
+\title{\bf CSE 103 \\[2ex]
+       \Large Homework \#4\\ Fall 2019}
+\begin{document}
+\date{\textbf{Due}: Monday, October 21, 2019 at 11:00PM on Gradescope}
+\maketitle
+%$\\[-50pt]$
+
+\section{Directions}
+You may work with one other student. If working with a partner,
+\textbf{submit only one submission per pair} : one partner uploads the submission and adds the other partner to the Gradescope submission. You can post public questions about the assignment to Piazza, discuss the questions and their answers with at most one other student, and ask questions in office hours
+
+Your answers have to be typeset, not handwritten. This is for two
+reasons: (a) to reduce ambiguity of the answers, and (b) to be kind to
+the TA's eyesight. We recommend you use latex, but you can also use
+word-processors that support mathematical formulas. More directions
+are available here: {\tt https://tinyurl.com/y2gv9bn9}.
+
+You will submit this assignment via Gradescope
+(\url{https://www.gradescope.com}) in the assignment called ``Homework
+4''. You can submit each question as many times as you like. You should solve the problems and ask questions about them offline first, then try submitting once you are confident in your answers. 
+
+\textbf{No late submissions are accepted.}
+
+Special Latex Notation useful in this assignment: m choose k: ${m
+  \choose k}$
+  \newpage
+\section{Problems}
+\begin{enumerate}
+
+\item (20 points) The annual premium of a special kind of insurance starts at \$10000 and is reduced by 10\% after each year where no claim has been filed. The probability that a claim is filed in a given year is 0.07, independently of preceding years. What is the PMF of the total premium paid up to and including the year when the first claim is filed? 
+\newpage
+\item (20 points) Let $X$ be a discrete random variable that is uniformly distributed over the set of integers in the range $[a, b]$, where $a$ and $b$ are integers with $a<0<b$. Find the PMF of the random variables $max\{0,X\}$ and $min\{0,X\}$.
+\newpage
+\item (20 points) Fischer and Spassky play a sudden-death chess match whereby the first player to win a game wins the match. Each game is won by Fischer with probability $p$, by Spassky with probability $q$, and is a draw with probability $1-p-q$.
+\begin{enumerate}
+    \item What is the probability that Fischer wins the match?
+    \item What is the PMF, the mean, and the variance of the duration of the match?
+\end{enumerate}
+\newpage
+\item (20 points) A particular binary data transmission and reception device is prone to some error when receiving data. Suppose that each bit is read correctly with probability $p$. Find a value of $p$ such that when 10,000 bits are received, the expected number of errors is 10.
+\newpage
+\item (20 points) The MIT football team wins any one game with probability $p$, and loses it with probability $1-p$. Its performance in each game is independent of its performance in other games. Let $L_1$ be the number of losses before its first win, and let $L_2$ be the number of losses after its first win and before its second win. Find the joint PMF of $L_1$ and $L_2$.
+\end{enumerate}
+\end{document}

@@ -1,0 +1,106 @@
+\documentclass[12pt, oneside]{article}
+\usepackage[letterpaper,scale=0.85, centering]{geometry}
+\usepackage{amssymb,amsmath}
+\usepackage{currfile,xstring,hyperref}
+\usepackage[labelformat=empty]{caption}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{multicol}
+\usepackage{listings}
+
+% NOTE(joe): This environment is credit @pnpo (https://tex.stackexchange.com/a/218450)
+\lstnewenvironment{algorithm}[1][] %defines the algorithm listing environment
+{   
+    \lstset{ %this is the stype
+        mathescape=true,
+        frame=tB,
+        numbers=left, 
+        numberstyle=\tiny,
+        basicstyle=\rmfamily\scriptsize, 
+        keywordstyle=\color{black}\bfseries,
+        keywords={,procedure, div, for, to, input, output, return, datatype, function, in, if, else, foreach, while, begin, end, }
+        numbers=left,
+        xleftmargin=.04\textwidth,
+        #1
+    }
+}
+{}
+
+\lstnewenvironment{java}[1][]
+{   
+    \lstset{
+        language=java,
+        mathescape=true,
+        frame=tB,
+        numbers=left, 
+        numberstyle=\tiny,
+        basicstyle=\ttfamily\scriptsize, 
+        keywordstyle=\color{black}\bfseries,
+        keywords={, int, double, for, return, if, else, while, }
+        numbers=left,
+        xleftmargin=.04\textwidth,
+        #1
+    }
+}
+{}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+
+\title{\bf CSE 103 \\[2ex]
+       \Large Homework \#5\\ Fall 2019}
+\begin{document}
+\date{\textbf{Due}: Monday, November 4, 2019 at 11:00PM on Gradescope}
+\maketitle
+%$\\[-50pt]$
+
+\section{Directions}
+You may work with one other student. If working with a partner,
+\textbf{submit only one submission per pair} : one partner uploads the submission and adds the other partner to the Gradescope submission. You can post public questions about the assignment to Piazza, discuss the questions and their answers with at most one other student, and ask questions in office hours
+
+Your answers have to be typeset, not handwritten. This is for two
+reasons: (a) to reduce ambiguity of the answers, and (b) to be kind to
+the TA's eyesight. We recommend you use latex, but you can also use
+word-processors that support mathematical formulas. More directions
+are available here: {\tt https://tinyurl.com/y2gv9bn9}.
+
+You will submit this assignment via Gradescope
+(\url{https://www.gradescope.com}) in the assignment called ``Homework
+5''. You can submit each question as many times as you like. You should solve the problems and ask questions about them offline first, then try submitting once you are confident in your answers. 
+
+\textbf{No late submissions are accepted.}
+
+  \newpage
+\section{Problems}
+\begin{enumerate}
+
+\item Let random variable $X$ be uniformly distributed in the unit interval [0,1]. Consider the random variable $Y = g(X)$, where $g(x)$ is defined as:
+\[ \begin{cases} 
+      1 & x\leq 1/3 \\
+      2 & x\geq 1/3 
+   \end{cases}
+\]
+\begin{enumerate}
+    \item Find the expected value of $Y$ by first deriving its PMF. [8 points]
+    \item Verify the result obtained in (a) using the expected value rule on function of a random variable $X$. [8 points]
+\end{enumerate}
+
+\newpage
+\item Consider a triangle and a point chosen within the triangle according to the uniform probability law. Let $X$ be the distance from the point to the base of the triangle. Given the height of the triangle, find the CDF and the PDF of $X$  [16 points]
+
+\newpage
+\item Calamity Jane goes to the bank to make a withdrawal, and is equally likely to find 0 or 1 customers ahead of her. The service of the customer ahead, if present, is exponentially distributed with parameter $\lambda$. What is the CDF of Jane's waiting time? [18 points]
+
+\newpage
+\item A point is chosen at random (according to a uniform PDF) within a semicircle of the form \{${(x,y)| x^2+y^2 <= r^2, y >= 0 }$\}, for some given $r > 0$.
+\begin{enumerate}
+    \item Find the joint PDF of the coordinates $X$ and $Y$ of the chosen point.  [6 points]
+    \item Find the marginal PDF of $Y$ and use it to find $E[Y]$.  [7 points]
+    \item Check your answer in (b) by computing $E[Y]$ directly without using the marginal PDF of $Y$.  [7 points]
+\end{enumerate}
+
+\newpage
+% \item \textbf{Buffon's needle : } This is a famous example, which marks the origin of the subject of geometric probability, that is, the analysis of the geometric configuration of randomly placed objects. A surface is ruled with parallel lines which 
+\item A needle of length $l$ is dropped on an infinite plane surface that is partitioned into rectangles by horizontal lines that are $a$ apart and vertical lines that are $b$ apart. Suppose that the needle's length $l$ satisfies $l < a$ and $l < b$. What is the expected number of rectangle sides crossed by the rectangle? What is the probability that the needle will cross at least one side of some rectangle?  [30 points]
+
+\end{enumerate}
+\end{document}

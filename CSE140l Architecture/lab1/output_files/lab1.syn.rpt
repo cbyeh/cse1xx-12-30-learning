@@ -1,0 +1,35 @@
+Synthesis report
+Fri Apr 26 18:29:01 2019
+Quartus Prime Version 18.1.0 Build 222 09/21/2018 SJ Pro Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Synthesis Messages
+
+
+
++--------------------+
+; Synthesis Messages ;
++--------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Synthesis
+    Info: Version 18.1.0 Build 222 09/21/2018 SJ Pro Edition
+    Info: Processing started: Fri Apr 26 18:28:59 2019
+Info: Command: quartus_syn --read_settings_files=on --write_settings_files=off lab1 -c lab1
+Info: qis_default_flow_script.tcl version: #1
+Info: Initializing Synthesis...
+Info: Project = "lab1"
+Info: Revision = "lab1"
+Info: Analyzing source files
+Info: Elaborating from top-level entity "lab1"
+Error (16368): Top-level design entity "lab1" is undefined
+Error (16186): Can't elaborate top-level user hierarchy
+Error: Flow failed: 
+Error: Quartus Prime Synthesis was unsuccessful. 3 errors, 0 warnings
+    Error: Peak virtual memory: 5034 megabytes
+    Error: Processing ended: Fri Apr 26 18:29:01 2019
+    Error: Elapsed time: 00:00:02
+
+
